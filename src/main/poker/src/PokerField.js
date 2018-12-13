@@ -32,11 +32,11 @@ class PokerField extends Component {
 	handsChange = (playerHands, computerHands, isFinishedChange, playerRole, computerRole, winner) => {
 	  this.setState({
 	    playerHands: playerHands,
-        computerHands: computerHands,
-        isFinishedChange: isFinishedChange,
-        playerRole: playerRole,
-        computerRole: computerRole,
-        winner: winner})
+      computerHands: computerHands,
+      isFinishedChange: isFinishedChange,
+      playerRole: playerRole,
+      computerRole: computerRole,
+      winner: winner})
 	}
 
 	setHands = (hand) => {
@@ -54,21 +54,21 @@ class PokerField extends Component {
       <div>
         <Container className="poker_field">
           <ul>
-	       <CpuHands
-	    	  hands={this.state.computerHands}
-	    	  isFinishedChange={this.state.isFinishedChange}
-	    	 />
-	    	<WinOrLossJudge
-	          playerRole={this.state.playerRole}
-	    	  computerRole={this.state.computerRole}
-	    	  winner={this.state.winner}
-	    	/>
-	    	<PlayerHands
-	    	  playerHands={this.state.playerHands}
-	        setHands={this.setHands}
-	    	  isFinishedChange={this.state.isFinishedChange}
-	    	/>
-	       </ul>
+	          <CpuHands
+	    	      hands={this.state.computerHands}
+	    	      isFinishedChange={this.state.isFinishedChange}
+	    	    />
+    	    	<WinOrLossJudge
+    	        playerRole={this.state.playerRole}
+    	    	  computerRole={this.state.computerRole}
+    	    	  winner={this.state.winner}
+    	    	/>
+    	    	<PlayerHands
+    	    	  playerHands={this.state.playerHands}
+    	        setHands={this.setHands}
+    	    	  isFinishedChange={this.state.isFinishedChange}
+    	    	/>
+	        </ul>
 	      </Container>
         <HandChangeButton
           deck={this.state.deck}
@@ -175,7 +175,7 @@ class Hand extends Component {
 	const text = this.props.hand.type === 'JOKER' ? 'JOKER': this.props.hand.type+'の'+this.props.hand.number;
 	if(this.props.isFinishedChange) {
 	  return (
-		<div className="hand">
+		  <div className="hand">
 	      <h3>{text}</h3>
 	    </div>
       )
@@ -197,8 +197,8 @@ class HandChangeButton extends Component {
 	    .post(url)
 	    .type('form')
 	    .send({jsonPlayerHands: JSON.stringify(this.props.playerHands),
-	    	   jsonDeck: JSON.stringify(this.props.deck),
-	    	   jsonComputerHands: JSON.stringify(this.props.computerHands)})
+	    	     jsonDeck: JSON.stringify(this.props.deck),
+	    	     jsonComputerHands: JSON.stringify(this.props.computerHands)})
 	    .then(res => {
 	      const pokerInfo = res.body;
 	      this.props.handsChange(
@@ -231,10 +231,10 @@ class AfterPokerPlayingButtons extends Component {
     return (
       <div id="after_poker_playing_buttons">
 		  <RetryButton
-	        stateReset={this.props.stateReset}
-	        jokerIncluded={this.props.jokerIncluded}
-	        history={this.props.history}
-	        isFinishedChange={this.props.isFinishedChange}
+	      stateReset={this.props.stateReset}
+	      jokerIncluded={this.props.jokerIncluded}
+	      history={this.props.history}
+	      isFinishedChange={this.props.isFinishedChange}
 		 />
 		 <RestartButton
 		   history={this.props.history}
@@ -269,8 +269,8 @@ class RetryButton extends Component {
 
   render() {
     if(!this.props.isFinishedChange) {
-	  return null;
-	}
+	    return null;
+	  }
 
     return (
 	    <Button onClick={this.handleSubmit.bind(this)}>
@@ -286,11 +286,11 @@ class RestartButton extends Component {
 		this.props.history.push({
 			pathname: '/'
 		})
-    }
+  }
   render() {
     if(!this.props.isFinishedChange) {
-	  return null;
-	}
+	    return null;
+	  }
     return (
 	    <Button onClick={this.handleToRestart.bind(this)}>
 	      スタートに戻る
