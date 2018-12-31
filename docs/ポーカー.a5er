@@ -1,0 +1,91 @@
+﻿# A5:ER FORMAT:12
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright (C)2007 m.matsubara
+# A5:SQL Mk-2 Copyright (C)1997 m.matsubara
+#  http://www.wind.sannet.ne.jp/m_matsu/developer/a5m2/
+
+[Manager]
+ProjectName=ポーカー.er
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",2,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=2
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSTypeName=Oracle Database
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+ShowTag=1
+ShowCommonAttributes=0
+
+[Relation]
+Entity1=user
+Entity2=possession_money
+RelationType1=2
+RelationType2=2
+Fields1=user_id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,1945,8055,1980,R,R
+Dependence=1
+Caption=
+PName=
+ModifiedDateTime=20181231225808
+LineMode=0
+Bar1=194
+Bar2=806
+Bar3=198
+TermPos1=R
+TermPos2=R
+
+[Entity]
+PName=possession_money
+LName=所持金
+Comment=
+TableOption=
+Page=Main
+Left=1350
+Top=350
+Field="ユーザーID","user_id","@VARCHAR(255)","NOT NULL",0,"","",$FFFFFFFF,""
+Field="所持金","possession_money","@DECIMAL","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20181231225717
+Position="Main",1350,350,449,387
+
+[Entity]
+PName=user
+LName=ユーザー
+Comment=
+TableOption=
+Page=Main
+Left=500
+Top=350
+Field="ユーザーID","user_id","@INT","NOT NULL",0,"","",$FFFFFFFF,""
+Field="ユーザー名","user_name","@VARCHAR(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="パスワード","password","@VARCHAR(255)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20181231224958
+Position="Main",500,350,495,394
