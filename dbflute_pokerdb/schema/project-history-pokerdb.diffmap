@@ -1,0 +1,20 @@
+map:{
+    ; 2019/01/14 19:14:14 = map:{
+        ; diffDate = 2019/01/14 19:14:14
+        ; tableCount = map:{
+            ; next = 2
+            ; previous = 0
+        }
+        ; diffAuthor = OWNER
+        ; tableDiff = map:{
+            ; POKER_USER_INFO = map:{
+                ; tableName = POKER_USER_INFO
+                ; diffType = ADD
+            }
+            ; POSSESSION_MONEY = map:{
+                ; tableName = POSSESSION_MONEY
+                ; diffType = ADD
+            }
+        }
+    }
+}
