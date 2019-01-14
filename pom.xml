@@ -24,6 +24,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<dbflute.version>1.1.9</dbflute.version>
 	</properties>
 
 	<dependencies>
@@ -40,6 +41,17 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+
+    <dependency>
+        <groupId>org.dbflute</groupId>
+        <artifactId>dbflute-runtime</artifactId>
+        <version>${dbflute.version}</version>
+    </dependency>
+    <dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -66,12 +78,21 @@
     		  </executions>
 		    </plugin>
 		     <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                </executions>
-            </plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-antrun-plugin</artifactId>
+             <version>1.8</version>
+             <executions>
+             </executions>
+         </plugin>
+         <plugin>
+						<groupId>org.dbflute</groupId>
+						<artifactId>dbflute-maven-plugin</artifactId>
+						<version>1.1.0</version>
+						<configuration>
+							<clientProject>pokerdb</clientProject>
+							<packageBase>com.example.demo.dbflute</packageBase>
+						</configuration>
+					</plugin>
 
 		</plugins>
 	</build>
