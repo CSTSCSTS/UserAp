@@ -1,0 +1,31 @@
+@startuml
+
+actor ユーザー
+
+participant UserController
+participant UserService
+participant User
+participant UserRepository
+database Poker_User_Info
+
+ユーザー -> UserController : 登録ボタンをクリック
+UserController -> UserService : User register(String userName, String password)
+note left: 1.サービスのユーザー登録\nメソッド呼ぶ
+UserService -> UserRepository : boolean userNameIsDuplicate(username)
+note left: 2.ユーザー名重複チェック
+UserRepository -> Poker_User_Info : SELECT
+UserRepository --> UserService : return true or false
+alt userNameIsDuplicate return true
+  UserService -> User : User user = create(userName, password)
+  note left: 3.ユーザーを新規作成
+  UserService -> UserRepository : save(user)
+  note left: 4.作成したユーザーを保存
+  UserRepository -> Poker_User_Info : INSERT
+  UserService --> UserController : return user
+  UserController -> ユーザー : ログイン画面表示
+else userNameIsDuplicate return false
+  UserService -> UserController : throw UserNameDuplicateException()
+  UserController -> ユーザー : ユーザー登録画面にエラー表示
+end
+
+@enduml
