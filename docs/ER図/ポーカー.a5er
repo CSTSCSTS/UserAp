@@ -37,7 +37,7 @@ ShowTag=1
 ShowCommonAttributes=0
 
 [Relation]
-Entity1=user
+Entity1=poker_user_info
 Entity2=possession_money
 RelationType1=2
 RelationType2=2
@@ -62,30 +62,31 @@ PName=possession_money
 LName=所持金
 Comment=
 TableOption=
-Page=Main
+Page=MAIN
 Left=1350
 Top=350
-Field="ユーザーID","user_id","@VARCHAR(255)","NOT NULL",0,"","",$FFFFFFFF,""
+Field="ユーザーID","user_id","@INT","NOT NULL",0,"","",$FFFFFFFF,""
 Field="所持金","possession_money","@DECIMAL","NOT NULL",,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20181231225717
-Position="Main",1350,350,449,387
+ModifiedDateTime=20190120194504
+Position="MAIN",1350,350,449,387
 
 [Entity]
-PName=user
-LName=ユーザー
+PName=poker_user_info
+LName=ポーカーユーザー情報
 Comment=
 TableOption=
-Page=Main
+Page=MAIN
 Left=500
 Top=350
 Field="ユーザーID","user_id","@INT","NOT NULL",0,"","",$FFFFFFFF,""
 Field="ユーザー名","user_name","@VARCHAR(255)","NOT NULL",,"","",$FFFFFFFF,""
 Field="パスワード","password","@VARCHAR(255)","NOT NULL",,"","",$FFFFFFFF,""
+Index=poker_user_info_IX1=2,user_name 
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20181231224958
-Position="Main",500,350,495,394
+ModifiedDateTime=20190120194921
+Position="MAIN",500,350,495,394
