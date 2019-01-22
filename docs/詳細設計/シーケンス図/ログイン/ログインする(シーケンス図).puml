@@ -2,17 +2,13 @@
 
 actor ユーザー
 
-boundary handleSubmit
 participant UserController
 participant UserService
 participant User
 participant UserRepository
 database Poker_User_Info
 
-ユーザー -> handleSubmit : 登録ボタンをクリック
-handleSubmit -> ユーザー : ユーザー登録画面にエラー表示
-note left : 必須チェック・文字数チェック・パスワード相関チェックを\n実施して、いずれかにひっかかった場合
-handleSubmit -> UserController : ユーザー登録のためのPOSTリクエスト
+ユーザー -> UserController : 登録ボタンをクリック
 UserController -> UserService : User register(String userName, String password)
 note left: 1.サービスのユーザー登録\nメソッド呼ぶ
 UserService -> UserRepository : boolean userNameIsDuplicate(username)
