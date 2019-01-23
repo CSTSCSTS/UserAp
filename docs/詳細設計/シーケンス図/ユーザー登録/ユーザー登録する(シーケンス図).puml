@@ -11,7 +11,7 @@ database Poker_User_Info
 
 ユーザー -> handleSubmit : 登録ボタンをクリック
 handleSubmit -> ユーザー : ユーザー登録画面にエラー表示
-note left : 必須チェック・文字数チェック・パスワード相関チェックを\n実施して、いずれかにひっかかった場合
+note left : 下記のいずれかのチェックに引っかかった場合\n・必須チェック\n・文字数チェック\n・パスワードとパスワード(確認)同一チェック
 handleSubmit -> UserController : ユーザー登録のためのPOSTリクエスト
 UserController -> UserService : User register(String userName, String password)
 note left: 1.サービスのユーザー登録\nメソッド呼ぶ
