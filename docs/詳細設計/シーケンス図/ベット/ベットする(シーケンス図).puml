@@ -12,14 +12,18 @@ participant PokerService
 participant MoneyService
 participant MoneyRepository
 participant Money
-database Possession_money
+database possession_money
 
 ユーザー -> handleSubmit : ベットボタンをクリック
 handleSubmit -> ユーザー : ベット画面にエラー表示
-note left : 必須チェック・0円チェック・所持金チェックを\n実施して、いずれかにひっかかった場合
+note left : 必須チェック・0円チェックを\n実施して、いずれかにひっかかった場合
 handleSubmit -> PokerController : ポーカー開始のためのPOSTリクエスト
 PokerController -> PokerService : PokerPlayingInfo pokerPrepare(boolean jokerIncluded)
 note left: ポーカーの準備\nメソッド呼ぶ
+PokerService -> MoneyRepository : Money getMoney(int userId);
+MoneyRepository -> possession_money : SELECT
+PokerService -> PokerController : ベット額 > 所持金の場合、throw IllegalBetException()する
+PokerController -> ユーザー : ベット画面にエラーを表示
 PokerService -> PokerController : return PokerPlayingInfo.builder().build()
 note right: 戻り値のPokerPlayingInfoの中には、以下の情報が入っている。\n・山札\n・プレイヤーの手札\n・CPUの手札
 PokerController -> ユーザー : ポーカープレイ画面にプレイヤー・CPUの手札を表示
@@ -39,23 +43,23 @@ PokerController -> ユーザー : ポーカープレイ画面に勝負するか�
 alt 勝負する
   ユーザー -> handlePlaySubmit : 勝負するボタンをクリック
   handlePlaySubmit -> MoneyController : 所持金更新のためのPOSTリクエスト
-  MoneyController -> MoneyService : Possession_money update(Winner winner, int userId, BigDecimal betMoney);
+  MoneyController -> MoneyService : possession_money update(Winner winner, int userId, BigDecimal betMoney);
   MoneyService -> MoneyRepository : getPossession_money(int userId)
   note right : 所持金情報を取得
-  MoneyRepository -> Possession_money : SELECT
-  MoneyRepository --> MoneyService : return Possession_money
+  MoneyRepository -> possession_money : SELECT
+  MoneyRepository --> MoneyService : return possession_money
   alt プレイヤーが勝者
     MoneyService -> Money : void plusMoney(BigDecimal betMoney)
     note right : ベット額だけ所持金を増やす
     MoneyService -> MoneyRepository : updatePossession_money(Money money)
-    MoneyRepository -> Possession_money : UPDATE
-    MoneyService --> MoneyController : return Possession_money
+    MoneyRepository -> possession_money : UPDATE
+    MoneyService --> MoneyController : return possession_money
   else CPUが勝者
     MoneyService -> Money : void minusMoney(BigDecimal betMoney)
     note right : ベット額だけ所持金を減らす
     MoneyService -> MoneyRepository : updatePossession_money(Money money)
-    MoneyRepository -> Possession_money : UPDATE
-    MoneyService --> MoneyController : return Possession_money
+    MoneyRepository -> possession_money : UPDATE
+    MoneyService --> MoneyController : return possession_money
   end
   handlePlaySubmit -> ユーザー : 勝負結果を表すメッセージ・もう一度ボタン・スタートに戻るボタンを表示する。
 else 勝負しない

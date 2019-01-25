@@ -2,30 +2,54 @@
 
 actor ユーザー
 
-participant UserController
-participant UserService
-participant User
+boundary handleSubmit
+participant LoginController
+participant LoginService
+participant LoginSession
 participant UserRepository
-database Poker_User_Info
+participant User
+participant MoneyService
+participant MoneyRepository
+participant Money
+database possession_money
+database poker_User_Info
 
-ユーザー -> UserController : 登録ボタンをクリック
-UserController -> UserService : User register(String userName, String password)
-note left: 1.サービスのユーザー登録\nメソッド呼ぶ
-UserService -> UserRepository : boolean userNameIsDuplicate(username)
-note left: 2.ユーザー名重複チェック
-UserRepository -> Poker_User_Info : SELECT
-UserRepository --> UserService : return true or false
-alt userNameIsDuplicate return true
-  UserService -> User : User user = create(userName, password)
-  note left: 3.ユーザーを新規作成
-  UserService -> UserRepository : save(user)
-  note left: 4.作成したユーザーを保存
-  UserRepository -> Poker_User_Info : INSERT
-  UserService --> UserController : return user
-  UserController -> ユーザー : ログイン画面表示
-else userNameIsDuplicate return false
-  UserService -> UserController : throw UserNameDuplicateException()
-  UserController -> ユーザー : ユーザー登録画面にエラー表示
+ユーザー -> handleSubmit : ログインボタンをクリック
+handleSubmit -> ユーザー : ベット画面にエラー表示
+note left : 必須チェックにひっかかった場合
+handleSubmit -> LoginController : ログインのためのPOSTリクエスト
+LoginController -> LoginService : User login(String username, String password)
+LoginService -> UserRepository : Optional<User> getUser(username, password)
+UserRepository -> poker_User_Info : SELECT
+note left : ユーザー名・パスワードでユーザーが取得できることを確認
+LoginService -> LoginController : 取得できない場合、throw LoginFailureException()する
+LoginController -> ユーザー : ログイン画面にエラーを表示
+LoginService -> User : isLoggedInToday()
+note right : 本日ログインしているかどうか確認する
+alt ログイン済み
+  LoginService -> User : updateLoginTime()
+  LoginService -> UserRepository : update(user)
+  note right : ログイン日時を更新して保存
+  UserRepository -> poker_User_Info : UPDATE
+  LoginService -> LoginSession : new(userId)
+  note left : ログインセッションを作成
+  LoginService -> LoginController : return user
+  LoginController -> ユーザー : ポーカースタート画面を表示
+else ログイン初めて
+  LoginService -> MoneyRepository : getPossession_money(int userId)
+  MoneyRepository -> possession_money : SELECT
+  LoginService -> Money : void plusMoney(BigDecimal betMoney)
+  note right : 100円所持金を増やす
+  LoginService -> MoneyRepository : updatepossession_money(Money money)
+  MoneyRepository -> possession_money : UPDATE
+  LoginService -> User : updateLoginTime()
+  LoginService -> UserRepository : update(user)
+  note right : ログイン日時を更新して保存
+  UserRepository -> poker_User_Info : UPDATE
+  LoginService -> LoginSession : new(userId)
+  note left : ログインセッションを作成
+  LoginService -> LoginController : return user
+  LoginController -> ユーザー : ログインサービスにより、\n所持金が増えたことを示すポップアップを表示
 end
 
 @enduml
