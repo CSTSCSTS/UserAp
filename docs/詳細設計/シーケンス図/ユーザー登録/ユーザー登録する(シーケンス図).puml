@@ -5,9 +5,13 @@ actor ユーザー
 boundary handleSubmit
 participant UserController
 participant UserService
+participant MoneyService
 participant User
+participant Money
 participant UserRepository
-database Poker_User_Info
+participant MoneyRepository
+database poker_User_Info
+database possession_money
 
 ユーザー -> handleSubmit : 登録ボタンをクリック
 handleSubmit -> ユーザー : ユーザー登録画面にエラー表示
@@ -17,14 +21,20 @@ UserController -> UserService : User register(String userName, String password)
 note left: 1.サービスのユーザー登録\nメソッド呼ぶ
 UserService -> UserRepository : boolean userNameIsDuplicate(username)
 note left: 2.ユーザー名重複チェック
-UserRepository -> Poker_User_Info : SELECT
+UserRepository -> poker_User_Info : SELECT
 UserRepository --> UserService : return true or false
 alt userNameIsDuplicate return true
   UserService -> User : User user = create(userName, password)
   note left: 3.ユーザーを新規作成
   UserService -> UserRepository : save(user)
   note left: 4.作成したユーザーを保存
-  UserRepository -> Poker_User_Info : INSERT
+  UserRepository -> poker_User_Info : INSERT
+  UserService -> MoneyService : Money register(int userId)
+  note left: 5.所持金情報を新規作成\n→最初の所持金として1000円を登録する
+  MoneyService -> Money : Money money = create(userId)
+  MoneyService -> MoneyRepository : save(money)
+  note left: 6.作成した所持金情報を保存
+  MoneyRepository -> possession_money : INSERT
   UserService --> UserController : return user
   UserController -> ユーザー : ログイン画面表示
 else userNameIsDuplicate return false
