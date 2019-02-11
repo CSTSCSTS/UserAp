@@ -21,7 +21,7 @@ public class PokerServiceHandChangeTest {
 
 	@Test
 	public void test() {
-		PokerPlayingInfo config = sut.pokerPrepare(true);
+		PokerPlayingInfo config = sut.pokerSetUp(true);
 
 		List<Card> playerHands = config.getPlayerHands();
 		List<Card> cpuHands = config.getComputerHands();

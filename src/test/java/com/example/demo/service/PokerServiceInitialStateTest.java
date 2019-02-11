@@ -18,7 +18,7 @@ public class PokerServiceInitialStateTest {
 
 	@Test
 	public void test() {
-		PokerPlayingInfo config = sut.pokerPrepare(true);
+		PokerPlayingInfo config = sut.pokerSetUp(true);
 
 		assertThat(config.getDeck().size()).isEqualTo(43);
 		assertThat(config.getPlayerHands().size()).isEqualTo(5);
