@@ -82,10 +82,10 @@ public class BsPossessionMoneyCB extends AbstractConditionBean {
     //                                                                 ===================
     /**
      * Accept the query condition of primary key as equal.
-     * @param userId : PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO. (NotNull)
+     * @param userId : PK, NotNull, INTEGER(10), FK to POKER_USER_INFO. (NotNull)
      * @return this. (NotNull)
      */
-    public PossessionMoneyCB acceptPK(String userId) {
+    public PossessionMoneyCB acceptPK(Integer userId) {
         assertObjectNotNull("userId", userId);
         BsPossessionMoneyCB cb = this;
         cb.query().setUserId_Equal(userId);
@@ -312,7 +312,7 @@ public class BsPossessionMoneyCB extends AbstractConditionBean {
                              , HpSDRFunctionFactory sdrFuncFactory)
         { super(baseCB, qyCall, purpose, dbmetaProvider, sdrFuncFactory); }
         /**
-         * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
+         * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnUserId() { return doColumn("USER_ID"); }
@@ -321,6 +321,11 @@ public class BsPossessionMoneyCB extends AbstractConditionBean {
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnPossessionMoney() { return doColumn("POSSESSION_MONEY"); }
+        /**
+         * UPDATE_DATE: {TIMESTAMP(26, 6)}
+         * @return The information object of specified column. (NotNull)
+         */
+        public SpecifiedColumn columnUpdateDate() { return doColumn("UPDATE_DATE"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override

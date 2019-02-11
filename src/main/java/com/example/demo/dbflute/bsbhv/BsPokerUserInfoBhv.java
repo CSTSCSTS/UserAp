@@ -2,24 +2,39 @@ package com.example.demo.dbflute.bsbhv;
 
 import java.util.List;
 
-import org.dbflute.*;
-import org.dbflute.bhv.*;
+import org.dbflute.Entity;
+import org.dbflute.bhv.AbstractBehaviorWritable;
+import org.dbflute.bhv.BehaviorSelector;
 import org.dbflute.bhv.core.BehaviorCommandInvoker;
-import org.dbflute.bhv.readable.*;
-import org.dbflute.bhv.writable.*;
-import org.dbflute.bhv.referrer.*;
-import org.dbflute.cbean.*;
+import org.dbflute.bhv.readable.CBCall;
+import org.dbflute.bhv.readable.EntityRowHandler;
+import org.dbflute.bhv.referrer.ReferrerLoaderHandler;
+import org.dbflute.bhv.writable.DeleteOption;
+import org.dbflute.bhv.writable.InsertOption;
+import org.dbflute.bhv.writable.QueryInsertSetupper;
+import org.dbflute.bhv.writable.UpdateOption;
+import org.dbflute.bhv.writable.WritableOptionCall;
+import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.chelper.HpSLSFunction;
-import org.dbflute.cbean.result.*;
-import org.dbflute.exception.*;
+import org.dbflute.cbean.result.ListResultBean;
+import org.dbflute.cbean.result.PagingResultBean;
+import org.dbflute.exception.DangerousResultSizeException;
+import org.dbflute.exception.EntityAlreadyDeletedException;
+import org.dbflute.exception.EntityAlreadyExistsException;
+import org.dbflute.exception.EntityDuplicatedException;
+import org.dbflute.exception.NonQueryDeleteNotAllowedException;
+import org.dbflute.exception.NonQueryUpdateNotAllowedException;
+import org.dbflute.exception.SelectEntityConditionNotFoundException;
 import org.dbflute.hook.CommonColumnAutoSetupper;
 import org.dbflute.optional.OptionalEntity;
-import org.dbflute.outsidesql.executor.*;
-import com.example.demo.dbflute.exbhv.*;
-import com.example.demo.dbflute.bsbhv.loader.*;
-import com.example.demo.dbflute.exentity.*;
-import com.example.demo.dbflute.bsentity.dbmeta.*;
-import com.example.demo.dbflute.cbean.*;
+import org.dbflute.outsidesql.executor.OutsideSqlAllFacadeExecutor;
+
+import com.example.demo.dbflute.bsbhv.loader.LoaderOfPokerUserInfo;
+import com.example.demo.dbflute.bsentity.dbmeta.PokerUserInfoDbm;
+import com.example.demo.dbflute.cbean.PokerUserInfoCB;
+import com.example.demo.dbflute.exbhv.PokerUserInfoBhv;
+import com.example.demo.dbflute.exentity.PokerUserInfo;
+import com.example.demo.dbflute.exentity.PossessionMoney;
 
 /**
  * The behavior of POKER_USER_INFO as TABLE. <br>
@@ -28,16 +43,16 @@ import com.example.demo.dbflute.cbean.*;
  *     USER_ID
  *
  * [column]
- *     USER_ID, USER_NAME, PASSWORD
+ *     USER_ID, USER_NAME, PASSWORD, LOGIN_DATE
  *
  * [sequence]
- *     
+ *     POKER_USER_ID_SEQ1
  *
  * [identity]
- *     
+ *
  *
  * [version-no]
- *     
+ *
  *
  * [foreign table]
  *     POSSESSION_MONEY(AsOne)
@@ -49,7 +64,7 @@ import com.example.demo.dbflute.cbean.*;
  *     possessionMoneyAsOne
  *
  * [referrer property]
- *     
+ *
  * </pre>
  * @author DBFlute(AutoGenerator)
  */
@@ -59,6 +74,8 @@ public abstract class BsPokerUserInfoBhv extends AbstractBehaviorWritable<PokerU
     //                                                                          Definition
     //                                                                          ==========
     /*df:beginQueryPath*/
+    /** 所持金ランキング取得SQL */
+    public static final String PATH_select_money_ranking = "select_money_ranking";
     /*df:endQueryPath*/
 
     // ===================================================================================
@@ -159,7 +176,7 @@ public abstract class BsPokerUserInfoBhv extends AbstractBehaviorWritable<PokerU
 
     /**
      * Select the entity by the primary-key value.
-     * @param userId : PK, NotNull, INTEGER(10). (NotNull)
+     * @param userId : PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]. (NotNull)
      * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
      * @throws EntityAlreadyDeletedException When get(), required() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
@@ -184,6 +201,31 @@ public abstract class BsPokerUserInfoBhv extends AbstractBehaviorWritable<PokerU
     protected PokerUserInfoCB xprepareCBAsPK(Integer userId) {
         assertObjectNotNull("userId", userId);
         return newConditionBean().acceptPK(userId);
+    }
+
+    /**
+     * Select the entity by the unique-key value.
+     * @param userName : UQ, NotNull, VARCHAR(255). (NotNull)
+     * @return The optional entity selected by the unique key. (NotNull: if no data, empty entity)
+     * @throws EntityAlreadyDeletedException When get(), required() of return value is called and the value is null, which means entity has already been deleted (not found).
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     */
+    public OptionalEntity<PokerUserInfo> selectByUniqueOf(String userName) {
+        return facadeSelectByUniqueOf(userName);
+    }
+
+    protected OptionalEntity<PokerUserInfo> facadeSelectByUniqueOf(String userName) {
+        return doSelectByUniqueOf(userName, typeOfSelectedEntity());
+    }
+
+    protected <ENTITY extends PokerUserInfo> OptionalEntity<ENTITY> doSelectByUniqueOf(String userName, Class<? extends ENTITY> tp) {
+        return createOptionalEntity(doSelectEntity(xprepareCBAsUniqueOf(userName), tp), userName);
+    }
+
+    protected PokerUserInfoCB xprepareCBAsUniqueOf(String userName) {
+        assertObjectNotNull("userName", userName);
+        return newConditionBean().acceptUniqueOf(userName);
     }
 
     // ===================================================================================
@@ -282,10 +324,27 @@ public abstract class BsPokerUserInfoBhv extends AbstractBehaviorWritable<PokerU
     // ===================================================================================
     //                                                                            Sequence
     //                                                                            ========
+    /**
+     * Select the next value as sequence. <br>
+     * This method is called when insert() and set to primary-key automatically.
+     * So you don't need to call this as long as you need to get next value before insert().
+     * @return The next value. (NotNull)
+     */
+    public Integer selectNextVal() {
+        return facadeSelectNextVal();
+    }
+
+    protected Integer facadeSelectNextVal() {
+        return doSelectNextVal(Integer.class);
+    }
+
+    protected <RESULT> RESULT doSelectNextVal(Class<RESULT> tp) {
+        return delegateSelectNextVal(tp);
+    }
+
     @Override
     protected Number doReadNextVal() {
-        String msg = "This table is NOT related to sequence: " + asTableDbName();
-        throw new UnsupportedOperationException(msg);
+        return facadeSelectNextVal();
     }
 
     // ===================================================================================
@@ -382,6 +441,14 @@ public abstract class BsPokerUserInfoBhv extends AbstractBehaviorWritable<PokerU
      */
     public List<Integer> extractUserIdList(List<PokerUserInfo> pokerUserInfoList)
     { return helpExtractListInternally(pokerUserInfoList, "userId"); }
+
+    /**
+     * Extract the value list of (single) unique key userName.
+     * @param pokerUserInfoList The list of pokerUserInfo. (NotNull, EmptyAllowed)
+     * @return The list of the column value. (NotNull, EmptyAllowed, NotNullElement)
+     */
+    public List<String> extractUserNameList(List<PokerUserInfo> pokerUserInfoList)
+    { return helpExtractListInternally(pokerUserInfoList, "userName"); }
 
     // ===================================================================================
     //                                                                       Entity Update

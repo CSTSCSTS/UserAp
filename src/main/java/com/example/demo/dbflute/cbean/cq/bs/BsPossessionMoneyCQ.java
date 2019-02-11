@@ -81,14 +81,14 @@ public class BsPossessionMoneyCQ extends AbstractBsPossessionMoneyCQ {
 
     /**
      * Add order-by as ascend. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
      * @return this. (NotNull)
      */
     public BsPossessionMoneyCQ addOrderBy_UserId_Asc() { regOBA("USER_ID"); return this; }
 
     /**
      * Add order-by as descend. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
      * @return this. (NotNull)
      */
     public BsPossessionMoneyCQ addOrderBy_UserId_Desc() { regOBD("USER_ID"); return this; }
@@ -112,6 +112,26 @@ public class BsPossessionMoneyCQ extends AbstractBsPossessionMoneyCQ {
      * @return this. (NotNull)
      */
     public BsPossessionMoneyCQ addOrderBy_PossessionMoney_Desc() { regOBD("POSSESSION_MONEY"); return this; }
+
+    protected ConditionValue _updateDate;
+    public ConditionValue xdfgetUpdateDate()
+    { if (_updateDate == null) { _updateDate = nCV(); }
+      return _updateDate; }
+    protected ConditionValue xgetCValueUpdateDate() { return xdfgetUpdateDate(); }
+
+    /**
+     * Add order-by as ascend. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * @return this. (NotNull)
+     */
+    public BsPossessionMoneyCQ addOrderBy_UpdateDate_Asc() { regOBA("UPDATE_DATE"); return this; }
+
+    /**
+     * Add order-by as descend. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * @return this. (NotNull)
+     */
+    public BsPossessionMoneyCQ addOrderBy_UpdateDate_Desc() { regOBD("UPDATE_DATE"); return this; }
 
     // ===================================================================================
     //                                                             SpecifiedDerivedOrderBy

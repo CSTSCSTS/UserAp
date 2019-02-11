@@ -45,7 +45,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
     //                                                                               =====
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param userId The value of userId as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_Equal(Integer userId) {
@@ -58,7 +58,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param userId The value of userId as notEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_NotEqual(Integer userId) {
@@ -71,7 +71,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param userId The value of userId as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_GreaterThan(Integer userId) {
@@ -80,7 +80,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param userId The value of userId as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_LessThan(Integer userId) {
@@ -89,7 +89,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param userId The value of userId as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_GreaterEqual(Integer userId) {
@@ -98,7 +98,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param userId The value of userId as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_LessEqual(Integer userId) {
@@ -109,7 +109,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
      * RangeOf with various options. (versatile) <br>
      * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param minNumber The min number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param opLambda The callback for option of range-of. (NotNull)
@@ -122,7 +122,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
      * RangeOf with various options. (versatile) <br>
      * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param minNumber The min number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
@@ -133,7 +133,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * InScope {in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param userIdList The collection of userId as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserId_InScope(Collection<Integer> userIdList) {
@@ -146,7 +146,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * NotInScope {not in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @param userIdList The collection of userId as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserId_NotInScope(Collection<Integer> userIdList) {
@@ -159,13 +159,13 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      */
     public void setUserId_IsNull() { regUserId(CK_ISN, DOBJ); }
 
     /**
      * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      */
     public void setUserId_IsNotNull() { regUserId(CK_ISNN, DOBJ); }
 
@@ -174,7 +174,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userName The value of userName as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserName_Equal(String userName) {
@@ -187,7 +187,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userName The value of userName as notEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserName_NotEqual(String userName) {
@@ -200,7 +200,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userName The value of userName as greaterThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserName_GreaterThan(String userName) {
@@ -209,7 +209,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userName The value of userName as lessThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserName_LessThan(String userName) {
@@ -218,7 +218,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userName The value of userName as greaterEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserName_GreaterEqual(String userName) {
@@ -227,7 +227,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userName The value of userName as lessEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserName_LessEqual(String userName) {
@@ -236,7 +236,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userNameList The collection of userName as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserName_InScope(Collection<String> userNameList) {
@@ -249,7 +249,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userNameList The collection of userName as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserName_NotInScope(Collection<String> userNameList) {
@@ -262,7 +262,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)} <br>
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)} <br>
      * <pre>e.g. setUserName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
      * @param userName The value of userName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param opLambda The callback for option of like-search. (NotNull)
@@ -273,7 +273,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)} <br>
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)} <br>
      * <pre>e.g. setUserName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param userName The value of userName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -285,7 +285,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
     /**
      * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userName The value of userName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param opLambda The callback for option of like-search. (NotNull)
      */
@@ -296,7 +296,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
     /**
      * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @param userName The value of userName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
@@ -441,6 +441,93 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     protected void regPassword(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValuePassword(), "PASSWORD"); }
     protected abstract ConditionValue xgetCValuePassword();
+
+    /**
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * @param loginDate The value of loginDate as equal. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setLoginDate_Equal(java.time.LocalDateTime loginDate) {
+        regLoginDate(CK_EQ,  loginDate);
+    }
+
+    /**
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * @param loginDate The value of loginDate as greaterThan. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setLoginDate_GreaterThan(java.time.LocalDateTime loginDate) {
+        regLoginDate(CK_GT,  loginDate);
+    }
+
+    /**
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * @param loginDate The value of loginDate as lessThan. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setLoginDate_LessThan(java.time.LocalDateTime loginDate) {
+        regLoginDate(CK_LT,  loginDate);
+    }
+
+    /**
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * @param loginDate The value of loginDate as greaterEqual. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setLoginDate_GreaterEqual(java.time.LocalDateTime loginDate) {
+        regLoginDate(CK_GE,  loginDate);
+    }
+
+    /**
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * @param loginDate The value of loginDate as lessEqual. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setLoginDate_LessEqual(java.time.LocalDateTime loginDate) {
+        regLoginDate(CK_LE, loginDate);
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * <pre>e.g. setLoginDate_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of loginDate. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of loginDate. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setLoginDate_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setLoginDate_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * <pre>e.g. setLoginDate_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of loginDate. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of loginDate. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param fromToOption The option of from-to. (NotNull)
+     */
+    protected void setLoginDate_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, FromToOption fromToOption) {
+        String nm = "LOGIN_DATE"; FromToOption op = fromToOption;
+        regFTQ(xfFTHD(fromDatetime, nm, op), xfFTHD(toDatetime, nm, op), xgetCValueLoginDate(), nm, op);
+    }
+
+    /**
+     * IsNull {is null}. And OnlyOnceRegistered. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     */
+    public void setLoginDate_IsNull() { regLoginDate(CK_ISN, DOBJ); }
+
+    /**
+     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     */
+    public void setLoginDate_IsNotNull() { regLoginDate(CK_ISNN, DOBJ); }
+
+    protected void regLoginDate(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueLoginDate(), "LOGIN_DATE"); }
+    protected abstract ConditionValue xgetCValueLoginDate();
 
     // ===================================================================================
     //                                                                     ScalarCondition

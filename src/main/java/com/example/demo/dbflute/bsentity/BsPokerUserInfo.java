@@ -19,10 +19,10 @@ import com.example.demo.dbflute.exentity.*;
  *     USER_ID
  *
  * [column]
- *     USER_ID, USER_NAME, PASSWORD
+ *     USER_ID, USER_NAME, PASSWORD, LOGIN_DATE
  *
  * [sequence]
- *     
+ *     POKER_USER_ID_SEQ1
  *
  * [identity]
  *     
@@ -47,9 +47,11 @@ import com.example.demo.dbflute.exentity.*;
  * Integer userId = entity.getUserId();
  * String userName = entity.getUserName();
  * String password = entity.getPassword();
+ * java.time.LocalDateTime loginDate = entity.getLoginDate();
  * entity.setUserId(userId);
  * entity.setUserName(userName);
  * entity.setPassword(password);
+ * entity.setLoginDate(loginDate);
  * = = = = = = = = = =/
  * </pre>
  * @author DBFlute(AutoGenerator)
@@ -65,14 +67,17 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    /** USER_ID: {PK, NotNull, INTEGER(10)} */
+    /** USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]} */
     protected Integer _userId;
 
-    /** USER_NAME: {NotNull, VARCHAR(255)} */
+    /** USER_NAME: {UQ, NotNull, VARCHAR(255)} */
     protected String _userName;
 
     /** PASSWORD: {NotNull, VARCHAR(255)} */
     protected String _password;
+
+    /** LOGIN_DATE: {TIMESTAMP(26, 6)} */
+    protected java.time.LocalDateTime _loginDate;
 
     // ===================================================================================
     //                                                                             DB Meta
@@ -94,6 +99,17 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     public boolean hasPrimaryKeyValue() {
         if (_userId == null) { return false; }
         return true;
+    }
+
+    /**
+     * To be unique by the unique column. <br>
+     * You can update the entity by the key when entity update (NOT batch update).
+     * @param userName : UQ, NotNull, VARCHAR(255). (NotNull)
+     */
+    public void uniqueBy(String userName) {
+        __uniqueDrivenProperties.clear();
+        __uniqueDrivenProperties.addPropertyName("userName");
+        setUserName(userName);
     }
 
     // ===================================================================================
@@ -166,6 +182,7 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
         sb.append(dm).append(xfND(_userId));
         sb.append(dm).append(xfND(_userName));
         sb.append(dm).append(xfND(_password));
+        sb.append(dm).append(xfND(_loginDate));
         if (sb.length() > dm.length()) {
             sb.delete(0, dm.length());
         }
@@ -193,7 +210,7 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] USER_ID: {PK, NotNull, INTEGER(10)} <br>
+     * [get] USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]} <br>
      * ユーザーID
      * @return The value of the column 'USER_ID'. (basically NotNull if selected: for the constraint)
      */
@@ -203,7 +220,7 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     }
 
     /**
-     * [set] USER_ID: {PK, NotNull, INTEGER(10)} <br>
+     * [set] USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]} <br>
      * ユーザーID
      * @param userId The value of the column 'USER_ID'. (basically NotNull if update: for the constraint)
      */
@@ -213,7 +230,7 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     }
 
     /**
-     * [get] USER_NAME: {NotNull, VARCHAR(255)} <br>
+     * [get] USER_NAME: {UQ, NotNull, VARCHAR(255)} <br>
      * ユーザー名
      * @return The value of the column 'USER_NAME'. (basically NotNull if selected: for the constraint)
      */
@@ -223,7 +240,7 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     }
 
     /**
-     * [set] USER_NAME: {NotNull, VARCHAR(255)} <br>
+     * [set] USER_NAME: {UQ, NotNull, VARCHAR(255)} <br>
      * ユーザー名
      * @param userName The value of the column 'USER_NAME'. (basically NotNull if update: for the constraint)
      */
@@ -250,5 +267,25 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     public void setPassword(String password) {
         registerModifiedProperty("password");
         _password = password;
+    }
+
+    /**
+     * [get] LOGIN_DATE: {TIMESTAMP(26, 6)} <br>
+     * ログイン日時
+     * @return The value of the column 'LOGIN_DATE'. (NullAllowed even if selected: for no constraint)
+     */
+    public java.time.LocalDateTime getLoginDate() {
+        checkSpecifiedProperty("loginDate");
+        return _loginDate;
+    }
+
+    /**
+     * [set] LOGIN_DATE: {TIMESTAMP(26, 6)} <br>
+     * ログイン日時
+     * @param loginDate The value of the column 'LOGIN_DATE'. (NullAllowed: null update allowed for no constraint)
+     */
+    public void setLoginDate(java.time.LocalDateTime loginDate) {
+        registerModifiedProperty("loginDate");
+        _loginDate = loginDate;
     }
 }

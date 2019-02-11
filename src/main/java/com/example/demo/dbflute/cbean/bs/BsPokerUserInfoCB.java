@@ -82,13 +82,25 @@ public class BsPokerUserInfoCB extends AbstractConditionBean {
     //                                                                 ===================
     /**
      * Accept the query condition of primary key as equal.
-     * @param userId : PK, NotNull, INTEGER(10). (NotNull)
+     * @param userId : PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]. (NotNull)
      * @return this. (NotNull)
      */
     public PokerUserInfoCB acceptPK(Integer userId) {
         assertObjectNotNull("userId", userId);
         BsPokerUserInfoCB cb = this;
         cb.query().setUserId_Equal(userId);
+        return (PokerUserInfoCB)this;
+    }
+
+    /**
+     * Accept the query condition of unique key as equal.
+     * @param userName : UQ, NotNull, VARCHAR(255). (NotNull)
+     * @return this. (NotNull)
+     */
+    public PokerUserInfoCB acceptUniqueOf(String userName) {
+        assertObjectNotNull("userName", userName);
+        BsPokerUserInfoCB cb = this;
+        cb.query().setUserName_Equal(userName);
         return (PokerUserInfoCB)this;
     }
 
@@ -312,12 +324,12 @@ public class BsPokerUserInfoCB extends AbstractConditionBean {
                              , HpSDRFunctionFactory sdrFuncFactory)
         { super(baseCB, qyCall, purpose, dbmetaProvider, sdrFuncFactory); }
         /**
-         * USER_ID: {PK, NotNull, INTEGER(10)}
+         * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnUserId() { return doColumn("USER_ID"); }
         /**
-         * USER_NAME: {NotNull, VARCHAR(255)}
+         * USER_NAME: {UQ, NotNull, VARCHAR(255)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnUserName() { return doColumn("USER_NAME"); }
@@ -326,6 +338,11 @@ public class BsPokerUserInfoCB extends AbstractConditionBean {
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnPassword() { return doColumn("PASSWORD"); }
+        /**
+         * LOGIN_DATE: {TIMESTAMP(26, 6)}
+         * @return The information object of specified column. (NotNull)
+         */
+        public SpecifiedColumn columnLoginDate() { return doColumn("LOGIN_DATE"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override

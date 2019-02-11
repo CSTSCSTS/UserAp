@@ -81,14 +81,14 @@ public class BsPokerUserInfoCQ extends AbstractBsPokerUserInfoCQ {
 
     /**
      * Add order-by as ascend. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @return this. (NotNull)
      */
     public BsPokerUserInfoCQ addOrderBy_UserId_Asc() { regOBA("USER_ID"); return this; }
 
     /**
      * Add order-by as descend. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @return this. (NotNull)
      */
     public BsPokerUserInfoCQ addOrderBy_UserId_Desc() { regOBD("USER_ID"); return this; }
@@ -101,14 +101,14 @@ public class BsPokerUserInfoCQ extends AbstractBsPokerUserInfoCQ {
 
     /**
      * Add order-by as ascend. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @return this. (NotNull)
      */
     public BsPokerUserInfoCQ addOrderBy_UserName_Asc() { regOBA("USER_NAME"); return this; }
 
     /**
      * Add order-by as descend. <br>
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @return this. (NotNull)
      */
     public BsPokerUserInfoCQ addOrderBy_UserName_Desc() { regOBD("USER_NAME"); return this; }
@@ -132,6 +132,26 @@ public class BsPokerUserInfoCQ extends AbstractBsPokerUserInfoCQ {
      * @return this. (NotNull)
      */
     public BsPokerUserInfoCQ addOrderBy_Password_Desc() { regOBD("PASSWORD"); return this; }
+
+    protected ConditionValue _loginDate;
+    public ConditionValue xdfgetLoginDate()
+    { if (_loginDate == null) { _loginDate = nCV(); }
+      return _loginDate; }
+    protected ConditionValue xgetCValueLoginDate() { return xdfgetLoginDate(); }
+
+    /**
+     * Add order-by as ascend. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * @return this. (NotNull)
+     */
+    public BsPokerUserInfoCQ addOrderBy_LoginDate_Asc() { regOBA("LOGIN_DATE"); return this; }
+
+    /**
+     * Add order-by as descend. <br>
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * @return this. (NotNull)
+     */
+    public BsPokerUserInfoCQ addOrderBy_LoginDate_Desc() { regOBD("LOGIN_DATE"); return this; }
 
     // ===================================================================================
     //                                                             SpecifiedDerivedOrderBy

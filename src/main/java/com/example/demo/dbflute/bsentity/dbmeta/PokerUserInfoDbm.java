@@ -46,6 +46,7 @@ public class PokerUserInfoDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((PokerUserInfo)et).getUserId(), (et, vl) -> ((PokerUserInfo)et).setUserId(cti(vl)), "userId");
         setupEpg(_epgMap, et -> ((PokerUserInfo)et).getUserName(), (et, vl) -> ((PokerUserInfo)et).setUserName((String)vl), "userName");
         setupEpg(_epgMap, et -> ((PokerUserInfo)et).getPassword(), (et, vl) -> ((PokerUserInfo)et).setPassword((String)vl), "password");
+        setupEpg(_epgMap, et -> ((PokerUserInfo)et).getLoginDate(), (et, vl) -> ((PokerUserInfo)et).setLoginDate(ctldt(vl)), "loginDate");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
@@ -78,17 +79,18 @@ public class PokerUserInfoDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnUserId = cci("USER_ID", "USER_ID", null, null, Integer.class, "userId", null, true, false, true, "INTEGER", 10, 0, null, null, false, null, null, null, "", null, false);
+    protected final ColumnInfo _columnUserId = cci("USER_ID", "USER_ID", null, null, Integer.class, "userId", null, true, false, true, "INTEGER", 10, 0, null, "NEXTVAL('POKER_USER_ID_SEQ1')", false, null, null, null, "", null, false);
     protected final ColumnInfo _columnUserName = cci("USER_NAME", "USER_NAME", null, null, String.class, "userName", null, false, false, true, "VARCHAR", 255, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnPassword = cci("PASSWORD", "PASSWORD", null, null, String.class, "password", null, false, false, true, "VARCHAR", 255, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnLoginDate = cci("LOGIN_DATE", "LOGIN_DATE", null, null, java.time.LocalDateTime.class, "loginDate", null, false, false, false, "TIMESTAMP", 26, 6, null, null, false, null, null, null, null, null, false);
 
     /**
-     * USER_ID: {PK, NotNull, INTEGER(10)}
+     * USER_ID: {PK, NotNull, INTEGER(10), default=[NEXTVAL('POKER_USER_ID_SEQ1')]}
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnUserId() { return _columnUserId; }
     /**
-     * USER_NAME: {NotNull, VARCHAR(255)}
+     * USER_NAME: {UQ, NotNull, VARCHAR(255)}
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnUserName() { return _columnUserName; }
@@ -97,12 +99,18 @@ public class PokerUserInfoDbm extends AbstractDBMeta {
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnPassword() { return _columnPassword; }
+    /**
+     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnLoginDate() { return _columnLoginDate; }
 
     protected List<ColumnInfo> ccil() {
         List<ColumnInfo> ls = newArrayList();
         ls.add(columnUserId());
         ls.add(columnUserName());
         ls.add(columnPassword());
+        ls.add(columnLoginDate());
         return ls;
     }
 
@@ -117,6 +125,11 @@ public class PokerUserInfoDbm extends AbstractDBMeta {
     protected UniqueInfo cpui() { return hpcpui(columnUserId()); }
     public boolean hasPrimaryKey() { return true; }
     public boolean hasCompoundPrimaryKey() { return false; }
+
+    // -----------------------------------------------------
+    //                                        Unique Element
+    //                                        --------------
+    public UniqueInfo uniqueOf() { return hpcui(columnUserName()); }
 
     // ===================================================================================
     //                                                                       Relation Info
@@ -142,6 +155,10 @@ public class PokerUserInfoDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                        Various Info
     //                                                                        ============
+    public boolean hasSequence() { return true; }
+    public String getSequenceName() { return "POKER_USER_ID_SEQ1"; }
+    public Integer getSequenceIncrementSize() { return 1; }
+    public Integer getSequenceCacheSize() { return null; }
 
     // ===================================================================================
     //                                                                           Type Name

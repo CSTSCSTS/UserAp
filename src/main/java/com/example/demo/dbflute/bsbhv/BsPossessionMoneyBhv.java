@@ -28,7 +28,7 @@ import com.example.demo.dbflute.cbean.*;
  *     USER_ID
  *
  * [column]
- *     USER_ID, POSSESSION_MONEY
+ *     USER_ID, POSSESSION_MONEY, UPDATE_DATE
  *
  * [sequence]
  *     
@@ -159,29 +159,29 @@ public abstract class BsPossessionMoneyBhv extends AbstractBehaviorWritable<Poss
 
     /**
      * Select the entity by the primary-key value.
-     * @param userId : PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO. (NotNull)
+     * @param userId : PK, NotNull, INTEGER(10), FK to POKER_USER_INFO. (NotNull)
      * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
      * @throws EntityAlreadyDeletedException When get(), required() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
      * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
-    public OptionalEntity<PossessionMoney> selectByPK(String userId) {
+    public OptionalEntity<PossessionMoney> selectByPK(Integer userId) {
         return facadeSelectByPK(userId);
     }
 
-    protected OptionalEntity<PossessionMoney> facadeSelectByPK(String userId) {
+    protected OptionalEntity<PossessionMoney> facadeSelectByPK(Integer userId) {
         return doSelectOptionalByPK(userId, typeOfSelectedEntity());
     }
 
-    protected <ENTITY extends PossessionMoney> ENTITY doSelectByPK(String userId, Class<? extends ENTITY> tp) {
+    protected <ENTITY extends PossessionMoney> ENTITY doSelectByPK(Integer userId, Class<? extends ENTITY> tp) {
         return doSelectEntity(xprepareCBAsPK(userId), tp);
     }
 
-    protected <ENTITY extends PossessionMoney> OptionalEntity<ENTITY> doSelectOptionalByPK(String userId, Class<? extends ENTITY> tp) {
+    protected <ENTITY extends PossessionMoney> OptionalEntity<ENTITY> doSelectOptionalByPK(Integer userId, Class<? extends ENTITY> tp) {
         return createOptionalEntity(doSelectByPK(userId, tp), userId);
     }
 
-    protected PossessionMoneyCB xprepareCBAsPK(String userId) {
+    protected PossessionMoneyCB xprepareCBAsPK(Integer userId) {
         assertObjectNotNull("userId", userId);
         return newConditionBean().acceptPK(userId);
     }
@@ -380,7 +380,7 @@ public abstract class BsPossessionMoneyBhv extends AbstractBehaviorWritable<Poss
      * @param possessionMoneyList The list of possessionMoney. (NotNull, EmptyAllowed)
      * @return The list of the column value. (NotNull, EmptyAllowed, NotNullElement)
      */
-    public List<String> extractUserIdList(List<PossessionMoney> possessionMoneyList)
+    public List<Integer> extractUserIdList(List<PossessionMoney> possessionMoneyList)
     { return helpExtractListInternally(possessionMoneyList, "userId"); }
 
     // ===================================================================================

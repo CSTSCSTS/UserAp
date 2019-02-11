@@ -13,10 +13,10 @@ import com.example.demo.dbflute.exentity.*;
  *     USER_ID
  *
  * [column]
- *     USER_ID, USER_NAME, PASSWORD
+ *     USER_ID, USER_NAME, PASSWORD, LOGIN_DATE
  *
  * [sequence]
- *     
+ *     POKER_USER_ID_SEQ1
  *
  * [identity]
  *     

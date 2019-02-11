@@ -44,146 +44,128 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
     //                                                                               Query
     //                                                                               =====
     /**
-     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
-     * @param userId The value of userId as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * @param userId The value of userId as equal. (basically NotNull: error as default, or no condition as option)
      */
-    public void setUserId_Equal(String userId) {
-        doSetUserId_Equal(fRES(userId));
+    public void setUserId_Equal(Integer userId) {
+        doSetUserId_Equal(userId);
     }
 
-    protected void doSetUserId_Equal(String userId) {
+    protected void doSetUserId_Equal(Integer userId) {
         regUserId(CK_EQ, userId);
     }
 
     /**
-     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
-     * @param userId The value of userId as notEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * @param userId The value of userId as notEqual. (basically NotNull: error as default, or no condition as option)
      */
-    public void setUserId_NotEqual(String userId) {
-        doSetUserId_NotEqual(fRES(userId));
+    public void setUserId_NotEqual(Integer userId) {
+        doSetUserId_NotEqual(userId);
     }
 
-    protected void doSetUserId_NotEqual(String userId) {
+    protected void doSetUserId_NotEqual(Integer userId) {
         regUserId(CK_NES, userId);
     }
 
     /**
-     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
-     * @param userId The value of userId as greaterThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * @param userId The value of userId as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
-    public void setUserId_GreaterThan(String userId) {
-        regUserId(CK_GT, fRES(userId));
+    public void setUserId_GreaterThan(Integer userId) {
+        regUserId(CK_GT, userId);
     }
 
     /**
-     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
-     * @param userId The value of userId as lessThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * @param userId The value of userId as lessThan. (basically NotNull: error as default, or no condition as option)
      */
-    public void setUserId_LessThan(String userId) {
-        regUserId(CK_LT, fRES(userId));
+    public void setUserId_LessThan(Integer userId) {
+        regUserId(CK_LT, userId);
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
-     * @param userId The value of userId as greaterEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * @param userId The value of userId as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
-    public void setUserId_GreaterEqual(String userId) {
-        regUserId(CK_GE, fRES(userId));
+    public void setUserId_GreaterEqual(Integer userId) {
+        regUserId(CK_GE, userId);
     }
 
     /**
-     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
-     * @param userId The value of userId as lessEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * @param userId The value of userId as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
-    public void setUserId_LessEqual(String userId) {
-        regUserId(CK_LE, fRES(userId));
+    public void setUserId_LessEqual(Integer userId) {
+        regUserId(CK_LE, userId);
     }
 
     /**
-     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * @param minNumber The min number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setUserId_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setUserId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * @param minNumber The min number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param rangeOfOption The option of range-of. (NotNull)
+     */
+    protected void setUserId_RangeOf(Integer minNumber, Integer maxNumber, RangeOfOption rangeOfOption) {
+        regROO(minNumber, maxNumber, xgetCValueUserId(), "USER_ID", rangeOfOption);
+    }
+
+    /**
+     * InScope {in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
      * @param userIdList The collection of userId as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setUserId_InScope(Collection<String> userIdList) {
+    public void setUserId_InScope(Collection<Integer> userIdList) {
         doSetUserId_InScope(userIdList);
     }
 
-    protected void doSetUserId_InScope(Collection<String> userIdList) {
+    protected void doSetUserId_InScope(Collection<Integer> userIdList) {
         regINS(CK_INS, cTL(userIdList), xgetCValueUserId(), "USER_ID");
     }
 
     /**
-     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
+     * NotInScope {not in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
      * @param userIdList The collection of userId as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setUserId_NotInScope(Collection<String> userIdList) {
+    public void setUserId_NotInScope(Collection<Integer> userIdList) {
         doSetUserId_NotInScope(userIdList);
     }
 
-    protected void doSetUserId_NotInScope(Collection<String> userIdList) {
+    protected void doSetUserId_NotInScope(Collection<Integer> userIdList) {
         regINS(CK_NINS, cTL(userIdList), xgetCValueUserId(), "USER_ID");
     }
 
     /**
-     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO} <br>
-     * <pre>e.g. setUserId_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
-     * @param userId The value of userId as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     * @param opLambda The callback for option of like-search. (NotNull)
-     */
-    public void setUserId_LikeSearch(String userId, ConditionOptionCall<LikeSearchOption> opLambda) {
-        setUserId_LikeSearch(userId, xcLSOP(opLambda));
-    }
-
-    /**
-     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO} <br>
-     * <pre>e.g. setUserId_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
-     * @param userId The value of userId as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     * @param likeSearchOption The option of like-search. (NotNull)
-     */
-    protected void setUserId_LikeSearch(String userId, LikeSearchOption likeSearchOption) {
-        regLSQ(CK_LS, fRES(userId), xgetCValueUserId(), "USER_ID", likeSearchOption);
-    }
-
-    /**
-     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
-     * And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
-     * @param userId The value of userId as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     * @param opLambda The callback for option of like-search. (NotNull)
-     */
-    public void setUserId_NotLikeSearch(String userId, ConditionOptionCall<LikeSearchOption> opLambda) {
-        setUserId_NotLikeSearch(userId, xcLSOP(opLambda));
-    }
-
-    /**
-     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
-     * And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
-     * @param userId The value of userId as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     * @param likeSearchOption The option of not-like-search. (NotNull)
-     */
-    protected void setUserId_NotLikeSearch(String userId, LikeSearchOption likeSearchOption) {
-        regLSQ(CK_NLS, fRES(userId), xgetCValueUserId(), "USER_ID", likeSearchOption);
-    }
-
-    /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
      */
     public void setUserId_IsNull() { regUserId(CK_ISN, DOBJ); }
 
     /**
      * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, VARCHAR(255), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
      */
     public void setUserId_IsNotNull() { regUserId(CK_ISNN, DOBJ); }
 
@@ -306,6 +288,93 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     protected void regPossessionMoney(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValuePossessionMoney(), "POSSESSION_MONEY"); }
     protected abstract ConditionValue xgetCValuePossessionMoney();
+
+    /**
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * @param updateDate The value of updateDate as equal. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDate_Equal(java.time.LocalDateTime updateDate) {
+        regUpdateDate(CK_EQ,  updateDate);
+    }
+
+    /**
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * @param updateDate The value of updateDate as greaterThan. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDate_GreaterThan(java.time.LocalDateTime updateDate) {
+        regUpdateDate(CK_GT,  updateDate);
+    }
+
+    /**
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * @param updateDate The value of updateDate as lessThan. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDate_LessThan(java.time.LocalDateTime updateDate) {
+        regUpdateDate(CK_LT,  updateDate);
+    }
+
+    /**
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * @param updateDate The value of updateDate as greaterEqual. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDate_GreaterEqual(java.time.LocalDateTime updateDate) {
+        regUpdateDate(CK_GE,  updateDate);
+    }
+
+    /**
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * @param updateDate The value of updateDate as lessEqual. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDate_LessEqual(java.time.LocalDateTime updateDate) {
+        regUpdateDate(CK_LE, updateDate);
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * <pre>e.g. setUpdateDate_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDate. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDate. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setUpdateDate_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setUpdateDate_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * <pre>e.g. setUpdateDate_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDate. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDate. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param fromToOption The option of from-to. (NotNull)
+     */
+    protected void setUpdateDate_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, FromToOption fromToOption) {
+        String nm = "UPDATE_DATE"; FromToOption op = fromToOption;
+        regFTQ(xfFTHD(fromDatetime, nm, op), xfFTHD(toDatetime, nm, op), xgetCValueUpdateDate(), nm, op);
+    }
+
+    /**
+     * IsNull {is null}. And OnlyOnceRegistered. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     */
+    public void setUpdateDate_IsNull() { regUpdateDate(CK_ISN, DOBJ); }
+
+    /**
+     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
+     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     */
+    public void setUpdateDate_IsNotNull() { regUpdateDate(CK_ISNN, DOBJ); }
+
+    protected void regUpdateDate(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateDate(), "UPDATE_DATE"); }
+    protected abstract ConditionValue xgetCValueUpdateDate();
 
     // ===================================================================================
     //                                                                     ScalarCondition

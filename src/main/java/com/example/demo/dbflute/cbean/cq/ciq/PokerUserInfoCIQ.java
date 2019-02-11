@@ -64,6 +64,7 @@ public class PokerUserInfoCIQ extends AbstractBsPokerUserInfoCQ {
     protected ConditionValue xgetCValueUserId() { return _myCQ.xdfgetUserId(); }
     protected ConditionValue xgetCValueUserName() { return _myCQ.xdfgetUserName(); }
     protected ConditionValue xgetCValuePassword() { return _myCQ.xdfgetPassword(); }
+    protected ConditionValue xgetCValueLoginDate() { return _myCQ.xdfgetLoginDate(); }
     protected Map<String, Object> xfindFixedConditionDynamicParameterMap(String pp) { return null; }
     public String keepScalarCondition(PokerUserInfoCQ sq)
     { throwIICBOE("ScalarCondition"); return null; }

@@ -1,30 +1,29 @@
-package com.example.demo.dbflute.bsentity.dbmeta;
+package com.example.demo.dbflute.bsentity.customize.dbmeta;
 
 import java.util.List;
 import java.util.Map;
 
 import org.dbflute.Entity;
-import org.dbflute.optional.OptionalEntity;
 import org.dbflute.dbmeta.AbstractDBMeta;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
 import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import com.example.demo.dbflute.allcommon.*;
-import com.example.demo.dbflute.exentity.*;
+import com.example.demo.dbflute.exentity.customize.*;
 
 /**
- * The DB meta of POSSESSION_MONEY. (Singleton)
+ * The DB meta of Select. (Singleton)
  * @author DBFlute(AutoGenerator)
  */
-public class PossessionMoneyDbm extends AbstractDBMeta {
+public class SelectDbm extends AbstractDBMeta {
 
     // ===================================================================================
     //                                                                           Singleton
     //                                                                           =========
-    private static final PossessionMoneyDbm _instance = new PossessionMoneyDbm();
-    private PossessionMoneyDbm() {}
-    public static PossessionMoneyDbm getInstance() { return _instance; }
+    private static final SelectDbm _instance = new SelectDbm();
+    private SelectDbm() {}
+    public static SelectDbm getInstance() { return _instance; }
 
     // ===================================================================================
     //                                                                       Current DBDef
@@ -43,32 +42,23 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     { xsetupEpg(); }
     protected void xsetupEpg() {
-        setupEpg(_epgMap, et -> ((PossessionMoney)et).getUserId(), (et, vl) -> ((PossessionMoney)et).setUserId(cti(vl)), "userId");
-        setupEpg(_epgMap, et -> ((PossessionMoney)et).getPossessionMoney(), (et, vl) -> ((PossessionMoney)et).setPossessionMoney(ctb(vl)), "possessionMoney");
-        setupEpg(_epgMap, et -> ((PossessionMoney)et).getUpdateDate(), (et, vl) -> ((PossessionMoney)et).setUpdateDate(ctldt(vl)), "updateDate");
+        setupEpg(_epgMap, et -> ((Select)et).getUserId(), (et, vl) -> ((Select)et).setUserId(cti(vl)), "userId");
+        setupEpg(_epgMap, et -> ((Select)et).getUserName(), (et, vl) -> ((Select)et).setUserName((String)vl), "userName");
+        setupEpg(_epgMap, et -> ((Select)et).getPassword(), (et, vl) -> ((Select)et).setPassword((String)vl), "password");
+        setupEpg(_epgMap, et -> ((Select)et).getLoginDate(), (et, vl) -> ((Select)et).setLoginDate(ctldt(vl)), "loginDate");
+        setupEpg(_epgMap, et -> ((Select)et).getPossessionMoney(), (et, vl) -> ((Select)et).setPossessionMoney(ctb(vl)), "possessionMoney");
+        setupEpg(_epgMap, et -> ((Select)et).getUpdateDate(), (et, vl) -> ((Select)et).setUpdateDate(ctldt(vl)), "updateDate");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
 
-    // -----------------------------------------------------
-    //                                      Foreign Property
-    //                                      ----------------
-    protected final Map<String, PropertyGateway> _efpgMap = newHashMap();
-    { xsetupEfpg(); }
-    @SuppressWarnings("unchecked")
-    protected void xsetupEfpg() {
-        setupEfpg(_efpgMap, et -> ((PossessionMoney)et).getPokerUserInfo(), (et, vl) -> ((PossessionMoney)et).setPokerUserInfo((OptionalEntity<PokerUserInfo>)vl), "pokerUserInfo");
-    }
-    public PropertyGateway findForeignPropertyGateway(String prop)
-    { return doFindEfpg(_efpgMap, prop); }
-
     // ===================================================================================
     //                                                                          Table Info
     //                                                                          ==========
-    protected final String _tableDbName = "POSSESSION_MONEY";
-    protected final String _tableDispName = "POSSESSION_MONEY";
-    protected final String _tablePropertyName = "possessionMoney";
-    protected final TableSqlName _tableSqlName = new TableSqlName("POSSESSION_MONEY", _tableDbName);
+    protected final String _tableDbName = "Select";
+    protected final String _tableDispName = "Select";
+    protected final String _tablePropertyName = "select";
+    protected final TableSqlName _tableSqlName = new TableSqlName("Select", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
     public String getTableDispName() { return _tableDispName; }
@@ -78,22 +68,40 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnUserId = cci("USER_ID", "USER_ID", null, null, Integer.class, "userId", null, true, false, true, "INTEGER", 10, 0, null, null, false, null, null, "pokerUserInfo", null, null, false);
-    protected final ColumnInfo _columnPossessionMoney = cci("POSSESSION_MONEY", "POSSESSION_MONEY", null, null, java.math.BigDecimal.class, "possessionMoney", null, false, false, true, "DECIMAL", 65535, 32767, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnUserId = cci("USER_ID", "USER_ID", null, null, Integer.class, "userId", null, false, false, false, "INTEGER", 10, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnUserName = cci("USER_NAME", "USER_NAME", null, null, String.class, "userName", null, false, false, false, "VARCHAR", 255, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnPassword = cci("PASSWORD", "PASSWORD", null, null, String.class, "password", null, false, false, false, "VARCHAR", 255, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnLoginDate = cci("LOGIN_DATE", "LOGIN_DATE", null, null, java.time.LocalDateTime.class, "loginDate", null, false, false, false, "TIMESTAMP", 26, 6, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnPossessionMoney = cci("POSSESSION_MONEY", "POSSESSION_MONEY", null, null, java.math.BigDecimal.class, "possessionMoney", null, false, false, false, "DECIMAL", 65535, 32767, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnUpdateDate = cci("UPDATE_DATE", "UPDATE_DATE", null, null, java.time.LocalDateTime.class, "updateDate", null, false, false, false, "TIMESTAMP", 26, 6, null, null, false, null, null, null, null, null, false);
 
     /**
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {INTEGER(10), refers to POSSESSION_MONEY.USER_ID}
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnUserId() { return _columnUserId; }
     /**
-     * POSSESSION_MONEY: {NotNull, DECIMAL(65535, 32767)}
+     * USER_NAME: {VARCHAR(255), refers to POKER_USER_INFO.USER_NAME}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnUserName() { return _columnUserName; }
+    /**
+     * PASSWORD: {VARCHAR(255), refers to POKER_USER_INFO.PASSWORD}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnPassword() { return _columnPassword; }
+    /**
+     * LOGIN_DATE: {TIMESTAMP(26, 6), refers to POKER_USER_INFO.LOGIN_DATE}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnLoginDate() { return _columnLoginDate; }
+    /**
+     * POSSESSION_MONEY: {DECIMAL(65535, 32767), refers to POSSESSION_MONEY.POSSESSION_MONEY}
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnPossessionMoney() { return _columnPossessionMoney; }
     /**
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {TIMESTAMP(26, 6), refers to POSSESSION_MONEY.UPDATE_DATE}
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnUpdateDate() { return _columnUpdateDate; }
@@ -101,6 +109,9 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
     protected List<ColumnInfo> ccil() {
         List<ColumnInfo> ls = newArrayList();
         ls.add(columnUserId());
+        ls.add(columnUserName());
+        ls.add(columnPassword());
+        ls.add(columnLoginDate());
         ls.add(columnPossessionMoney());
         ls.add(columnUpdateDate());
         return ls;
@@ -114,8 +125,10 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
     // -----------------------------------------------------
     //                                       Primary Element
     //                                       ---------------
-    protected UniqueInfo cpui() { return hpcpui(columnUserId()); }
-    public boolean hasPrimaryKey() { return true; }
+    protected UniqueInfo cpui() {
+        throw new UnsupportedOperationException("The table does not have primary key: " + getTableDbName());
+    }
+    public boolean hasPrimaryKey() { return false; }
     public boolean hasCompoundPrimaryKey() { return false; }
 
     // ===================================================================================
@@ -126,14 +139,6 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
     // -----------------------------------------------------
     //                                      Foreign Property
     //                                      ----------------
-    /**
-     * POKER_USER_INFO by my USER_ID, named 'pokerUserInfo'.
-     * @return The information object of foreign property. (NotNull)
-     */
-    public ForeignInfo foreignPokerUserInfo() {
-        Map<ColumnInfo, ColumnInfo> mp = newLinkedHashMap(columnUserId(), PokerUserInfoDbm.getInstance().columnUserId());
-        return cfi("FK_USER_ID", "pokerUserInfo", this, PokerUserInfoDbm.getInstance(), mp, 0, org.dbflute.optional.OptionalEntity.class, true, false, false, false, null, null, false, "possessionMoneyAsOne", false);
-    }
 
     // -----------------------------------------------------
     //                                     Referrer Property
@@ -146,27 +151,27 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                           Type Name
     //                                                                           =========
-    public String getEntityTypeName() { return "com.example.demo.dbflute.exentity.PossessionMoney"; }
-    public String getConditionBeanTypeName() { return "com.example.demo.dbflute.cbean.PossessionMoneyCB"; }
-    public String getBehaviorTypeName() { return "com.example.demo.dbflute.exbhv.PossessionMoneyBhv"; }
+    public String getEntityTypeName() { return "com.example.demo.dbflute.exentity.customize.Select"; }
+    public String getConditionBeanTypeName() { return null; }
+    public String getBehaviorTypeName() { return null; }
 
     // ===================================================================================
     //                                                                         Object Type
     //                                                                         ===========
-    public Class<PossessionMoney> getEntityType() { return PossessionMoney.class; }
+    public Class<Select> getEntityType() { return Select.class; }
 
     // ===================================================================================
     //                                                                     Object Instance
     //                                                                     ===============
-    public PossessionMoney newEntity() { return new PossessionMoney(); }
+    public Select newEntity() { return new Select(); }
 
     // ===================================================================================
     //                                                                   Map Communication
     //                                                                   =================
     public void acceptPrimaryKeyMap(Entity et, Map<String, ? extends Object> mp)
-    { doAcceptPrimaryKeyMap((PossessionMoney)et, mp); }
+    { doAcceptPrimaryKeyMap((Select)et, mp); }
     public void acceptAllColumnMap(Entity et, Map<String, ? extends Object> mp)
-    { doAcceptAllColumnMap((PossessionMoney)et, mp); }
+    { doAcceptAllColumnMap((Select)et, mp); }
     public Map<String, Object> extractPrimaryKeyMap(Entity et) { return doExtractPrimaryKeyMap(et); }
     public Map<String, Object> extractAllColumnMap(Entity et) { return doExtractAllColumnMap(et); }
 }

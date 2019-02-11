@@ -1,7 +1,7 @@
 # /---------------------------------------------------------------------------
 # outsideSqlMap: (NotRequired - Default map:{})
 #
-# The various settings about outsideSql. 
+# The various settings about outsideSql.
 #
 # o isGenerateProcedureParameterBean: (NotRequired - Default false)
 # o isGenerateProcedureCustomizeEntity: (NotRequired - Default false)
@@ -68,7 +68,7 @@ map:{
     #  And you can specify procedures through DB link.
     #  This is treated as additional setting
     #  so it is independent from specifications for main schema.
-    #   e.g. SP_FOO@NEXT_LINK (when DB link name is 'NEXT_LINK')  
+    #   e.g. SP_FOO@NEXT_LINK (when DB link name is 'NEXT_LINK')
     #
     #; targetProcedureNameList = list:{FOO_PROCEDURE ; prefix:FOO_ ; suffix:_FOO ; contain:_FOO_}
     # - - - - - - - - - -/
@@ -107,7 +107,7 @@ map:{
     #     You should always write the description of outsideSql.
     #     If it doesn't exist, the OutsideSqlTest task fails.
     #
-    #; isRequiredSqlDescription = true
+    ; isRequiredSqlDescription = false
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -141,7 +141,7 @@ map:{
     #  You can set additional users.
     #  Elements of this map are as below:
     #   o key of map: a relative path to the application project from DBFlute client
-    #   o sqlDirectory: SQL directory as a relative path from the application directory 
+    #   o sqlDirectory: SQL directory as a relative path from the application directory
     #     (NotRequired - Default Java:'src/main/java' & 'src/main/resources' CSharp:'source')
     #   o sql2EntityOutputDirectory: source output directory from as a relative path from the application directory
     #     (NotRequired - Default Java:'src/main/java' CSharp:'source')

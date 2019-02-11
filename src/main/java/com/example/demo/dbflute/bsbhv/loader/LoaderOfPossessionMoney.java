@@ -13,7 +13,7 @@ import com.example.demo.dbflute.exentity.*;
  *     USER_ID
  *
  * [column]
- *     USER_ID, POSSESSION_MONEY
+ *     USER_ID, POSSESSION_MONEY, UPDATE_DATE
  *
  * [sequence]
  *     

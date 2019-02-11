@@ -63,6 +63,7 @@ public class PossessionMoneyCIQ extends AbstractBsPossessionMoneyCQ {
     //                                                                ====================
     protected ConditionValue xgetCValueUserId() { return _myCQ.xdfgetUserId(); }
     protected ConditionValue xgetCValuePossessionMoney() { return _myCQ.xdfgetPossessionMoney(); }
+    protected ConditionValue xgetCValueUpdateDate() { return _myCQ.xdfgetUpdateDate(); }
     protected Map<String, Object> xfindFixedConditionDynamicParameterMap(String pp) { return null; }
     public String keepScalarCondition(PossessionMoneyCQ sq)
     { throwIICBOE("ScalarCondition"); return null; }
