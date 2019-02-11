@@ -1,24 +1,45 @@
 package com.example.demo.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dbflute.exentity.PossessionMoney;
 import com.example.demo.domain.model.Card;
 import com.example.demo.domain.model.PokerPlayingInfo;
 import com.example.demo.domain.model.PokerPlayingInfo.Winner;
 import com.example.demo.domain.model.Role;
 import com.example.demo.domain.model.checker.Checker;
+import com.example.demo.exception.IllegalBetException;
+import com.example.demo.repository.MoneyRepository;
 import com.example.demo.util.PokerUtil;
 
 @Service
 public class PokerService {
 
-	public PokerPlayingInfo pokerPrepare(boolean jokerIncluded) {
+	 @Autowired
+	 public MoneyRepository moneyRepository;
+
+
+	public PokerPlayingInfo pokerPrepare(int userId, BigDecimal betMoney, boolean jokerIncluded) throws IllegalBetException {
+
+		PossessionMoney money = moneyRepository.getMoney(userId).get();
+		if(betMoney.compareTo(money.getPossessionMoney()) > 0) {
+		  throw new IllegalBetException("ベット額が所持金を超えています。");
+		}
+
+		// ポーカーの山札・プレイヤー・CPUの手札を返す
+		return pokerSetUp(jokerIncluded);
+	}
+
+	public PokerPlayingInfo pokerSetUp(boolean jokerIncluded) {
+
 		List<Card> deck = Card.makeDeck(jokerIncluded);
 
 		Collections.shuffle(deck);
@@ -35,6 +56,8 @@ public class PokerService {
 				.playerHands(playerHands)
 				.computerHands(cpuHands)
 				.build();
+
+
 	}
 
 	public PokerPlayingInfo handChangeAfterProcess(PokerPlayingInfo info) {
@@ -214,4 +237,5 @@ public class PokerService {
 		}
 		return number2;
 	}
+
 }

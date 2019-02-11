@@ -1,16 +1,24 @@
 package com.example.demo.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.domain.model.Card;
+import com.example.demo.domain.model.LoginSession;
+import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.PokerPlayingInfo;
+import com.example.demo.domain.model.PokerPlayingInfo.Winner;
+import com.example.demo.exception.IllegalBetException;
+import com.example.demo.exception.LoginSessionTimeOutException;
+import com.example.demo.exception.NotFoundMoneyException;
+import com.example.demo.service.MoneyService;
 import com.example.demo.service.PokerService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,20 +29,39 @@ public class PokerController {
 	@Autowired
 	public PokerService pokerService;
 
-	@RequestMapping("/")
-	public String getPokerStart() {
-		return "index";
+	@Autowired
+	public MoneyService moneyService;
+
+	@Autowired
+	public LoginSession loginSession;
+
+	@GetMapping("/bet")
+	@ResponseBody
+	public Money getMoney() throws LoginSessionTimeOutException, NotFoundMoneyException {
+
+		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
+    throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
+  }
+
+		return moneyService.getMoney(loginSession.getUserId().get());
 	}
 
 	@PostMapping("/config")
 	@ResponseBody
-	public PokerPlayingInfo postPokerStart(boolean jokerIncluded) {
-		return pokerService.pokerPrepare(jokerIncluded);
+	public PokerPlayingInfo postPokerStart(BigDecimal betMoney, boolean jokerIncluded) throws LoginSessionTimeOutException, IllegalBetException, NotFoundMoneyException {
+
+		 if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
+     throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
+		 }
+		 return pokerService.pokerPrepare(loginSession.getUserId().get(), betMoney, jokerIncluded);
 	}
 
 	@PostMapping("/play")
 	@ResponseBody
-	public PokerPlayingInfo handChange(String jsonPlayerHands, String jsonDeck, String jsonComputerHands) throws IOException {
+	public PokerPlayingInfo handChange(String jsonPlayerHands, String jsonDeck, String jsonComputerHands) throws IOException, LoginSessionTimeOutException {
+		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
+   throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
+ }
 
 		ObjectMapper o = new ObjectMapper();
 
@@ -49,5 +76,16 @@ public class PokerController {
 				.build());
 
 	}
+
+	@PostMapping("/result")
+	@ResponseBody
+	public Money result(BigDecimal betMoney, Winner winner) throws LoginSessionTimeOutException {
+
+		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
+   throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
+ }
+		 return moneyService.update(loginSession.getUserId().get(), betMoney , winner);
+	}
+
 
 }
