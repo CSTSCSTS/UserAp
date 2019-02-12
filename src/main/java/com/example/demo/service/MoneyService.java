@@ -28,7 +28,7 @@ public Money update(int userId, BigDecimal betMoney, Winner winner) {
 		Money money = new Money(entity.getUserId(), entity.getPossessionMoney());
 		if (winner == Winner.PLAYER) {
 			money.plusMoney(betMoney);
-		} else {
+		} else if(winner == Winner.CPU) {
 			money.minusMoney(betMoney);
 		}
 
