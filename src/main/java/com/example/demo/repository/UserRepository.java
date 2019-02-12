@@ -68,7 +68,7 @@ public class UserRepository {
 	}
 
 
-	public void update(int userId, String username, String password, LocalDateTime loginDate) {// 今はユーザー登録しかできないから不要？
+	public void update(int userId, String username, String password, LocalDateTime loginDate) {
 		PokerUserInfo pokerUserInfo = new PokerUserInfo();
 		pokerUserInfo.setUserId(userId);
 		pokerUserInfo.setUserName(username);
