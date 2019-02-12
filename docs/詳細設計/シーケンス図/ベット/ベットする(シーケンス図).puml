@@ -60,6 +60,10 @@ alt 勝負する
     MoneyService -> MoneyRepository : updatePossession_money(Money money)
     MoneyRepository -> possession_money : UPDATE
     MoneyService --> MoneyController : return possession_money
+  else 引き分け
+    MoneyService -> MoneyRepository : updatePossession_money(Money money)
+    note right : 更新日時をUPDATEする
+    MoneyRepository -> possession_money : UPDATE
   end
   handlePlaySubmit -> ユーザー : 勝負結果を表すメッセージ・もう一度ボタン・スタートに戻るボタンを表示する。
 else 勝負しない
