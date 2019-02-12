@@ -74,6 +74,7 @@ public class BetTest {
 	  moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.PLAYER);
 	  PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
 	  assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(1100));
+	  assertThat(money.getUpdateDate()).isNotNull();
 	}
 
 	@Test
@@ -82,7 +83,18 @@ public class BetTest {
 		 moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.CPU);
 		 PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
 		 assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(900));
+		 assertThat(money.getUpdateDate()).isNotNull();
 	}
+
+	@Test
+	public void draw() throws UserNameDuplicateException {
+		 PokerUserInfo entity = userSetUp();
+	  moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.NOTHING);
+	  PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
+	  assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(1000));
+	  assertThat(money.getUpdateDate()).isNotNull();
+	}
+
 
 	private PokerUserInfo userSetUp() throws UserNameDuplicateException {
 		 if(userRepository.getPokerUserByUsername("テストユーザー").isPresent()) {

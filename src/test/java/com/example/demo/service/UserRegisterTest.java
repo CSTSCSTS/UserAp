@@ -55,6 +55,7 @@ public class UserRegisterTest {
 			assertThat(entity.getUserName()).isEqualTo("テストユーザー");
 			assertTrue(moneyEntity.isPresent());
 			assertThat(moneyEntity.get().getPossessionMoney()).isEqualTo(new BigDecimal(1000));
+			assertThat(moneyEntity.get().getUpdateDate()).isNull();
 		}
 
 		@Test(expected = UserNameDuplicateException.class)
