@@ -4,7 +4,7 @@ create table POKER_USER_INFO (
   USER_ID INTEGER not null default nextval('POKER_USER_ID_SEQ1')
   , USER_NAME VARCHAR(255) not null
   , PASSWORD VARCHAR(255) not null
-  , LOGIN_DATE TIMESTAMP
+  , LOGIN_DATE TIMESTAMP not null default now()
   , constraint POKER_USER_INFO_PKC primary key (USER_ID)
 ) ;
 
@@ -12,7 +12,7 @@ create table POKER_USER_INFO (
  create table POSSESSION_MONEY (
   USER_ID INTEGER not null
   , POSSESSION_MONEY DECIMAL not null
-  , UPDATE_DATE TIMESTAMP
+  , UPDATE_DATE TIMESTAMP not null default now()
   , constraint POSSESSION_MONEY_PKC primary key (USER_ID)
   , CONSTRAINT FK_USER_ID
     FOREIGN KEY (USER_ID)
