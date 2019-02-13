@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public Money update(int userId, BigDecimal betMoney, Winner winner) {
 			money.minusMoney(betMoney);
 		}
 
-		moneyRepository.save(money.getUserId(), money.getMoney().intValue());
+		moneyRepository.save(money.getUserId(), money.getMoney().intValue(), LocalDateTime.now());
 
 		return money;
 

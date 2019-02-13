@@ -82,10 +82,10 @@ public class RankingTest {
 		PokerUserInfo entity_D = getUserEntityByUserName(resultList, "ddd");
 		PokerUserInfo entity_E = getUserEntityByUserName(resultList, "eee");
 
-		moneyList.add(createMoneyEntity(entity_A.getUserId(), new BigDecimal(10000), null));
+		moneyList.add(createMoneyEntity(entity_A.getUserId(), new BigDecimal(10000), LocalDateTime.now()));
 		moneyList.add(createMoneyEntity(entity_B.getUserId(), new BigDecimal(1000), LocalDateTime.of(2018, 1, 15, 14, 22)));
-		moneyList.add(createMoneyEntity(entity_C.getUserId(), new BigDecimal(5000), null));
-		moneyList.add(createMoneyEntity(entity_D.getUserId(), new BigDecimal(3000), null));
+		moneyList.add(createMoneyEntity(entity_C.getUserId(), new BigDecimal(5000), LocalDateTime.now()));
+		moneyList.add(createMoneyEntity(entity_D.getUserId(), new BigDecimal(3000), LocalDateTime.now()));
 		moneyList.add(createMoneyEntity(entity_E.getUserId(), new BigDecimal(1000), LocalDateTime.of(2019, 1, 15, 14, 22)));
 
 		possessionMoneyBhv.batchInsert(moneyList);

@@ -42,7 +42,7 @@ public class LoginService {
    if(nowTime.compareTo(loginTime) != 0) {
    	PossessionMoney money = moneyRepository.getMoney(user.getUserId()).get();
    	// ログインがその日初めてならば、所持金を100円増やす。
-   	moneyRepository.save(user.getUserId(), money.getPossessionMoney().intValue() + 100);
+   	moneyRepository.save(user.getUserId(), money.getPossessionMoney().intValue() + 100, LocalDateTime.now());
    }
 
    // ログイン日時を更新

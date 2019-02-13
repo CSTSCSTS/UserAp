@@ -26,10 +26,10 @@ public class MoneyRepository {
 
 	}
 
-	public void save(int userId, int money) {
+	public void save(int userId, int money, LocalDateTime loginDate) {
 		OptionalEntity<PossessionMoney> optEntity = getMoney(userId);
 		if(optEntity.isPresent()) {
-			update(userId, money);
+			update(userId, money, loginDate);
 			return;
 		}
 
@@ -44,11 +44,11 @@ public class MoneyRepository {
 	}
 
 
-	private void update(int userId, int money) {
+	private void update(int userId, int money, LocalDateTime loginDate) {
 		PossessionMoney possessionMoney = new PossessionMoney();
 		possessionMoney.setUserId(userId);
 		possessionMoney.setPossessionMoney(new BigDecimal(money));
-		possessionMoney.setUpdateDate(LocalDateTime.now());
+		possessionMoney.setUpdateDate(loginDate);
 		possessionMoneyBhv.update(possessionMoney);
 	}
 

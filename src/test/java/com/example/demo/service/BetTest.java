@@ -3,6 +3,7 @@ package com.example.demo.service;
 import static org.assertj.core.api.Assertions.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,7 +50,7 @@ public class BetTest {
 
 	@Test
 	public void success() throws UserNameDuplicateException, IllegalBetException {
-		 PokerUserInfo entity = userSetUp();
+		 PokerUserInfo entity = userSetUp(LocalDateTime.now());
    PokerPlayingInfo info = pokerService.pokerPrepare(entity.getUserId(), new BigDecimal(100), true);
    assertThat(info.getDeck().size()).isEqualTo(43);
    assertThat(info.getPlayerHands().size()).isEqualTo(5);
@@ -59,7 +60,7 @@ public class BetTest {
 
 	@Test(expected = IllegalBetException.class)
 	public void moneyExceeded() throws UserNameDuplicateException, IllegalBetException {
-		 PokerUserInfo entity = userSetUp();
+		 PokerUserInfo entity = userSetUp(LocalDateTime.now());
 		 pokerService.pokerPrepare(entity.getUserId(), new BigDecimal(10000), true);
 	}
 
@@ -70,40 +71,45 @@ public class BetTest {
 
 	@Test
 	public void playerWinner() throws UserNameDuplicateException {
-		 PokerUserInfo entity = userSetUp();
+		 LocalDateTime firstTime = LocalDateTime.of(2018, 12, 11, 2, 33);
+		 PokerUserInfo entity = userSetUp(firstTime);
 	  moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.PLAYER);
 	  PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
 	  assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(1100));
-	  assertThat(money.getUpdateDate()).isNotNull();
+	  assertThat(money.getUpdateDate()).isNotEqualTo(firstTime);
 	}
 
 	@Test
 	public void CPUWinner() throws UserNameDuplicateException {
-		 PokerUserInfo entity = userSetUp();
+		 LocalDateTime firstTime = LocalDateTime.of(2018, 12, 11, 2, 33);
+		 PokerUserInfo entity = userSetUp(firstTime);
 		 moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.CPU);
 		 PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
 		 assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(900));
-		 assertThat(money.getUpdateDate()).isNotNull();
+		 assertThat(money.getUpdateDate()).isNotEqualTo(firstTime);
 	}
 
 	@Test
 	public void draw() throws UserNameDuplicateException {
-		 PokerUserInfo entity = userSetUp();
+		 LocalDateTime firstTime = LocalDateTime.of(2018, 12, 11, 2, 33);
+		 PokerUserInfo entity = userSetUp(firstTime);
 	  moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.NOTHING);
 	  PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
 	  assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(1000));
-	  assertThat(money.getUpdateDate()).isNotNull();
+	  assertThat(money.getUpdateDate()).isNotEqualTo(firstTime);
 	}
 
 
-	private PokerUserInfo userSetUp() throws UserNameDuplicateException {
+	private PokerUserInfo userSetUp(LocalDateTime time) throws UserNameDuplicateException {
 		 if(userRepository.getPokerUserByUsername("テストユーザー").isPresent()) {
 		   PokerUserInfo pokerUserInfo = new PokerUserInfo();
 		   pokerUserInfo.uniqueBy("テストユーザー");
 		   pokerUserInfoBhv.delete(pokerUserInfo);
    }
-		 userService.resister("テストユーザー", "test");
-		 return userRepository.getPokerUserByUsername("テストユーザー").get();
+		 userRepository.insert("テストユーザー", "test");
+		 PokerUserInfo entity = userRepository.getPokerUserByUsername("テストユーザー").get();
+		 moneyRepository.save(entity.getUserId(), 1000, time);
+		 return entity;
 	}
 
 }

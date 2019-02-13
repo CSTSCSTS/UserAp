@@ -94,7 +94,7 @@ public class LoginTest {
 		}
 		userRepository.insert(userName, password);
 		PokerUserInfo entity = userRepository.getPokerUserByUsername(userName).get();
-		moneyRepository.save(entity.getUserId(), 1000);
+		moneyRepository.save(entity.getUserId(), 1000, LocalDateTime.now());
 		userRepository.update(entity.getUserId(), entity.getUserName(), entity.getPassword(), LocalDateTime.of(2018, 12, 11, 2, 33));
 
 	return entity;
@@ -109,7 +109,7 @@ public class LoginTest {
 		}
 		userRepository.insert(userName, password);
 		PokerUserInfo entity = userRepository.getPokerUserByUsername(userName).get();
-		moneyRepository.save(entity.getUserId(), 1000);
+		moneyRepository.save(entity.getUserId(), 1000, LocalDateTime.now());
 		userRepository.update(entity.getUserId(), entity.getUserName(), entity.getPassword(), LocalDateTime.now());
 
 		return entity;

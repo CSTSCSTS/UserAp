@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,7 @@ public class UserService {
 
 		PokerUserInfo entity = userRepository.getPokerUserByUsername(userName).get();
 
-		moneyRepository.save(entity.getUserId(), 1000);
+		moneyRepository.save(entity.getUserId(), 1000, LocalDateTime.now());
 		return new User(entity.getUserId(), entity.getUserName(), entity.getPassword(), entity.getLoginDate());
 
 	}

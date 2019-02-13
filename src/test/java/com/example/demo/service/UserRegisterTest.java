@@ -40,7 +40,7 @@ public class UserRegisterTest {
 	public PossessionMoneyBhv possessionMoneyBhv;
 
 		@Test
-		public void success() throws UserNameDuplicateException {// もう少し！！
+		public void success() throws UserNameDuplicateException {
 
 			// テストユーザーが既に存在するなら、削除
 			if(userRepository.getPokerUserByUsername("テストユーザー").isPresent()) {
@@ -53,9 +53,10 @@ public class UserRegisterTest {
 			PokerUserInfo entity = userRepository.getPokerUserByUsername("テストユーザー").get();
 			OptionalEntity<PossessionMoney> moneyEntity = moneyRepository.getMoney(entity.getUserId());
 			assertThat(entity.getUserName()).isEqualTo("テストユーザー");
+			assertThat(entity.getLoginDate()).isNotNull();
 			assertTrue(moneyEntity.isPresent());
 			assertThat(moneyEntity.get().getPossessionMoney()).isEqualTo(new BigDecimal(1000));
-			assertThat(moneyEntity.get().getUpdateDate()).isNull();
+			assertThat(moneyEntity.get().getUpdateDate()).isNotNull();
 		}
 
 		@Test(expected = UserNameDuplicateException.class)
