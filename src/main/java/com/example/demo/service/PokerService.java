@@ -26,10 +26,11 @@ public class PokerService {
 	 @Autowired
 	 public MoneyRepository moneyRepository;
 
-
+// ベット額が所持金を超えていないことを確認後、ポーカーの初期情報を返す
 	public PokerPlayingInfo pokerPrepare(int userId, BigDecimal betMoney, boolean jokerIncluded) throws IllegalBetException {
 
 		PossessionMoney money = moneyRepository.getMoney(userId).get();
+		// ベット額が所持金を超えている場合、例外を投げる
 		if(betMoney.compareTo(money.getPossessionMoney()) > 0) {
 		  throw new IllegalBetException("ベット額が所持金を超えています。");
 		}
@@ -60,6 +61,7 @@ public class PokerService {
 
 	}
 
+	// ポーカーの手札交換・役判定・勝者判定を実施する
 	public PokerPlayingInfo handChangeAfterProcess(PokerPlayingInfo info) {
 
 		// プレイヤーの手札交換をした後、役判定

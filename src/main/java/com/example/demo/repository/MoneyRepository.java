@@ -19,37 +19,39 @@ public class MoneyRepository {
 	@Autowired
 	public PossessionMoneyBhv possessionMoneyBhv;
 
-	public OptionalEntity<PossessionMoney> getMoney(int userId) {
-		return possessionMoneyBhv.selectEntity(cb ->
-		  cb.query().setUserId_Equal(userId)
-		);
+	 // ユーザーIDを元にユーザーを取得する
+  public OptionalEntity<PossessionMoney> getMoney(int userId){
+		  return possessionMoneyBhv.selectEntity(cb ->
+		    cb.query().setUserId_Equal(userId)
+		  );
+  }
 
-	}
+  // 保存済みなら更新、そうでなければ登録する
+	 public void save(int userId, int money, LocalDateTime loginDate) {
+		  OptionalEntity<PossessionMoney> optEntity = getMoney(userId);
+		  if(optEntity.isPresent()) {
+			   update(userId, money, loginDate);
+			   return;
+		  }
+		  insert(userId, money);
+  }
 
-	public void save(int userId, int money, LocalDateTime loginDate) {
-		OptionalEntity<PossessionMoney> optEntity = getMoney(userId);
-		if(optEntity.isPresent()) {
-			update(userId, money, loginDate);
-			return;
-		}
-
-		insert(userId, money);
-	}
-
-	private void insert(int userId, int money) {
-		PossessionMoney possessionMoney = new PossessionMoney();
-		possessionMoney.setUserId(userId);
-		possessionMoney.setPossessionMoney(new BigDecimal(money));
-		possessionMoneyBhv.insert(possessionMoney);
-	}
+	 // 所持金情報を登録
+  private void insert(int userId, int money) {
+		  PossessionMoney possessionMoney = new PossessionMoney();
+		  possessionMoney.setUserId(userId);
+		  possessionMoney.setPossessionMoney(new BigDecimal(money));
+		  possessionMoneyBhv.insert(possessionMoney);
+	 }
 
 
-	private void update(int userId, int money, LocalDateTime loginDate) {
-		PossessionMoney possessionMoney = new PossessionMoney();
-		possessionMoney.setUserId(userId);
-		possessionMoney.setPossessionMoney(new BigDecimal(money));
-		possessionMoney.setUpdateDate(loginDate);
-		possessionMoneyBhv.update(possessionMoney);
-	}
+  // 所持金情報を更新
+	 private void update(int userId, int money, LocalDateTime loginDate) {
+		  PossessionMoney possessionMoney = new PossessionMoney();
+		  possessionMoney.setUserId(userId);
+		  possessionMoney.setPossessionMoney(new BigDecimal(money));
+		  possessionMoney.setUpdateDate(loginDate);
+		  possessionMoneyBhv.update(possessionMoney);
+  }
 
 }

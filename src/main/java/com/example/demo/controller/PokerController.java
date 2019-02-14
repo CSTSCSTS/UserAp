@@ -35,6 +35,7 @@ public class PokerController {
 	@Autowired
 	public LoginSession loginSession;
 
+	// ベット画面を表示する
 	@GetMapping("/bet")
 	@ResponseBody
 	public Money getMoney() throws LoginSessionTimeOutException, NotFoundMoneyException {
@@ -46,6 +47,7 @@ public class PokerController {
 		return moneyService.getMoney(loginSession.getUserId().get());
 	}
 
+	// ポーカーの初期情報(山札・プレイヤーとCPUの手札)を返す。
 	@PostMapping("/config")
 	@ResponseBody
 	public PokerPlayingInfo postPokerStart(BigDecimal betMoney, boolean jokerIncluded) throws LoginSessionTimeOutException, IllegalBetException, NotFoundMoneyException {
@@ -56,6 +58,7 @@ public class PokerController {
 		 return pokerService.pokerPrepare(loginSession.getUserId().get(), betMoney, jokerIncluded);
 	}
 
+	// ポーカーの情報(山札・手札 + 役や勝者)を返す
 	@PostMapping("/play")
 	@ResponseBody
 	public PokerPlayingInfo handChange(String jsonPlayerHands, String jsonDeck, String jsonComputerHands) throws IOException, LoginSessionTimeOutException {
@@ -77,6 +80,7 @@ public class PokerController {
 
 	}
 
+	// 勝者に応じて所持金を更新するリクエストに反応する。
 	@PostMapping("/result")
 	@ResponseBody
 	public Money result(BigDecimal betMoney, Winner winner) throws LoginSessionTimeOutException {
@@ -86,6 +90,5 @@ public class PokerController {
  }
 		 return moneyService.update(loginSession.getUserId().get(), betMoney , winner);
 	}
-
 
 }
