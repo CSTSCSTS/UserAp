@@ -20,7 +20,7 @@ public class UserService {
 	@Autowired
 	private MoneyRepository moneyRepository;
 
-
+	// ユーザー登録を実施する。
 	public User resister(String userName, String password) throws UserNameDuplicateException {
 
 		// ユーザー名重複チェック
@@ -28,11 +28,12 @@ public class UserService {
 		  throw new UserNameDuplicateException("ユーザー名が重複しています。");
 		}
 
-		// ユーザー新規作成
+		// ユーザー情報をDBに保存する
 		userRepository.insert(userName, password);
 
 		PokerUserInfo entity = userRepository.getPokerUserByUsername(userName).get();
 
+	 // 所持金情報をDBに保存する
 		moneyRepository.save(entity.getUserId(), 1000, LocalDateTime.now());
 		return new User(entity.getUserId(), entity.getUserName(), entity.getPassword(), entity.getLoginDate());
 

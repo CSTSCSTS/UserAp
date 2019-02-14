@@ -26,6 +26,16 @@ public class UserRepository {
 	public PossessionMoneyBhv possessionMoneyBhv;
 
 	public OptionalEntity<PokerUserInfo> getPokerUserByUsername(String username) {
+		try {
+			pokerUserInfoBhv.selectEntity(cb ->
+   cb.query().setUserName_Equal(username)
+   );
+		}
+	 catch(org.dbflute.exception.SQLFailureException e) {
+			System.out.println("SQL失敗しただーーーーーーーーー");
+			System.out.println(e);
+		}
+
 	  return  pokerUserInfoBhv.selectEntity(cb ->
 	    cb.query().setUserName_Equal(username)
 	  );
@@ -38,6 +48,7 @@ public class UserRepository {
   });
  }
 
+	// ランキング情報を取得
 	public MoneyRanking getMoneyRanking() {
 
 		List<Select> outsideSqlResult = pokerUserInfoBhv.outsideSql().selectList(new SelectPmb()).getSelectedList();
@@ -53,28 +64,30 @@ public class UserRepository {
 
 	}
 
+	// ユーザー名が重複しているか判定する
 	public boolean userNameIsDuplicate(String username) {
 		return pokerUserInfoBhv.selectEntity(cb ->
 		  cb.query().setUserName_Equal(username)
 		).isPresent();
 	}
 
-	public void insert(String username, String password) {
-		PokerUserInfo pokerUserInfo = new PokerUserInfo();
-		pokerUserInfo.setUserName(username);
-		pokerUserInfo.setPassword(password);
-		pokerUserInfoBhv.insert(pokerUserInfo);
+	 // ユーザー情報を登録
+	 public void insert(String username, String password) {
+		  PokerUserInfo pokerUserInfo = new PokerUserInfo();
+		  pokerUserInfo.setUserName(username);
+		  pokerUserInfo.setPassword(password);
+		  pokerUserInfoBhv.insert(pokerUserInfo);
+	 }
 
-	}
 
-
-	public void update(int userId, String username, String password, LocalDateTime loginDate) {
-		PokerUserInfo pokerUserInfo = new PokerUserInfo();
-		pokerUserInfo.setUserId(userId);
-		pokerUserInfo.setUserName(username);
-		pokerUserInfo.setPassword(password);
-		pokerUserInfo.setLoginDate(loginDate);
-		pokerUserInfoBhv.update(pokerUserInfo);
-	}
+  //ユーザー情報を更新
+	 public void update(int userId, String username, String password, LocalDateTime loginDate) {
+		  PokerUserInfo pokerUserInfo = new PokerUserInfo();
+		  pokerUserInfo.setUserId(userId);
+		  pokerUserInfo.setUserName(username);
+		  pokerUserInfo.setPassword(password);
+		  pokerUserInfo.setLoginDate(loginDate);
+		  pokerUserInfoBhv.update(pokerUserInfo);
+  }
 
 }
