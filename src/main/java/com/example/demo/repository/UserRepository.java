@@ -25,22 +25,14 @@ public class UserRepository {
 	@Autowired
 	public PossessionMoneyBhv possessionMoneyBhv;
 
+	// ユーザー名でユーザーを取得する
 	public OptionalEntity<PokerUserInfo> getPokerUserByUsername(String username) {
-		try {
-			pokerUserInfoBhv.selectEntity(cb ->
-   cb.query().setUserName_Equal(username)
-   );
-		}
-	 catch(org.dbflute.exception.SQLFailureException e) {
-			System.out.println("SQL失敗しただーーーーーーーーー");
-			System.out.println(e);
-		}
-
 	  return  pokerUserInfoBhv.selectEntity(cb ->
 	    cb.query().setUserName_Equal(username)
 	  );
   }
 
+	// ユーザー名・パスワードでユーザーを取得する
 	public OptionalEntity<PokerUserInfo> getPokerUserByUsernameAndPassword(String username, String password) {
   return pokerUserInfoBhv.selectEntity(cb -> {
   	cb.query().setUserName_Equal(username);
