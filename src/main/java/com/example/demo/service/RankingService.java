@@ -13,7 +13,7 @@ public class RankingService {
 	@Autowired
 	private UserRepository userRepository;
 
-
+	// ランキング情報をDBから取得
 	public Ranking getRankingInfo() {
 
 		MoneyRanking moneyRanking = userRepository.getMoneyRanking();

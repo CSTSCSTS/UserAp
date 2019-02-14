@@ -14,12 +14,11 @@ public class RankingController {
 	@Autowired
 	public RankingService rankingService;
 
+	// ランキング情報を返す
 	@GetMapping("/ranking")
 	@ResponseBody
 	public Ranking getRanking() {
-
 		return rankingService.getRankingInfo();
-
 	}
 
 
