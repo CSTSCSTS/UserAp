@@ -22,11 +22,13 @@ public class LoginController {
 	@Autowired
 	public LoginSession loginSession;
 
+	// ログイン画面を表示する
 	@RequestMapping("/")
 	public String get() {
 		return "index";
 	}
 
+	// リクエストで送られてきたユーザー名・パスワードをログイン処理を行う
 	@PostMapping("/login")
 	@ResponseBody
 	public User login(String username, String password) throws NotMatchLoginUserException {

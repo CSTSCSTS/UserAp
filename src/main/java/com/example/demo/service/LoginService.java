@@ -22,8 +22,10 @@ public class LoginService {
 	@Autowired
 	private MoneyRepository moneyRepository;
 
+	// ログインする
 	public User login(String username, String password) throws NotMatchLoginUserException {
 
+		 // 合致するユーザーが存在しなければ、例外を投げる。
 	  PokerUserInfo entity =	userRepository.getPokerUserByUsernameAndPassword(username, password)
 	  		.orElseThrow(() -> new NotMatchLoginUserException("ログイン失敗"));
 
@@ -32,7 +34,7 @@ public class LoginService {
    LocalDateTime now = LocalDateTime.now();
    LocalDateTime loginDate = user.getLoginDate();
 
-   // ログインがその日初めてかどうか確認
+   // 現在日時とログイン日時を比較して、ログインがその日初めてかどうか確認
    Calendar nowTime = Calendar.getInstance();
    nowTime.set(now.getYear(), now.getMonthValue() - 1, now.getDayOfMonth());
 
