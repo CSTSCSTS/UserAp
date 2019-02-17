@@ -1,32 +1,69 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input } from 'reactstrap';
-import App from './App'
 import { withRouter } from 'react-router'
+import Bet from './bet';
+import CommonHeader from './commonHeader'
 import './pokerField.css';
 
 class PokerField extends Component {
 	constructor(props) {
 	  super(props);
       this.state = {
-        deck: this.props.location.state.fieldInfo.deck,
-        playerHands: this.props.location.state.fieldInfo.playerHands,
-        computerHands: this.props.location.state.fieldInfo.computerHands,
-        isFinishedChange: this.props.location.state.isFinishedChange,
+        pokerPhase: 'BET',
+        isSurrender: false,
+        betMoney: 0,
+        deck: null,
+        playerHands: null,
+        computerHands: null,
+        isFinishedChange: false,
         playerRole: null,
         computerRole: null,
         winner: null
 	  };
 	}
 
-	stateReset = (playerHands, computerHands) => {
+	pokerPhaseChange = (pokerPhase) => {
 		this.setState({
-		  playerHands: playerHands,
-      computerHands: computerHands,
+			pokerPhase: pokerPhase
+		})
+	}
+
+	pokerPrepare = (fieldInfo) => {
+		this.setState({
+			deck: fieldInfo.deck,
+      playerHands: fieldInfo.playerHands,
+      computerHands: fieldInfo.computerHands
+		})
+	}
+
+	// 所持金更新
+	updateBetMoney = (betMoney) => {
+		this.setState({
+			betMoney: betMoney
+		})
+	}
+
+	// 勝負を降りるフラグをtrueにする。
+	surrender = () => {
+		this.setState({
+	    isSurrender: true
+		})
+	}
+
+	stateReset = () => {
+		this.setState({
+			pokerPhase: 'BET',
+      isSurrender: false,
+      betMoney: 0,
+      deck: null,
+      playerHands: null,
+      computerHands: null,
       isFinishedChange: false,
       playerRole: null,
       computerRole: null,
-      winner: null})
+      winner: null
+    })
 	}
 
 	handsChange = (playerHands, computerHands, isFinishedChange, playerRole, computerRole, winner) => {
@@ -49,19 +86,46 @@ class PokerField extends Component {
 	  this.setState({playerHands: currentHands})
 	}
 
+
   render() {
+
+  	if(this.state.pokerPhase === 'BET') {
+  		return (
+  		  <div>
+  		    <Bet
+  		      betMoney={this.props.location.state.betMoney.money}
+  		      pokerPhaseChange={this.pokerPhaseChange}
+  		      pokerPrepare={this.pokerPrepare}
+  		      jokerIncluded={this.props.jokerIncluded}
+  		      updateBetMoney={this.updateBetMoney}
+  		    />
+  		  </div>
+  		);
+  	}
     return (
       <div>
+        <CommonHeader />
         <Container className="poker_field">
           <ul>
 	          <CpuHands
 	    	      hands={this.state.computerHands}
 	    	      isFinishedChange={this.state.isFinishedChange}
+	            pokerPhase={this.state.pokerPhase}
+	    	    />
+	    	    <PlayButton
+	    	      pokerPhase={this.state.pokerPhase}
+	            pokerPhaseChange={this.pokerPhaseChange}
+	            surrender={this.surrender}
+	            betMoney={this.state.betMoney}
+	            winner={this.state.winner}
 	    	    />
     	    	<WinOrLossJudge
     	        playerRole={this.state.playerRole}
     	    	  computerRole={this.state.computerRole}
     	    	  winner={this.state.winner}
+	            pokerPhase={this.state.pokerPhase}
+	            isSurrender={this.state.isSurrender}
+
     	    	/>
     	    	<PlayerHands
     	    	  playerHands={this.state.playerHands}
@@ -71,10 +135,12 @@ class PokerField extends Component {
 	        </ul>
 	      </Container>
         <HandChangeButton
+          pokerPhaseChange={this.pokerPhaseChange}
           deck={this.state.deck}
           playerHands={this.state.playerHands}
           computerHands={this.state.computerHands}
           isFinishedChange={this.state.isFinishedChange}
+          pokerPhase={this.state.pokerPhase}
           handsChange={this.handsChange}
         />
         <AfterPokerPlayingButtons
@@ -82,6 +148,7 @@ class PokerField extends Component {
 	        jokerIncluded={this.props.jokerIncluded}
 	        history={this.props.history}
 	        isFinishedChange={this.state.isFinishedChange}
+          pokerPhase={this.state.pokerPhase}
         />
       </div>
     )
@@ -90,7 +157,7 @@ class PokerField extends Component {
 
 class CpuHands extends Component {
   render() {
-	if(!this.props.isFinishedChange) {
+	if(this.props.pokerPhase !== 'AFTER_BATTLE') {
 	  return (
 		<div id="computer_hands">
 		  <li className="behind_hand"></li>
@@ -124,17 +191,29 @@ class CpuHands extends Component {
 
 class WinOrLossJudge extends Component {
   render() {
-	  if(this.props.playerRole === null) {
-	    return null;
-      } else if(this.props.winner === 'NOTHING') {
-    	return (
+  	if(this.props.pokerPhase !== 'AFTER_BATTLE') {
+      return null;
+  	}
+
+  	// 勝負しないを選択した場合
+  	if(this.props.isSurrender) {
+  		return(
+  		  <div>
+          <h3 id="result">勝負を降りました</h3>
+        </div>
+  		)
+  	}
+
+  	// 引き分けの場合
+  	if(this.props.winner === 'NOTHING') {
+      return (
 	      <div>
 	        <h3 id="computer_role">CPUの役: {this.props.computerRole.roleName}</h3>
 	        <h3 id="result">引き分けです</h3>
 	        <h3 id="player_role">プレイヤーの役: {this.props.playerRole.roleName}</h3>
 	      </div>
 	    )
-      }
+    }
 
     return (
       <div id="win_or_loss_judge">
@@ -208,6 +287,7 @@ class HandChangeButton extends Component {
 	        pokerInfo.playerRole,
 	        pokerInfo.computerRole,
 	        pokerInfo.winner);
+	      this.props.pokerPhaseChange('CHOICE_BATTLE_OR_FOLD');
 	    });
 	}
 
@@ -219,15 +299,64 @@ class HandChangeButton extends Component {
     return (
       <div id="hand_change">
 	    <Button onClick={this.handleToChange}>
-	      勝負
+	      手札交換
 	    </Button>
       </div>
     )
   }
 }
 
+class PlayButton extends Component {
+
+	 handleToPlay(e) {
+   	var request = require('superagent');
+       e.preventDefault();
+       var currentUrl = window.location.toString();
+       const url = currentUrl.slice(0, -4) + 'result';
+       request
+       .post(url)
+       .responseType('text')
+       .type('form')
+       // 掛け金と勝者の情報を送る
+       .send({betMoney: this.props.betMoney, winner: this.props.winner})
+       .then(res => {
+         this.props.pokerPhaseChange('AFTER_BATTLE');
+       });
+     }
+
+
+	 handleToSurrender(e) {
+     this.props.surrender();
+     this.props.pokerPhaseChange('AFTER_BATTLE');
+   }
+
+	render() {
+		if(this.props.pokerPhase !== 'CHOICE_BATTLE_OR_FOLD') {
+      return null;
+		}
+    return (
+      <div id="after_poker_playing_buttons">
+        <h2>勝負しますか？</h2>
+        <Button onClick={this.handleToPlay.bind(this)}>
+	        勝負する
+	      </Button>
+	      <Button onClick={this.handleToSurrender.bind(this)}>
+	        勝負しない
+	      </Button>
+
+	    </div>
+    )
+  }
+}
+
 class AfterPokerPlayingButtons extends Component {
+
   render() {
+  	// pokerPhaseがAFTER_BATTLE出ない場合は何も表示しない
+  	if(this.props.pokerPhase !== 'AFTER_BATTLE') {
+      return null;
+  	}
+
     return (
       <div id="after_poker_playing_buttons">
 		  <RetryButton
@@ -248,23 +377,25 @@ class AfterPokerPlayingButtons extends Component {
 
 class RetryButton extends Component {
 
+	 // 所持金情報を取得して、stateを初期化する。
 	 handleSubmit(e) {
     	var request = require('superagent');
         e.preventDefault();
         var currentUrl = window.location.toString();
-        const url = currentUrl.slice(0, -4) + 'config';
+        const url = currentUrl.slice(0, -4) + 'bet';
         request
-        .post(url)
+        .get(url)
         .responseType('text')
         .type('form')
         .send({jokerIncluded: this.props.jokerIncluded})
         .then(res => {
           const pokerInfo = res.body;
-          this.handleToRePlay(pokerInfo.playerHands, pokerInfo.computerHands);
+          // stateを初期化する
+          this.handleToRePlay();
         });
       }
-        handleToRePlay = (playerHands, computerHands) => {
-          this.props.stateReset(playerHands, computerHands);
+        handleToRePlay = () => {
+          this.props.stateReset();
         }
 
   render() {
@@ -284,7 +415,8 @@ class RestartButton extends Component {
 
 	handleToRestart = (body) => {
 		this.props.history.push({
-			pathname: '/'
+			pathname: '/start',
+			state: {isOpen: false}
 		})
   }
   render() {
