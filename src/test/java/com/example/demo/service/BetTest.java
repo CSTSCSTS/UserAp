@@ -14,9 +14,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.example.demo.dbflute.exbhv.PokerUserInfoBhv;
 import com.example.demo.dbflute.exbhv.PossessionMoneyBhv;
 import com.example.demo.dbflute.exentity.PokerUserInfo;
-import com.example.demo.dbflute.exentity.PossessionMoney;
+import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.PokerPlayingInfo;
 import com.example.demo.domain.model.PokerPlayingInfo.Winner;
+import com.example.demo.domain.model.User;
 import com.example.demo.exception.IllegalBetException;
 import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.exception.UserNameDuplicateException;
@@ -49,7 +50,7 @@ public class BetTest {
 	public PossessionMoneyBhv possessionMoneyBhv;
 
 	@Test
-	public void success() throws UserNameDuplicateException, IllegalBetException {
+	public void success() throws UserNameDuplicateException, IllegalBetException, NotFoundMoneyException {
 		 PokerUserInfo entity = userSetUp(LocalDateTime.now());
    PokerPlayingInfo info = pokerService.pokerPrepare(entity.getUserId(), new BigDecimal(100), true);
    assertThat(info.getDeck().size()).isEqualTo(43);
@@ -59,7 +60,7 @@ public class BetTest {
 	}
 
 	@Test(expected = IllegalBetException.class)
-	public void moneyExceeded() throws UserNameDuplicateException, IllegalBetException {
+	public void moneyExceeded() throws UserNameDuplicateException, IllegalBetException, NotFoundMoneyException {
 		 PokerUserInfo entity = userSetUp(LocalDateTime.now());
 		 pokerService.pokerPrepare(entity.getUserId(), new BigDecimal(10000), true);
 	}
@@ -70,32 +71,32 @@ public class BetTest {
 	}
 
 	@Test
-	public void playerWinner() throws UserNameDuplicateException {
+	public void playerWinner() throws UserNameDuplicateException, NotFoundMoneyException {
 		 LocalDateTime firstTime = LocalDateTime.of(2018, 12, 11, 2, 33);
 		 PokerUserInfo entity = userSetUp(firstTime);
 	  moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.PLAYER);
-	  PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
-	  assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(1100));
+	  Money money = moneyRepository.getMoney(entity.getUserId());
+	  assertThat(money.getMoney()).isEqualTo(new BigDecimal(1100));
 	  assertThat(money.getUpdateDate()).isNotEqualTo(firstTime);
 	}
 
 	@Test
-	public void CPUWinner() throws UserNameDuplicateException {
+	public void CPUWinner() throws UserNameDuplicateException, NotFoundMoneyException {
 		 LocalDateTime firstTime = LocalDateTime.of(2018, 12, 11, 2, 33);
 		 PokerUserInfo entity = userSetUp(firstTime);
 		 moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.CPU);
-		 PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
-		 assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(900));
+		 Money money = moneyRepository.getMoney(entity.getUserId());
+		 assertThat(money.getMoney()).isEqualTo(new BigDecimal(900));
 		 assertThat(money.getUpdateDate()).isNotEqualTo(firstTime);
 	}
 
 	@Test
-	public void draw() throws UserNameDuplicateException {
+	public void draw() throws UserNameDuplicateException, NotFoundMoneyException {
 		 LocalDateTime firstTime = LocalDateTime.of(2018, 12, 11, 2, 33);
 		 PokerUserInfo entity = userSetUp(firstTime);
 	  moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.NOTHING);
-	  PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
-	  assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(1000));
+	  Money money = moneyRepository.getMoney(entity.getUserId());
+	  assertThat(money.getMoney()).isEqualTo(new BigDecimal(1000));
 	  assertThat(money.getUpdateDate()).isNotEqualTo(firstTime);
 	}
 
@@ -106,9 +107,9 @@ public class BetTest {
 		   pokerUserInfo.uniqueBy("テストユーザー");
 		   pokerUserInfoBhv.delete(pokerUserInfo);
    }
-		 userRepository.insert("テストユーザー", "test");
+		 userRepository.insert(new User("テストユーザー", "test"));
 		 PokerUserInfo entity = userRepository.getPokerUserByUsername("テストユーザー").get();
-		 moneyRepository.save(entity.getUserId(), 1000, time);
+		 moneyRepository.save(new Money(entity.getUserId(), new BigDecimal(1000), time));
 		 return entity;
 	}
 
