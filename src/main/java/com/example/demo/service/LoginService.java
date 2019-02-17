@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 
@@ -7,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dbflute.exentity.PokerUserInfo;
-import com.example.demo.dbflute.exentity.PossessionMoney;
+import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.User;
+import com.example.demo.dto.UserDto;
+import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.exception.NotMatchLoginUserException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.repository.UserRepository;
@@ -23,7 +26,7 @@ public class LoginService {
 	private MoneyRepository moneyRepository;
 
 	// ログインする
-	public User login(String username, String password) throws NotMatchLoginUserException {
+	public UserDto login(String username, String password) throws NotMatchLoginUserException, NotFoundMoneyException {
 
 		 // 合致するユーザーが存在しなければ、例外を投げる。
 	  PokerUserInfo entity =	userRepository.getPokerUserByUsernameAndPassword(username, password)
@@ -41,16 +44,23 @@ public class LoginService {
    Calendar loginTime = Calendar.getInstance();;
    loginTime.set(loginDate.getYear(), loginDate.getMonthValue() - 1, loginDate.getDayOfMonth());
 
+   boolean isFirstLogin = false;
    if(nowTime.compareTo(loginTime) != 0) {
-   	PossessionMoney money = moneyRepository.getMoney(user.getUserId()).get();
+   	Money money = moneyRepository.getMoney(user.getUserId());
+   	money.plusMoney(new BigDecimal(100));
    	// ログインがその日初めてならば、所持金を100円増やす。
-   	moneyRepository.save(user.getUserId(), money.getPossessionMoney().intValue() + 100, LocalDateTime.now());
+   	moneyRepository.save(money);
+   	isFirstLogin = true;
    }
 
    // ログイン日時を更新
-   userRepository.update(user.getUserId(), user.getUserName(), user.getPassword(), LocalDateTime.now());
+   userRepository.update(new User(user.getUserId(), user.getUserName(), user.getPassword(), LocalDateTime.now()));
 
-	  return user;
+	  return UserDto.builder()
+	  		        .userId(user.getUserId())
+	  		        .userName(user.getUserName())
+	  		        .isFirstLogin(isFirstLogin)
+	  		        .build();
 
 	}
 

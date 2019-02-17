@@ -15,8 +15,10 @@ import com.example.demo.controller.LoginController;
 import com.example.demo.dbflute.exbhv.PokerUserInfoBhv;
 import com.example.demo.dbflute.exbhv.PossessionMoneyBhv;
 import com.example.demo.dbflute.exentity.PokerUserInfo;
-import com.example.demo.dbflute.exentity.PossessionMoney;
 import com.example.demo.domain.model.LoginSession;
+import com.example.demo.domain.model.Money;
+import com.example.demo.domain.model.User;
+import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.exception.NotMatchLoginUserException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.repository.UserRepository;
@@ -44,7 +46,7 @@ public class LoginTest {
 	public PossessionMoneyBhv possessionMoneyBhv;
 
 	@Test
-	public void success() throws NotMatchLoginUserException {
+	public void success() throws NotMatchLoginUserException, NotFoundMoneyException {
 
 		String userName = "ログインテストユーザー";
 		String password = "test";
@@ -54,17 +56,17 @@ public class LoginTest {
 		loginController.login(userName, password);
 
 		PokerUserInfo afterLogin = userRepository.getPokerUserByUsername(userName).get();
-		PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
+		Money money = moneyRepository.getMoney(entity.getUserId());
 		LoginSession session = loginController.loginSession;
 
 		assertThat(session.getUserId().get()).isEqualTo(entity.getUserId());
 		assertThat(session.getUserName().get()).isEqualTo(entity.getUserName());
 		assertThat(afterLogin.getLoginDate()).isNotNull();
-		assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(1100));
+		assertThat(money.getMoney()).isEqualTo(new BigDecimal(1100));
 	}
 
 	@Test
-	public void alreadyLogin() throws NotMatchLoginUserException {
+	public void alreadyLogin() throws NotMatchLoginUserException, NotFoundMoneyException {
 
 		String userName = "既にログインユーザー";
 		String password = "test";
@@ -73,15 +75,15 @@ public class LoginTest {
 
 		loginController.login(userName, password);
 
-		PossessionMoney money = moneyRepository.getMoney(entity.getUserId()).get();
+		Money money = moneyRepository.getMoney(entity.getUserId());
 
-		assertThat(money.getPossessionMoney()).isEqualTo(new BigDecimal(1000));
+		assertThat(money.getMoney()).isEqualTo(new BigDecimal(1000));
 
 	}
 
 
 	@Test(expected = NotMatchLoginUserException.class)
-	public void unMatchingUser() throws NotMatchLoginUserException {
+	public void unMatchingUser() throws NotMatchLoginUserException, NotFoundMoneyException {
 		loginController.login("マッチしないユーザー", "noMatch");
 	}
 
@@ -92,10 +94,10 @@ public class LoginTest {
 		 pokerUserInfo.uniqueBy(userName);
 		 pokerUserInfoBhv.delete(pokerUserInfo);
 		}
-		userRepository.insert(userName, password);
+		userRepository.insert(new User(userName, password));
 		PokerUserInfo entity = userRepository.getPokerUserByUsername(userName).get();
-		moneyRepository.save(entity.getUserId(), 1000, LocalDateTime.now());
-		userRepository.update(entity.getUserId(), entity.getUserName(), entity.getPassword(), LocalDateTime.of(2018, 12, 11, 2, 33));
+		moneyRepository.save(new Money(entity.getUserId(), new BigDecimal(1000), LocalDateTime.now()));
+		userRepository.update(new User(entity.getUserId(), entity.getUserName(), entity.getPassword(), LocalDateTime.of(2018, 12, 11, 2, 33)));
 
 	return entity;
 
@@ -107,10 +109,10 @@ public class LoginTest {
 		 pokerUserInfo.uniqueBy(userName);
 		 pokerUserInfoBhv.delete(pokerUserInfo);
 		}
-		userRepository.insert(userName, password);
+		userRepository.insert(new User(userName, password));
 		PokerUserInfo entity = userRepository.getPokerUserByUsername(userName).get();
-		moneyRepository.save(entity.getUserId(), 1000, LocalDateTime.now());
-		userRepository.update(entity.getUserId(), entity.getUserName(), entity.getPassword(), LocalDateTime.now());
+		moneyRepository.save(new Money(entity.getUserId(), new BigDecimal(1000), LocalDateTime.now()));
+		userRepository.update(new User(entity.getUserId(), entity.getUserName(), entity.getPassword(), LocalDateTime.now()));
 
 		return entity;
 
