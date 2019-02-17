@@ -83,7 +83,7 @@ public class PokerController {
 	// 勝者に応じて所持金を更新するリクエストに反応する。
 	@PostMapping("/result")
 	@ResponseBody
-	public Money result(BigDecimal betMoney, Winner winner) throws LoginSessionTimeOutException {
+	public Money result(BigDecimal betMoney, Winner winner) throws LoginSessionTimeOutException, NotFoundMoneyException {
 
 		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
    throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");

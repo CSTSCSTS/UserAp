@@ -1,11 +1,9 @@
 package com.example.demo.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.math.BigDecimal;
 
-import org.dbflute.optional.OptionalEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.example.demo.dbflute.exbhv.PokerUserInfoBhv;
 import com.example.demo.dbflute.exbhv.PossessionMoneyBhv;
 import com.example.demo.dbflute.exentity.PokerUserInfo;
-import com.example.demo.dbflute.exentity.PossessionMoney;
+import com.example.demo.domain.model.Money;
+import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.exception.UserNameDuplicateException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.repository.UserRepository;
@@ -40,7 +39,7 @@ public class UserRegisterTest {
 	public PossessionMoneyBhv possessionMoneyBhv;
 
 		@Test
-		public void success() throws UserNameDuplicateException {
+		public void success() throws UserNameDuplicateException, NotFoundMoneyException {
 
 			// テストユーザーが既に存在するなら、削除
 			if(userRepository.getPokerUserByUsername("テストユーザー").isPresent()) {
@@ -51,12 +50,11 @@ public class UserRegisterTest {
 
 			sut.resister("テストユーザー", "test");
 			PokerUserInfo entity = userRepository.getPokerUserByUsername("テストユーザー").get();
-			OptionalEntity<PossessionMoney> moneyEntity = moneyRepository.getMoney(entity.getUserId());
+			Money moneyEntity = moneyRepository.getMoney(entity.getUserId());
 			assertThat(entity.getUserName()).isEqualTo("テストユーザー");
 			assertThat(entity.getLoginDate()).isNotNull();
-			assertTrue(moneyEntity.isPresent());
-			assertThat(moneyEntity.get().getPossessionMoney()).isEqualTo(new BigDecimal(1000));
-			assertThat(moneyEntity.get().getUpdateDate()).isNotNull();
+			assertThat(moneyEntity.getMoney()).isEqualTo(new BigDecimal(1000));
+			assertThat(moneyEntity.getUpdateDate()).isNotNull();
 		}
 
 		@Test(expected = UserNameDuplicateException.class)

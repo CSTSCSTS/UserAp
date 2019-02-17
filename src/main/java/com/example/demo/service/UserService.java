@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dbflute.exentity.PokerUserInfo;
+import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.User;
 import com.example.demo.exception.UserNameDuplicateException;
 import com.example.demo.repository.MoneyRepository;
@@ -24,18 +26,21 @@ public class UserService {
 	public User resister(String userName, String password) throws UserNameDuplicateException {
 
 		// ユーザー名重複チェック
-		if(userRepository.getPokerUserByUsername(userName).isPresent()) {
+		if(userRepository.userNameIsDuplicate(userName)) {
 		  throw new UserNameDuplicateException("ユーザー名が重複しています。");
 		}
 
 		// ユーザー情報をDBに保存する
-		userRepository.insert(userName, password);
+		User user = new User(userName, password);
+		userRepository.insert(new User(userName, password));
 
 		PokerUserInfo entity = userRepository.getPokerUserByUsername(userName).get();
 
 	 // 所持金情報をDBに保存する
-		moneyRepository.save(entity.getUserId(), 1000, LocalDateTime.now());
-		return new User(entity.getUserId(), entity.getUserName(), entity.getPassword(), entity.getLoginDate());
+		moneyRepository.save(new Money(entity.getUserId(), new BigDecimal(1000), LocalDateTime.now()));
+		user.setUserId(entity.getUserId());
+		user.setLoginDate(entity.getLoginDate());
+		return user;
 
 	}
 

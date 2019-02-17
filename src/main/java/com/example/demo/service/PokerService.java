@@ -10,13 +10,14 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dbflute.exentity.PossessionMoney;
 import com.example.demo.domain.model.Card;
+import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.PokerPlayingInfo;
 import com.example.demo.domain.model.PokerPlayingInfo.Winner;
 import com.example.demo.domain.model.Role;
 import com.example.demo.domain.model.checker.Checker;
 import com.example.demo.exception.IllegalBetException;
+import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.util.PokerUtil;
 
@@ -27,11 +28,11 @@ public class PokerService {
 	 public MoneyRepository moneyRepository;
 
 // ベット額が所持金を超えていないことを確認後、ポーカーの初期情報を返す
-	public PokerPlayingInfo pokerPrepare(int userId, BigDecimal betMoney, boolean jokerIncluded) throws IllegalBetException {
+	public PokerPlayingInfo pokerPrepare(int userId, BigDecimal betMoney, boolean jokerIncluded) throws IllegalBetException, NotFoundMoneyException {
 
-		PossessionMoney money = moneyRepository.getMoney(userId).get();
+		Money money = moneyRepository.getMoney(userId);
 		// ベット額が所持金を超えている場合、例外を投げる
-		if(betMoney.compareTo(money.getPossessionMoney()) > 0) {
+		if(betMoney.compareTo(money.getMoney()) > 0) {
 		  throw new IllegalBetException("ベット額が所持金を超えています。");
 		}
 

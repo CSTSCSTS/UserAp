@@ -1,6 +1,5 @@
 package com.example.demo.repository;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +14,7 @@ import com.example.demo.dbflute.exentity.PokerUserInfo;
 import com.example.demo.dbflute.exentity.customize.Select;
 import com.example.demo.domain.model.MoneyRanking;
 import com.example.demo.domain.model.MoneyRanking.MoneyRankingItem;
+import com.example.demo.domain.model.User;
 
 @Component
 public class UserRepository {
@@ -56,6 +56,7 @@ public class UserRepository {
 
 	}
 
+
 	// ユーザー名が重複しているか判定する
 	public boolean userNameIsDuplicate(String username) {
 		return pokerUserInfoBhv.selectEntity(cb ->
@@ -64,21 +65,21 @@ public class UserRepository {
 	}
 
 	 // ユーザー情報を登録
-	 public void insert(String username, String password) {
+	 public void insert(User user) {
 		  PokerUserInfo pokerUserInfo = new PokerUserInfo();
-		  pokerUserInfo.setUserName(username);
-		  pokerUserInfo.setPassword(password);
+		  pokerUserInfo.setUserName(user.getUserName());
+		  pokerUserInfo.setPassword(user.getPassword());
 		  pokerUserInfoBhv.insert(pokerUserInfo);
 	 }
 
 
   //ユーザー情報を更新
-	 public void update(int userId, String username, String password, LocalDateTime loginDate) {
+	 public void update(User user) {
 		  PokerUserInfo pokerUserInfo = new PokerUserInfo();
-		  pokerUserInfo.setUserId(userId);
-		  pokerUserInfo.setUserName(username);
-		  pokerUserInfo.setPassword(password);
-		  pokerUserInfo.setLoginDate(loginDate);
+		  pokerUserInfo.setUserId(user.getUserId());
+		  pokerUserInfo.setUserName(user.getUserName());
+		  pokerUserInfo.setPassword(user.getPassword());
+		  pokerUserInfo.setLoginDate(user.getLoginDate());
 		  pokerUserInfoBhv.update(pokerUserInfo);
   }
 
