@@ -1,12 +1,12 @@
 package com.example.demo.service;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.constants.PokerConstants;
 import com.example.demo.dbflute.exentity.PokerUserInfo;
 import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.User;
@@ -37,7 +37,6 @@ public class LoginService {
    LocalDateTime now = LocalDateTime.now();
    LocalDateTime loginDate = user.getLoginDate();
 
-   // 現在日時とログイン日時を比較して、ログインがその日初めてかどうか確認
    Calendar nowTime = Calendar.getInstance();
    nowTime.set(now.getYear(), now.getMonthValue() - 1, now.getDayOfMonth());
 
@@ -45,10 +44,11 @@ public class LoginService {
    loginTime.set(loginDate.getYear(), loginDate.getMonthValue() - 1, loginDate.getDayOfMonth());
 
    boolean isFirstLogin = false;
+   // 現在日時とログイン日時を比較して、ログインがその日初めてかどうか確認
    if(nowTime.compareTo(loginTime) != 0) {
    	Money money = moneyRepository.getMoney(user.getUserId());
-   	money.plusMoney(new BigDecimal(100));
    	// ログインがその日初めてならば、所持金を100円増やす。
+   	money.plusMoney(PokerConstants.LOGIN_BONUS);
    	moneyRepository.save(money);
    	isFirstLogin = true;
    }

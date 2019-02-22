@@ -1,11 +1,11 @@
 package com.example.demo.service;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.constants.PokerConstants;
 import com.example.demo.dbflute.exentity.PokerUserInfo;
 import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.User;
@@ -37,7 +37,7 @@ public class UserService {
 		PokerUserInfo entity = userRepository.getPokerUserByUsername(userName).get();
 
 	 // 所持金情報をDBに保存する
-		moneyRepository.save(new Money(entity.getUserId(), new BigDecimal(1000), LocalDateTime.now()));
+		moneyRepository.save(new Money(entity.getUserId(), PokerConstants.USER_REGISTER_BOUNS, LocalDateTime.now()));
 		user.setUserId(entity.getUserId());
 		user.setLoginDate(entity.getLoginDate());
 		return user;
