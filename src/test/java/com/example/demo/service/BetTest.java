@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.example.demo.constants.PokerConstants;
 import com.example.demo.dbflute.exbhv.PokerUserInfoBhv;
 import com.example.demo.dbflute.exbhv.PossessionMoneyBhv;
 import com.example.demo.dbflute.exentity.PokerUserInfo;
@@ -109,7 +110,7 @@ public class BetTest {
    }
 		 userRepository.insert(new User("テストユーザー", "test"));
 		 PokerUserInfo entity = userRepository.getPokerUserByUsername("テストユーザー").get();
-		 moneyRepository.save(new Money(entity.getUserId(), new BigDecimal(1000), time));
+		 moneyRepository.save(new Money(entity.getUserId(), PokerConstants.USER_REGISTER_BOUNS, time));
 		 return entity;
 	}
 
