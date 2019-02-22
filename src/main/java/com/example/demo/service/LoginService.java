@@ -41,7 +41,7 @@ public class LoginService {
    Calendar nowTime = Calendar.getInstance();
    nowTime.set(now.getYear(), now.getMonthValue() - 1, now.getDayOfMonth());
 
-   Calendar loginTime = Calendar.getInstance();;
+   Calendar loginTime = Calendar.getInstance();
    loginTime.set(loginDate.getYear(), loginDate.getMonthValue() - 1, loginDate.getDayOfMonth());
 
    boolean isFirstLogin = false;
