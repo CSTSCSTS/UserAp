@@ -14,7 +14,6 @@ import com.example.demo.dbflute.exbhv.PokerUserInfoBhv;
 import com.example.demo.dbflute.exbhv.PossessionMoneyBhv;
 import com.example.demo.dbflute.exentity.PokerUserInfo;
 import com.example.demo.domain.model.Money;
-import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.exception.UserNameDuplicateException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.repository.UserRepository;
@@ -39,7 +38,7 @@ public class UserRegisterTest {
 	public PossessionMoneyBhv possessionMoneyBhv;
 
 		@Test
-		public void success() throws UserNameDuplicateException, NotFoundMoneyException {
+		public void success() throws UserNameDuplicateException {
 
 			// テストユーザーが既に存在するなら、削除
 			if(userRepository.getPokerUserByUsername("テストユーザー").isPresent()) {

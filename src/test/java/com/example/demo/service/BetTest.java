@@ -20,7 +20,6 @@ import com.example.demo.domain.model.PokerPlayingInfo;
 import com.example.demo.domain.model.PokerPlayingInfo.Winner;
 import com.example.demo.domain.model.User;
 import com.example.demo.exception.IllegalBetException;
-import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.exception.UserNameDuplicateException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.repository.UserRepository;
@@ -51,7 +50,7 @@ public class BetTest {
 	public PossessionMoneyBhv possessionMoneyBhv;
 
 	@Test
-	public void success() throws UserNameDuplicateException, IllegalBetException, NotFoundMoneyException {
+	public void success() throws UserNameDuplicateException, IllegalBetException {
 		 PokerUserInfo entity = userSetUp(LocalDateTime.now());
    PokerPlayingInfo info = pokerService.pokerPrepare(entity.getUserId(), new BigDecimal(100), true);
    assertThat(info.getDeck().size()).isEqualTo(43);
@@ -61,18 +60,13 @@ public class BetTest {
 	}
 
 	@Test(expected = IllegalBetException.class)
-	public void moneyExceeded() throws UserNameDuplicateException, IllegalBetException, NotFoundMoneyException {
+	public void moneyExceeded() throws UserNameDuplicateException, IllegalBetException {
 		 PokerUserInfo entity = userSetUp(LocalDateTime.now());
 		 pokerService.pokerPrepare(entity.getUserId(), new BigDecimal(10000), true);
 	}
 
-	@Test(expected = NotFoundMoneyException.class)
-	public void moneyNotFound() throws NotFoundMoneyException {
-   moneyService.getMoney(0);
-	}
-
 	@Test
-	public void playerWinner() throws UserNameDuplicateException, NotFoundMoneyException {
+	public void playerWinner() throws UserNameDuplicateException {
 		 LocalDateTime firstTime = LocalDateTime.of(2018, 12, 11, 2, 33);
 		 PokerUserInfo entity = userSetUp(firstTime);
 	  moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.PLAYER);
@@ -82,7 +76,7 @@ public class BetTest {
 	}
 
 	@Test
-	public void CPUWinner() throws UserNameDuplicateException, NotFoundMoneyException {
+	public void CPUWinner() throws UserNameDuplicateException {
 		 LocalDateTime firstTime = LocalDateTime.of(2018, 12, 11, 2, 33);
 		 PokerUserInfo entity = userSetUp(firstTime);
 		 moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.CPU);
@@ -92,7 +86,7 @@ public class BetTest {
 	}
 
 	@Test
-	public void draw() throws UserNameDuplicateException, NotFoundMoneyException {
+	public void draw() throws UserNameDuplicateException {
 		 LocalDateTime firstTime = LocalDateTime.of(2018, 12, 11, 2, 33);
 		 PokerUserInfo entity = userSetUp(firstTime);
 	  moneyService.update(entity.getUserId(), new BigDecimal(100), Winner.NOTHING);

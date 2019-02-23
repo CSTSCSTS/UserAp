@@ -17,7 +17,6 @@ import com.example.demo.domain.model.PokerPlayingInfo.Winner;
 import com.example.demo.domain.model.Role;
 import com.example.demo.domain.model.checker.Checker;
 import com.example.demo.exception.IllegalBetException;
-import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.util.PokerUtil;
 
@@ -28,7 +27,7 @@ public class PokerService {
 	 public MoneyRepository moneyRepository;
 
 // ベット額が所持金を超えていないことを確認後、ポーカーの初期情報を返す
-	public PokerPlayingInfo pokerPrepare(int userId, BigDecimal betMoney, boolean jokerIncluded) throws IllegalBetException, NotFoundMoneyException {
+	public PokerPlayingInfo pokerPrepare(int userId, BigDecimal betMoney, boolean jokerIncluded) throws IllegalBetException {
 
 		Money money = moneyRepository.getMoney(userId);
 		// ベット額が所持金を超えている場合、例外を投げる

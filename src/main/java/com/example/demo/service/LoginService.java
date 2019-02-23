@@ -11,7 +11,6 @@ import com.example.demo.dbflute.exentity.PokerUserInfo;
 import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.User;
 import com.example.demo.dto.UserDto;
-import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.exception.NotMatchLoginUserException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.repository.UserRepository;
@@ -26,7 +25,7 @@ public class LoginService {
 	private MoneyRepository moneyRepository;
 
 	// ログインする
-	public UserDto login(String username, String password) throws NotMatchLoginUserException, NotFoundMoneyException {
+	public UserDto login(String username, String password) throws NotMatchLoginUserException {
 
 		 // 合致するユーザーが存在しなければ、例外を投げる。
 	  PokerUserInfo entity =	userRepository.getPokerUserByUsernameAndPassword(username, password)

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.domain.model.LoginSession;
 import com.example.demo.dto.UserDto;
-import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.exception.NotMatchLoginUserException;
 import com.example.demo.service.LoginService;
 
@@ -32,7 +31,7 @@ public class LoginController {
 	// リクエストで送られてきたユーザー名・パスワードをログイン処理を行う
 	@PostMapping("/login")
 	@ResponseBody
-	public UserDto login(String userName, String password) throws NotMatchLoginUserException, NotFoundMoneyException {
+	public UserDto login(String userName, String password) throws NotMatchLoginUserException {
 		UserDto user = loginService.login(userName, password);
 
 		// セッションオブジェクトにログインユーザーの情報を格納

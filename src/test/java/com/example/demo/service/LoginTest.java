@@ -19,7 +19,6 @@ import com.example.demo.dbflute.exentity.PokerUserInfo;
 import com.example.demo.domain.model.LoginSession;
 import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.User;
-import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.exception.NotMatchLoginUserException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.repository.UserRepository;
@@ -47,7 +46,7 @@ public class LoginTest {
 	public PossessionMoneyBhv possessionMoneyBhv;
 
 	@Test
-	public void success() throws NotMatchLoginUserException, NotFoundMoneyException {
+	public void success() throws NotMatchLoginUserException {
 
 		String userName = "ログインテストユーザー";
 		String password = "test";
@@ -67,7 +66,7 @@ public class LoginTest {
 	}
 
 	@Test
-	public void alreadyLogin() throws NotMatchLoginUserException, NotFoundMoneyException {
+	public void alreadyLogin() throws NotMatchLoginUserException {
 
 		String userName = "既にログインユーザー";
 		String password = "test";
@@ -84,7 +83,7 @@ public class LoginTest {
 
 
 	@Test(expected = NotMatchLoginUserException.class)
-	public void unMatchingUser() throws NotMatchLoginUserException, NotFoundMoneyException {
+	public void unMatchingUser() throws NotMatchLoginUserException {
 		loginController.login("マッチしないユーザー", "noMatch");
 	}
 

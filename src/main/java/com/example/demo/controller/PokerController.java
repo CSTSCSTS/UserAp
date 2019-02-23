@@ -17,7 +17,6 @@ import com.example.demo.domain.model.PokerPlayingInfo;
 import com.example.demo.domain.model.PokerPlayingInfo.Winner;
 import com.example.demo.exception.IllegalBetException;
 import com.example.demo.exception.LoginSessionTimeOutException;
-import com.example.demo.exception.NotFoundMoneyException;
 import com.example.demo.service.MoneyService;
 import com.example.demo.service.PokerService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -38,7 +37,7 @@ public class PokerController {
 	// ベット画面を表示する
 	@GetMapping("/bet")
 	@ResponseBody
-	public Money getMoney() throws LoginSessionTimeOutException, NotFoundMoneyException {
+	public Money getMoney() throws LoginSessionTimeOutException {
 
 		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
     throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
@@ -50,7 +49,7 @@ public class PokerController {
 	// ポーカーの初期情報(山札・プレイヤーとCPUの手札)を返す。
 	@PostMapping("/config")
 	@ResponseBody
-	public PokerPlayingInfo postPokerStart(BigDecimal betMoney, boolean jokerIncluded) throws LoginSessionTimeOutException, IllegalBetException, NotFoundMoneyException {
+	public PokerPlayingInfo postPokerStart(BigDecimal betMoney, boolean jokerIncluded) throws LoginSessionTimeOutException, IllegalBetException {
 
 		 if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
      throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
@@ -83,7 +82,7 @@ public class PokerController {
 	// 勝者に応じて所持金を更新するリクエストに反応する。
 	@PostMapping("/result")
 	@ResponseBody
-	public Money result(BigDecimal betMoney, Winner winner) throws LoginSessionTimeOutException, NotFoundMoneyException {
+	public Money result(BigDecimal betMoney, Winner winner) throws LoginSessionTimeOutException {
 
 		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
    throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
