@@ -33,6 +33,8 @@ class UserRegister extends Component {
 
 	handleSubmit(e) {
 
+		const USER_NAME_MAX_LENGTH = 255;
+		const PASSWORD_MAX_LENGTH = 255;
 		// リクエスト前に必須チェック・文字数チェック・パスワード一致チェックを実施
 		var errorList = [];
 		// 必須チェック
@@ -40,8 +42,8 @@ class UserRegister extends Component {
 		this.nullOrEmptyCheck(errorList, this.state.password, "パスワードが未入力です。");
 		this.nullOrEmptyCheck(errorList, this.state.confirmationPassword, "パスワード(確認)が未入力です。");
 		// 文字数チェック
-		this.lengthOverCheck(errorList, this.state.userName, 255, "ユーザー名が255文字を超えています。");
-		this.lengthOverCheck(errorList, this.state.password, 255, "パスワードが255文字を超えています。");
+		this.lengthOverCheck(errorList, this.state.userName, USER_NAME_MAX_LENGTH, "ユーザー名が255文字を超えています。");
+		this.lengthOverCheck(errorList, this.state.password, PASSWORD_MAX_LENGTH, "パスワードが255文字を超えています。");
 		// パスワード一致チェック
 		this.passwordSameCheck(errorList, this.state.password, this.state.confirmationPassword);
 
