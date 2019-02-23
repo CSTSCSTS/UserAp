@@ -24,7 +24,7 @@ class Bet extends Component {
 		// 必須チェック
 		this.nullOrEmptyCheck(errorList, this.state.betMoney, "ベット額が未入力です。");
 		// 0円チェック
-		this.inputValueIsZeroCheck(errorList, this.state.betMoney, "ベット額が0円です。");
+		this.inputValueIsZeroCheck(errorList, this.state.betMoney, "ベット額は1円以上になるように入力してください。");
 
     if(errorList.length != 0) {
       this.setState({errorMessage: errorList});
