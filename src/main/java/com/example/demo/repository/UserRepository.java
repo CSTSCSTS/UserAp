@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dbflute.exception.SQLFailureException;
 import org.dbflute.optional.OptionalEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,23 +28,42 @@ public class UserRepository {
 
 	// ユーザー名でユーザーを取得する
 	public OptionalEntity<PokerUserInfo> getPokerUserByUsername(String username) {
-	  return  pokerUserInfoBhv.selectEntity(cb ->
-	    cb.query().setUserName_Equal(username)
-	  );
-  }
+		OptionalEntity<PokerUserInfo> optEntity;
+		 try {
+		 	optEntity = pokerUserInfoBhv.selectEntity(cb ->
+       cb.query().setUserName_Equal(username)
+     );
+	  } catch(SQLFailureException e) {
+		    throw new SQLFailureException(e.getMessage(), e.getSQLException());
+	  }
+		 return optEntity;
+ }
 
 	// ユーザー名・パスワードでユーザーを取得する
 	public OptionalEntity<PokerUserInfo> getPokerUserByUsernameAndPassword(String username, String password) {
-  return pokerUserInfoBhv.selectEntity(cb -> {
-  	cb.query().setUserName_Equal(username);
-  	cb.query().setPassword_Equal(password);
-  });
+		OptionalEntity<PokerUserInfo> optEntity;
+		try {
+		 	optEntity = pokerUserInfoBhv.selectEntity(cb -> {
+		  	cb.query().setUserName_Equal(username);
+		  	cb.query().setPassword_Equal(password);
+		  });
+	  } catch(SQLFailureException e) {
+		    throw new SQLFailureException(e.getMessage(), e.getSQLException());
+	  }
+		 return optEntity;
  }
 
 	// ランキング情報を取得
-	public MoneyRanking getMoneyRanking() {
+	public MoneyRanking getMoneyRanking() throws SQLFailureException{
 
-		List<Select> outsideSqlResult = pokerUserInfoBhv.outsideSql().selectList(new SelectPmb()).getSelectedList();
+		List<Select> outsideSqlResult;
+		try {
+		  outsideSqlResult = pokerUserInfoBhv.outsideSql().selectList(new SelectPmb()).getSelectedList();
+  } catch(SQLFailureException e) {
+  		System.out.println("sqlエラー！！！！＝＝！－");
+ 	  throw new SQLFailureException(e.getMessage(), e.getSQLException());
+  }
+
 		List<MoneyRankingItem> moneyRankingList = new ArrayList<>();
 		outsideSqlResult.stream()
 				.map(t -> MoneyRankingItem.builder()
@@ -59,17 +79,27 @@ public class UserRepository {
 
 	// ユーザー名が重複しているか判定する
 	public boolean userNameIsDuplicate(String username) {
-		return pokerUserInfoBhv.selectEntity(cb ->
-		  cb.query().setUserName_Equal(username)
-		).isPresent();
+		OptionalEntity<PokerUserInfo> optEntity;
+	  try {
+	    optEntity = pokerUserInfoBhv.selectEntity(cb ->
+		    cb.query().setUserName_Equal(username)
+		  );
+	  } catch(SQLFailureException e) {
+	  	throw new SQLFailureException(e.getMessage(), e.getSQLException());
+	  }
+		return optEntity.isPresent();
 	}
 
 	 // ユーザー情報を登録
 	 public void insert(User user) {
-		  PokerUserInfo pokerUserInfo = new PokerUserInfo();
-		  pokerUserInfo.setUserName(user.getUserName());
-		  pokerUserInfo.setPassword(user.getPassword());
-		  pokerUserInfoBhv.insert(pokerUserInfo);
+		 	PokerUserInfo pokerUserInfo = new PokerUserInfo();
+		 	pokerUserInfo.setUserName(user.getUserName());
+		 	pokerUserInfo.setPassword(user.getPassword());
+	 	 try {
+	 	   pokerUserInfoBhv.insert(pokerUserInfo);
+	 	 } catch(SQLFailureException e) {
+      throw new SQLFailureException(e.getMessage(), e.getSQLException());
+	 	 }
 	 }
 
 
@@ -80,7 +110,11 @@ public class UserRepository {
 		  pokerUserInfo.setUserName(user.getUserName());
 		  pokerUserInfo.setPassword(user.getPassword());
 		  pokerUserInfo.setLoginDate(user.getLoginDate());
-		  pokerUserInfoBhv.update(pokerUserInfo);
-  }
+		  try {
+ 	   pokerUserInfoBhv.update(pokerUserInfo);
+ 	  } catch(SQLFailureException e) {
+     throw new SQLFailureException(e.getMessage(), e.getSQLException());
+				}
+		}
 
 }
