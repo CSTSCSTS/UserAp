@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import { withRouter } from 'react-router';
 import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import { Button, Container, Form, FormGroup, Input } from 'reactstrap';
+import { Button, Container, Form, FormGroup, Input, Navbar } from 'reactstrap';
 import Modal from "react-modal";
 
 
@@ -28,7 +28,12 @@ class CommonHeader extends Component {
 	    .get(url)
 	    .then(res => {
 	    	this.setState({isOpen: true, ranking: res.body});
-	    });
+	    })
+	    .catch(err => {
+	    	this.props.history.push({
+				  pathname: '/error'
+			  })
+			});
 
 	  }
 	// ランキングポップアップを閉じる
@@ -39,9 +44,11 @@ class CommonHeader extends Component {
 	render() {
     return (
       <div>
-        <div id="common-header">
-	        <Button id="rankingButton" onClick={this.handleToRanking.bind(this)}>ランキング表示をする</Button>
-	      </div>
+        <Navbar color="light" light expand="md">
+          <Form inline>
+            <Button id="rankingButton" onClick={this.handleToRanking.bind(this)}>ランキング表示をする</Button>
+          </Form>
+	      </Navbar>
 	      <Modal
 	        isOpen={this.state.isOpen}
 	      >
@@ -74,7 +81,7 @@ class Ranking extends Component{
 
     return (
       <div id="ranking">
-        <table border="1">
+        <table border="1" ailgn="center" width="1000" height="100">
           <th>順位</th>
           <th>ユーザー名</th>
           <th>所持金</th>

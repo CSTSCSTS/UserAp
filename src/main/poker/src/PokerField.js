@@ -113,6 +113,7 @@ class PokerField extends Component {
 	            pokerPhase={this.state.pokerPhase}
 	    	    />
 	    	    <PlayButton
+	    	      history={this.props.history}
 	    	      pokerPhase={this.state.pokerPhase}
 	            pokerPhaseChange={this.pokerPhaseChange}
 	            surrender={this.surrender}
@@ -321,9 +322,14 @@ class PlayButton extends Component {
        .send({betMoney: this.props.betMoney, winner: this.props.winner})
        .then(res => {
          this.props.pokerPhaseChange('AFTER_BATTLE');
-       });
-     }
-
+       })
+       .catch(
+         // システムエラー画面へ遷移
+         this.props.history.push({
+           pathname: '/error'
+         })
+       );
+   }
 
 	 handleToSurrender(e) {
      this.props.surrender();
@@ -343,7 +349,6 @@ class PlayButton extends Component {
 	      <Button onClick={this.handleToSurrender.bind(this)}>
 	        勝負しない
 	      </Button>
-
 	    </div>
     )
   }
@@ -392,7 +397,13 @@ class RetryButton extends Component {
           const pokerInfo = res.body;
           // stateを初期化する
           this.handleToRePlay();
-        });
+        })
+        // システムエラー画面へ遷移
+        .catch(
+      		this.props.history.push({
+  				  pathname: '/error'
+  			  })
+        );
       }
         handleToRePlay = () => {
           this.props.stateReset();

@@ -3,7 +3,8 @@ import './userRegister.css'
 import { withRouter } from 'react-router';
 import CommonHeader from './commonHeader'
 import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import { Button, Container, Form, FormGroup, Input } from 'reactstrap';
+import { Container, Row, Col, Form, Input, ButtonGroup, Button } from 'reactstrap';
+import { Grid, FormGroup } from 'react-bootstrap';
 
 
 class UserRegister extends Component {
@@ -62,10 +63,15 @@ class UserRegister extends Component {
 			  })
 	    })
 			.catch(err => {
+				if(err.response.body.exception === "org.dbflute.exception.SQLFailureException") {
+				  // システムエラー画面へ遷移
+      		this.props.history.push({
+  				  pathname: '/error'
+  			  })
+      	}
         errorList.push(err.response.body.message)
         this.setState({errorMessage: errorList})
 			});
-
 	  }
 
 	// キャンセルボタンをクリック
@@ -106,31 +112,47 @@ class UserRegister extends Component {
       <div>
         <CommonHeader />
       	<h2 id="title">茶 圓 ポ ー カ ー ユーザー登録</h2>
-      	<Container id="form">
-      	  <div>
-            {this.state.errorMessage.map((item) => (
-              <p class="text-danger">{item}</p>
-             ))}
-          </div>
-	      <Form id="frame">
-  	      <FormGroup>
-            <label>ユーザー名入力</label>
-            <Input type="text" onChange={this.usernameHandleChange.bind(this)}></Input>
-          </FormGroup>
-          <FormGroup>
-            <label>パスワード入力</label>
-            <Input type="password" onChange={this.passwordHandleChange.bind(this)}></Input>
-          </FormGroup>
-          <FormGroup>
-            <label>パスワード(確認)入力</label>
-            <Input type="password" onChange={this.confirmationPasswordHandleChange.bind(this)}></Input>
-          </FormGroup>
-          <div>
-  	    	  <Button color="primary" size="lg" block onClick={this.handleSubmit.bind(this)}>登録</Button>
-  	    	  <Button color="primary" size="lg" block onClick={this.handleCancel.bind(this)}>キャンセル</Button>
-  	    	</div>
-	      </Form>
-	    </Container>
+      	<Container>
+      	  <Row>
+      	  <Col sm="12" md={{ size: 6, offset: 3 }}>
+        	    <div>
+                {this.state.errorMessage.map((item) => (
+                  <p class="alert alert-danger">{item}</p>
+                 ))}
+              </div>
+              </Col>
+              </Row>
+    	      <form id="frame">
+    	        <Row>
+    	          <Col sm="12" md={{ size: 6, offset: 3 }}>
+    	          	<FormGroup>
+    	          	<label>ユーザー名入力</label>
+    	          	<Input type="text" onChange={this.usernameHandleChange.bind(this)}></Input>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+  	          <Col sm="12" md={{ size: 6, offset: 3 }}>
+              <FormGroup>
+                <label>パスワード入力</label>
+                <Input type="password" onChange={this.passwordHandleChange.bind(this)}></Input>
+              </FormGroup>
+              </Col>
+              </Row>
+              <Row>
+  	          <Col sm="12" md={{ size: 6, offset: 3 }}>
+              <FormGroup>
+                <label>パスワード(確認)入力</label>
+                <Input type="password" onChange={this.confirmationPasswordHandleChange.bind(this)}></Input>
+              </FormGroup>
+              </Col>
+              </Row>
+              <ButtonGroup id="user_register_buttons">
+      	    	    <Button color="primary" onClick={this.handleSubmit.bind(this)}>登録</Button>
+      	    	    <Button color="primary" onClick={this.handleCancel.bind(this)}>キャンセル</Button>
+      	    	</ButtonGroup>
+    	      </form>
+    	      </Container>
 	  </div>
     );
   }

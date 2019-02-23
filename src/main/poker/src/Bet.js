@@ -45,6 +45,12 @@ class Bet extends Component {
 	    	this.props.updateBetMoney(this.state.betMoney);
 	    })
 	    .catch(err => {
+	    	if(err.response.body.exception === "org.dbflute.exception.SQLFailureException") {
+	    	// システムエラー画面へ遷移
+      		this.props.history.push({
+  				  pathname: '/error'
+  			  })
+      	}
         errorList.push(err.response.body.message)
         this.setState({errorMessage: errorList})
 			});
@@ -59,7 +65,7 @@ class Bet extends Component {
 		return errorList;
 	}
 
-　// 0円チェック
+  // 0円チェック
 	inputValueIsZeroCheck(errorList, value, errorMessage) {
 		if(value == 0) {
       errorList.push(errorMessage);
@@ -85,7 +91,7 @@ class Bet extends Component {
         <div>
           <Form>
 	          <FormGroup>
-	            <Input type="number" onChange={this.betMoneyHandleChange.bind(this)}></Input>
+	            <Input type="number" min="0" onChange={this.betMoneyHandleChange.bind(this)}></Input>
             </FormGroup>
 	    	    <Button onClick={this.handleSubmit.bind(this)}>ベット</Button>
           </Form>

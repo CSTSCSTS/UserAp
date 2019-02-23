@@ -26,7 +26,13 @@ class PokerStart extends Component {
     .responseType('text')
     .then(res => {
       this.handleToBet(res.body, this.state.jokerIncluded);
-    });
+    })
+    // システムエラー画面へ遷移
+    .catch(
+  		this.props.history.push({
+			  pathname: '/error'
+		  })
+    );
   }
     handleToBet = (body, jokerIncluded) => {
     	this.props.history.push({

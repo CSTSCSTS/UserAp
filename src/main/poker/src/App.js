@@ -5,6 +5,7 @@ import './App.css';
 import PokerField from './pokerField';
 import PokerStart from './pokerStart';
 import UserRegister from './userRegister'
+import SystemError from './systemError'
 import CommonHeader from './commonHeader'
 import Bet from './bet';
 import { withRouter } from 'react-router';
@@ -21,6 +22,7 @@ class App extends Component {
               <Route exact path={'/user'} component={UserRegister}/>
               <Route exact path={'/start'} component={PokerStart}/>
               <Route exact path={'/play'} component={PokerField}/>
+              <Route exact path={'/error'} component={SystemError}/>
             </Switch>
           </div>
         </BrowserRouter>
@@ -67,6 +69,12 @@ class Login extends Component {
       	});
       })
       .catch(err => {
+      	if(err.response.body.exception === "org.dbflute.exception.SQLFailureException") {
+        	// システムエラー画面へ遷移
+      		this.props.history.push({
+  				  pathname: '/error'
+  			  })
+      	}
         errorList.push(err.response.body.message)
         this.setState({errorMessage: errorList})
 			});
