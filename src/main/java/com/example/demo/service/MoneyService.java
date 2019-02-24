@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.constants.PokerConstants;
 import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.PokerPlayingInfo.Winner;
 import com.example.demo.repository.MoneyRepository;
@@ -20,6 +21,12 @@ public MoneyRepository moneyRepository;
 // 所持金を取得する
 public Money getMoney(int userId) {
 	 return moneyRepository.getMoney(userId);
+}
+
+public Money register(int userId) {
+		Money money = new Money(userId, PokerConstants.USER_REGISTER_BOUNS, LocalDateTime.now());
+		moneyRepository.save(money);
+		return money;
 }
 
 // 所持金を更新する
