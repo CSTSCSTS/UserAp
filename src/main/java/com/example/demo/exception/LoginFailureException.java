@@ -1,8 +1,8 @@
 package com.example.demo.exception;
 
-public class NotMatchLoginUserException extends Exception {
+public class LoginFailureException extends Exception {
 
-	public NotMatchLoginUserException(String msg){
+	public LoginFailureException(String msg){
 		super(msg);
 	}
 
