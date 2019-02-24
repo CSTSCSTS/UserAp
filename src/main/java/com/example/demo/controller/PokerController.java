@@ -3,8 +3,10 @@ package com.example.demo.controller;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,13 +36,16 @@ public class PokerController {
 	@Autowired
 	public LoginSession loginSession;
 
+	@Autowired
+	protected MessageSource messageSource;
+
 	// ベット画面を表示する
 	@GetMapping("/bet")
 	@ResponseBody
 	public Money getMoney() throws LoginSessionTimeOutException {
 
 		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
-    throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
+    throw new LoginSessionTimeOutException(messageSource.getMessage("login.session.timeout", null, Locale.JAPAN));
   }
 
 		return moneyService.getMoney(loginSession.getUserId().get());
@@ -52,7 +57,7 @@ public class PokerController {
 	public PokerPlayingInfo postPokerStart(BigDecimal betMoney, boolean jokerIncluded) throws LoginSessionTimeOutException, IllegalBetException {
 
 		 if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
-     throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
+     throw new LoginSessionTimeOutException(messageSource.getMessage("login.session.timeout", null, Locale.JAPAN));
 		 }
 		 return pokerService.pokerPrepare(loginSession.getUserId().get(), betMoney, jokerIncluded);
 	}
@@ -62,7 +67,7 @@ public class PokerController {
 	@ResponseBody
 	public PokerPlayingInfo handChange(String jsonPlayerHands, String jsonDeck, String jsonComputerHands) throws IOException, LoginSessionTimeOutException {
 		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
-   throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
+   throw new LoginSessionTimeOutException(messageSource.getMessage("login.session.timeout", null, Locale.JAPAN));
  }
 
 		ObjectMapper o = new ObjectMapper();
@@ -85,7 +90,7 @@ public class PokerController {
 	public Money result(BigDecimal betMoney, Winner winner) throws LoginSessionTimeOutException {
 
 		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
-   throw new LoginSessionTimeOutException("ログインセッションがタイムアウトしました");
+   throw new LoginSessionTimeOutException(messageSource.getMessage("login.session.timeout", null, Locale.JAPAN));
  }
 		 return moneyService.update(loginSession.getUserId().get(), betMoney , winner);
 	}

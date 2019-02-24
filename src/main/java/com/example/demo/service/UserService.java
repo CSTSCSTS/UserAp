@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.constants.PokerConstants;
@@ -22,12 +24,15 @@ public class UserService {
 	@Autowired
 	private MoneyRepository moneyRepository;
 
+	@Autowired
+	protected MessageSource messageSource;
+
 	// ユーザー登録を実施する。
 	public User resister(String userName, String password) throws UserNameDuplicateException {
 
 		// ユーザー名重複チェック
 		if(userRepository.userNameIsDuplicate(userName)) {
-		  throw new UserNameDuplicateException("ユーザー名が重複しています。");
+		  throw new UserNameDuplicateException(messageSource.getMessage("user.duplicate", null, Locale.JAPAN));
 		}
 
 		// ユーザー情報をDBに保存する

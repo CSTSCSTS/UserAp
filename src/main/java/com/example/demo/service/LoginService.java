@@ -2,8 +2,10 @@ package com.example.demo.service;
 
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.constants.PokerConstants;
@@ -24,12 +26,15 @@ public class LoginService {
 	@Autowired
 	private MoneyRepository moneyRepository;
 
+	@Autowired
+	protected MessageSource messageSource;
+
 	// ログインする
 	public UserDto login(String username, String password) throws NotMatchLoginUserException {
 
 		 // 合致するユーザーが存在しなければ、例外を投げる。
 	  PokerUserInfo entity =	userRepository.getPokerUserByUsernameAndPassword(username, password)
-	  		.orElseThrow(() -> new NotMatchLoginUserException("ログイン失敗"));
+	  		.orElseThrow(() -> new NotMatchLoginUserException(messageSource.getMessage("login.fali", null, Locale.JAPAN)));
 
 	  User user = new User(entity.getUserId(), entity.getUserName(), entity.getPassword(), entity.getLoginDate());
 

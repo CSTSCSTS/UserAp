@@ -4,10 +4,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.model.Card;
@@ -26,13 +28,16 @@ public class PokerService {
 	 @Autowired
 	 public MoneyRepository moneyRepository;
 
+	 @Autowired
+		protected MessageSource messageSource;
+
 // ベット額が所持金を超えていないことを確認後、ポーカーの初期情報を返す
 	public PokerPlayingInfo pokerPrepare(int userId, BigDecimal betMoney, boolean jokerIncluded) throws IllegalBetException {
 
 		Money money = moneyRepository.getMoney(userId);
 		// ベット額が所持金を超えている場合、例外を投げる
 		if(betMoney.compareTo(money.getMoney()) > 0) {
-		  throw new IllegalBetException("ベット額が所持金を超えています。");
+		  throw new IllegalBetException(messageSource.getMessage("illegal.bet", null, Locale.JAPAN));
 		}
 
 		// ポーカーの山札・プレイヤー・CPUの手札を返す
@@ -87,7 +92,7 @@ public class PokerService {
 	}
 
 	public Role roleCheck (List<Card> hands, Checker checker) {
-    return checker.check(hands).orElseThrow(() -> new RuntimeException("役がありません"));
+    return checker.check(hands).orElseThrow(() -> new RuntimeException(messageSource.getMessage("no.role", null, Locale.JAPAN)));
 	}
 
 	public List<Card> exchangeTargetDecision(Role currentCpuRole, List<Card> cpucards) {
