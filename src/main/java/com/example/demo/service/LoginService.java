@@ -13,7 +13,7 @@ import com.example.demo.dbflute.exentity.PokerUserInfo;
 import com.example.demo.domain.model.Money;
 import com.example.demo.domain.model.User;
 import com.example.demo.dto.UserDto;
-import com.example.demo.exception.NotMatchLoginUserException;
+import com.example.demo.exception.LoginFailureException;
 import com.example.demo.repository.MoneyRepository;
 import com.example.demo.repository.UserRepository;
 
@@ -30,11 +30,11 @@ public class LoginService {
 	protected MessageSource messageSource;
 
 	// ログインする
-	public UserDto login(String username, String password) throws NotMatchLoginUserException {
+	public UserDto login(String username, String password) throws LoginFailureException {
 
 		 // 合致するユーザーが存在しなければ、例外を投げる。
 	  PokerUserInfo entity =	userRepository.getPokerUserByUsernameAndPassword(username, password)
-	  		.orElseThrow(() -> new NotMatchLoginUserException(messageSource.getMessage("login.fali", null, Locale.JAPAN)));
+	  		.orElseThrow(() -> new LoginFailureException(messageSource.getMessage("login.fali", null, Locale.JAPAN)));
 
 	  User user = new User(entity.getUserId(), entity.getUserName(), entity.getPassword(), entity.getLoginDate());
 
