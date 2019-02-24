@@ -85,8 +85,8 @@ class Bet extends Component {
            <p>{item}</p>
           ))}
         </div>
-        <MoneyMessage
-          betMoney={this.props.location.state.betMoney.money}
+        <MoneyInfo
+          money={this.props.location.state.betMoney.money}
         />
         <div>
           <Form>
@@ -103,11 +103,11 @@ class Bet extends Component {
 }
 
 
-class MoneyMessage extends Component {
+class MoneyInfo extends Component {
   render() {
     return (
       <div>
-        現在の所持金: {this.props.betMoney}円
+        現在の所持金: {this.props.money}円
       </div>
     );
   }
