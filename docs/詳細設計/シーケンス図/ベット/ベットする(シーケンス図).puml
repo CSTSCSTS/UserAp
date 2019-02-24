@@ -47,23 +47,23 @@ alt 勝負する
   ユーザー -> handlePlaySubmit : 勝負するボタンをクリック
   handlePlaySubmit -> MoneyController : 所持金更新のためのPOSTリクエスト
   note right: Controllerは以下の情報を受け取る\n・ベット指定額\n・勝者はだれか(PLAYER or CPU or NOTHING)
-  MoneyController -> MoneyService : possession_money update(int userId, BigDecimal betMoney, Winner winner);
+  MoneyController -> MoneyService : Money update(int userId, BigDecimal betMoney, Winner winner);
   MoneyService -> MoneyRepository : Money getMoney(int userId)
   note right : 所持金情報を取得
   MoneyRepository -> possession_money : SELECT
-  MoneyRepository --> MoneyService : return possession_money
+  MoneyRepository --> MoneyService : return money
   alt プレイヤーが勝者
     MoneyService -> Money : void plusMoney(BigDecimal betMoney)
     note right : ベット額だけ所持金を増やす
     MoneyService -> MoneyRepository : save(Money money)
     MoneyRepository -> possession_money : UPDATE
-    MoneyService --> MoneyController : return possession_money
+    MoneyService --> MoneyController : return money
   else CPUが勝者
     MoneyService -> Money : void minusMoney(BigDecimal betMoney)
     note right : ベット額だけ所持金を減らす
     MoneyService -> MoneyRepository : save(Money money)
     MoneyRepository -> possession_money : UPDATE
-    MoneyService --> MoneyController : return possession_money
+    MoneyService --> MoneyController : return money
   else 引き分け
     MoneyService -> MoneyRepository : save(Money money)
     note right : 更新日時をUPDATEする
