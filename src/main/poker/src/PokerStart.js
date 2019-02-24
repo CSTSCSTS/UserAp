@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './pokerStart.css';
 import PokerField from './pokerField';
-import LoginBonusPopup from './loginBonusPopup';
+import LoginServicePopUp from './loginServicePopUp';
 import { withRouter } from 'react-router';
 import CommonHeader from './commonHeader'
 import { Button, Container, Form, FormGroup, Input } from 'reactstrap';
@@ -50,9 +50,9 @@ class PokerStart extends Component {
     return (
       <div>
         <CommonHeader />
-        <LoginBonusPopup
+        <LoginServicePopUp
           isOpen={this.props.location.state.isOpen}
-          user={this.props.location.state.user}
+          username={this.props.location.state.user.userName}
         />
       	<h1 id="title">茶 圓 ポ ー カ ー</h1>
 	    <Container id="form">
