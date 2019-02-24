@@ -13,6 +13,7 @@ database possession_money
 
 ユーザー -> handleToRanking : 共通ヘッダーの「ランキング表示」ボタンをクリック
 handleToRanking -> RankingController : ランキング表示のためのGETリクエスト
+note right: 特に情報は受け取らない
 RankingController -> RankingService : Ranking getRankingInfo()
 RankingService -> UserRepository : MoneyRanking moneyRanking = getMoneyRanking()
 UserRepository -> poker_User_Info : SELECT
