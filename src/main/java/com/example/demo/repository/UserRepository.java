@@ -60,7 +60,6 @@ public class UserRepository {
 		try {
 		  outsideSqlResult = pokerUserInfoBhv.outsideSql().selectList(new SelectPmb()).getSelectedList();
   } catch(SQLFailureException e) {
-  		System.out.println("sqlエラー！！！！＝＝！－");
  	  throw new SQLFailureException(e.getMessage(), e.getSQLException());
   }
 
