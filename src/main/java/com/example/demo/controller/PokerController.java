@@ -39,8 +39,12 @@ public class PokerController {
 	@Autowired
 	protected MessageSource messageSource;
 
-	// ベット画面を表示する
-	@GetMapping("/bet")
+/**
+ * 所持金情報を返す
+ * @return
+ * @throws LoginSessionTimeOutException セッションタイムアウトエラー
+ */
+@GetMapping("/bet")
 	@ResponseBody
 	public Money getMoney() throws LoginSessionTimeOutException {
 
@@ -51,8 +55,15 @@ public class PokerController {
 		return moneyService.getMoney(loginSession.getUserId().get());
 	}
 
-	// ポーカーの初期情報(山札・プレイヤーとCPUの手札)を返す。
-	@PostMapping("/config")
+/**
+ * ベット額が所持金を超えていないかチェックして、ポーカーの初期情報(山札・プレイヤーとCPUの手札)を返す。
+ * @param betMoney ベット額
+ * @param jokerIncluded ジョーカーを含んでいるかどうか
+ * @return
+ * @throws LoginSessionTimeOutException セッションタイムアウトエラー
+ * @throws IllegalBetException ベット額が所持金を超えているエラー
+ */
+@PostMapping("/config")
 	@ResponseBody
 	public PokerPlayingInfo postPokerStart(BigDecimal betMoney, boolean jokerIncluded) throws LoginSessionTimeOutException, IllegalBetException {
 
@@ -62,8 +73,16 @@ public class PokerController {
 		 return pokerService.pokerPrepare(loginSession.getUserId().get(), betMoney, jokerIncluded);
 	}
 
-	// ポーカーの情報(山札・手札 + 役や勝者)を返す
-	@PostMapping("/play")
+/**
+ * 手札交換・役判定を勝者判定を実施
+ * @param jsonPlayerHands プレイヤーの手札
+ * @param jsonDeck 山札
+ * @param jsonComputerHands  CPUの手札
+ * @return
+ * @throws IOException
+ * @throws LoginSessionTimeOutException セッションタイムアウトエラー
+ */
+@PostMapping("/play")
 	@ResponseBody
 	public PokerPlayingInfo handChange(String jsonPlayerHands, String jsonDeck, String jsonComputerHands) throws IOException, LoginSessionTimeOutException {
 		if(!loginSession.getUserId().isPresent() || !loginSession.getUserName().isPresent()) {
@@ -84,8 +103,14 @@ public class PokerController {
 
 	}
 
-	// 勝者に応じて所持金を更新するリクエストに反応する。
-	@PostMapping("/result")
+/**
+ * 勝敗に応じて所持金を更新する
+ * @param betMoney ベット額
+ * @param winner 勝者
+ * @return
+ * @throws LoginSessionTimeOutException セッションタイムアウトエラー
+ */
+@PostMapping("/result")
 	@ResponseBody
 	public Money result(BigDecimal betMoney, Winner winner) throws LoginSessionTimeOutException {
 

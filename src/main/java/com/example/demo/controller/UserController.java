@@ -16,8 +16,14 @@ public class UserController {
 	public UserService userService;
 
 
-	// ユーザー登録を実施する
-	@PostMapping("/user")
+/**
+ * ユーザー登録をする
+ * @param userName ユーザー名
+ * @param password パスワード
+ * @return
+ * @throws UserNameDuplicateException ユーザー名重複エラー
+ */
+@PostMapping("/user")
 	@ResponseBody
 	public User add(String userName, String password) throws UserNameDuplicateException {
 		return userService.resister(userName, password);

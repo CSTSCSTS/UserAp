@@ -28,8 +28,14 @@ public class LoginController {
 		return "index";
 	}
 
-	// リクエストで送られてきたユーザー名・パスワードをログイン処理を行う
-	@PostMapping("/login")
+/**
+ * ログインを実施する
+ * @param userName ユーザー名
+ * @param password パスワード
+ * @return
+ * @throws LoginFailureException ログイン失敗エラー
+ */
+@PostMapping("/login")
 	@ResponseBody
 	public UserDto login(String userName, String password) throws LoginFailureException {
 		UserDto user = loginService.login(userName, password);
@@ -41,6 +47,5 @@ public class LoginController {
 		return user;
 
 	}
-
 
 }
