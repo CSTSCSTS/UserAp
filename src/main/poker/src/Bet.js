@@ -45,7 +45,7 @@ class Bet extends Component {
 	    	this.props.updateBetMoney(this.state.betMoney);
 	    })
 	    .catch(err => {
-	    	if(err.response.body.exception === "org.dbflute.exception.SQLFailureException") {
+	    	if(err.response.body.status === 500) {
 	    	// システムエラー画面へ遷移
       		this.props.history.push({
   				  pathname: '/error'

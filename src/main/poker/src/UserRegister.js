@@ -65,7 +65,8 @@ class UserRegister extends Component {
 			  })
 	    })
 			.catch(err => {
-				if(err.response.body.exception === "org.dbflute.exception.SQLFailureException") {
+				console.log(err.response.body);
+				if(err.response.body.status === 500) {
 				  // システムエラー画面へ遷移
       		this.props.history.push({
   				  pathname: '/error'
@@ -149,10 +150,14 @@ class UserRegister extends Component {
               </FormGroup>
               </Col>
               </Row>
+              <Row>
+              <Col sm="12" md={{ size: 5, offset: 7 }}>
               <ButtonGroup id="user_register_buttons">
       	    	    <Button color="primary" onClick={this.handleSubmit.bind(this)}>登録</Button>
       	    	    <Button color="primary" onClick={this.handleCancel.bind(this)}>キャンセル</Button>
       	    	</ButtonGroup>
+      	    	</Col>
+      	    	</Row>
     	      </form>
     	      </Container>
 	  </div>
