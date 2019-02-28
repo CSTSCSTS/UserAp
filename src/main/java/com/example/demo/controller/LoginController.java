@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,8 +39,8 @@ public class LoginController {
 		UserDto user = loginService.login(userName, password);
 
 		// セッションオブジェクトにログインユーザーの情報を格納
-		loginSession.setUserId(Optional.of(user.getUserId()));
-		loginSession.setUserName(Optional.of(user.getUserName()));
+		loginSession.setUserId(user.getUserId());
+		loginSession.setUserName(user.getUserName());
 
 		return user;
 

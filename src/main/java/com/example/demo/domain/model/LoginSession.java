@@ -14,7 +14,14 @@ import lombok.Data;
 @Data
 public class LoginSession implements Serializable {
 
-	private Optional<Integer> userId;
-	private Optional<String> userName;
+	private Integer userId;
+	private String userName;
+
+	public Optional<Integer> getUserId() {
+			return Optional.ofNullable(userId);
+	}
+	public Optional<String> getUserName() {
+			return Optional.ofNullable(userName);
+	}
 
 }
