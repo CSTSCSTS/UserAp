@@ -334,13 +334,15 @@ class PlayButton extends Component {
        })
        .catch(err => {
       	 if(err.response.body.status === 401) {
-       		this.props.history.push({
-         		pathname: '/session-timeout'
-         	})
+         		this.props.history.push({
+           		pathname: '/session-timeout'
+           	})
        	}
-      	 this.props.history.push({
-      		 pathname: '/error'
-      	 })
+      	 if(err.response.body.status === 500) {
+        	 this.props.history.push({
+        		 pathname: '/error'
+        	 })
+      	 }
        });
    }
 
