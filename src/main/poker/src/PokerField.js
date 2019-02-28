@@ -88,9 +88,6 @@ class PokerField extends Component {
 
 
   render() {
-  	console.log(this.props);
-  	console.log(this.props.jokerIncluded);
-
   	if(this.state.pokerPhase === 'BET') {
   		return (
   		  <div>
