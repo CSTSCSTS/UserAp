@@ -9,7 +9,7 @@ class Bet extends Component {
 	constructor(props) {
 	  super(props);
       this.state = {
-        betMoney: null,
+        betMoney: '',
         errorMessage: []
 	  };
 	}
@@ -25,6 +25,8 @@ class Bet extends Component {
 		this.nullOrEmptyCheck(errorList, this.state.betMoney, "ベット額が未入力です。");
 		// 0円チェック
 		this.inputValueIsZeroCheck(errorList, this.state.betMoney, "ベット額は1円以上になるように入力してください。");
+	  // 正規表現チェック(数字以外が存在しないか)
+		this.onlyNumberCheck(errorList, this.state.betMoney, "数字以外が入力されています。");
 
     if(errorList.length != 0) {
       this.setState({errorMessage: errorList});
@@ -45,6 +47,12 @@ class Bet extends Component {
 	    	this.props.updateBetMoney(this.state.betMoney);
 	    })
 	    .catch(err => {
+	    	if(err.response.body.status === 401) {
+	    		this.props.history.push({
+	      		pathname: '/session-timeout'
+	      	})
+	      	return;
+	    	}
 	    	if(err.response.body.status === 500) {
 	    	// システムエラー画面へ遷移
       		this.props.history.push({
@@ -67,10 +75,19 @@ class Bet extends Component {
 
   // 0円チェック
 	inputValueIsZeroCheck(errorList, value, errorMessage) {
-		if(value == 0) {
+		if((value) && value == 0) {
       errorList.push(errorMessage);
 		}
 		return errorList;
+	}
+
+	// 正規表現チェック(数字以外が存在しないか)
+	onlyNumberCheck(errorList, value, errorMessage) {
+		const pattern = /^[0-9]*$/;
+		if(!pattern.test(value)) {
+			errorList.push(errorMessage);
+		}
+		return errorList
 	}
 
   render() {
@@ -79,23 +96,25 @@ class Bet extends Component {
         <CommonHeader />
         <h1 id="title">茶 圓 ポ ー カ ー プレイ</h1>
         <Container id="form">
-        <h2 >ベット金額を入力してください</h2>
+        <Form>
         <div>
-         {this.state.errorMessage.map((item) => (
-           <p>{item}</p>
-          ))}
+        {this.state.errorMessage.map((item) => (
+        		<p class="alert alert-danger">{item}</p>
+        ))}
         </div>
-        <MoneyInfo
-          money={this.props.location.state.betMoney.money}
-        />
-        <div>
-          <Form>
-	          <FormGroup>
-	            <Input type="number" min="0" onChange={this.betMoneyHandleChange.bind(this)}></Input>
-            </FormGroup>
-	    	    <Button onClick={this.handleSubmit.bind(this)}>ベット</Button>
-          </Form>
-      </div>
+        <FormGroup>
+        	<h2 class="text-center">ベット金額を入力してください</h2>
+        </FormGroup>
+        <FormGroup>
+          <MoneyInfo
+            money={this.props.location.state.betMoney.money}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Input type="text" min={0} value={this.state.betMoney} onChange={this.betMoneyHandleChange.bind(this)}/>
+        </FormGroup>
+  	    <Button block onClick={this.handleSubmit.bind(this)}>ベット</Button>
+      </Form>
       </Container>
       </div>
     )
@@ -106,7 +125,7 @@ class Bet extends Component {
 class MoneyInfo extends Component {
   render() {
     return (
-      <div>
+      <div class="center-block">
         現在の所持金: {this.props.money}円
       </div>
     );
