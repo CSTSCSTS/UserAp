@@ -88,6 +88,8 @@ class PokerField extends Component {
 
 
   render() {
+  	console.log(this.props);
+  	console.log(this.props.jokerIncluded);
 
   	if(this.state.pokerPhase === 'BET') {
   		return (
@@ -138,6 +140,7 @@ class PokerField extends Component {
         <HandChangeButton
           pokerPhaseChange={this.pokerPhaseChange}
           deck={this.state.deck}
+          history={this.props.history}
           playerHands={this.state.playerHands}
           computerHands={this.state.computerHands}
           isFinishedChange={this.state.isFinishedChange}
@@ -289,7 +292,15 @@ class HandChangeButton extends Component {
 	        pokerInfo.computerRole,
 	        pokerInfo.winner);
 	      this.props.pokerPhaseChange('CHOICE_BATTLE_OR_FOLD');
+	    })
+	    .catch(err => {
+	    	if(err.response.body.status === 401) {
+      		this.props.history.push({
+        		pathname: '/session-timeout'
+        	})
+      	}
 	    });
+
 	}
 
   render() {
@@ -322,13 +333,18 @@ class PlayButton extends Component {
        .send({betMoney: this.props.betMoney, winner: this.props.winner})
        .then(res => {
          this.props.pokerPhaseChange('AFTER_BATTLE');
+         return;
        })
-       .catch(
-         // システムエラー画面へ遷移
-         this.props.history.push({
-           pathname: '/error'
-         })
-       );
+       .catch(err => {
+      	 if(err.response.body.status === 401) {
+       		this.props.history.push({
+         		pathname: '/session-timeout'
+         	})
+       	}
+      	 this.props.history.push({
+      		 pathname: '/error'
+      	 })
+       });
    }
 
 	 handleToSurrender(e) {
@@ -399,11 +415,16 @@ class RetryButton extends Component {
           this.handleToRePlay();
         })
         // システムエラー画面へ遷移
-        .catch(
+        .catch(err => {
+        	if(err.response.body.status === 401) {
+        		this.props.history.push({
+          		pathname: '/session-timeout'
+          	})
+        	}
       		this.props.history.push({
   				  pathname: '/error'
   			  })
-        );
+        });
       }
         handleToRePlay = () => {
           this.props.stateReset();

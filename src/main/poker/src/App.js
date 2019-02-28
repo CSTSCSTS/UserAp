@@ -6,6 +6,7 @@ import PokerField from './pokerField';
 import PokerStart from './pokerStart';
 import UserRegister from './userRegister'
 import SystemError from './systemError'
+import SessionTimeOut from './sessionTimeOut'
 import CommonHeader from './commonHeader'
 import Bet from './bet';
 import { withRouter } from 'react-router';
@@ -23,6 +24,7 @@ class App extends Component {
               <Route exact path={'/start'} component={PokerStart}/>
               <Route exact path={'/play'} component={PokerField}/>
               <Route exact path={'/error'} component={SystemError}/>
+              <Route exact path={'/session-timeout'} component={SessionTimeOut}/>
             </Switch>
           </div>
         </BrowserRouter>
