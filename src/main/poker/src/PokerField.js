@@ -95,7 +95,7 @@ class PokerField extends Component {
   		      betMoney={this.props.location.state.betMoney.money}
   		      pokerPhaseChange={this.pokerPhaseChange}
   		      pokerPrepare={this.pokerPrepare}
-  		      jokerIncluded={this.props.jokerIncluded}
+  		      jokerIncluded={this.props.location.state.jokerIncluded}
   		      updateBetMoney={this.updateBetMoney}
   		    />
   		  </div>
