@@ -72,6 +72,11 @@ body{
 	-webkit-animation: fadeIn 3s step-end 0s 1 normal;
 }
 
+#after_poker_money{
+	animation: fadeIn 4s step-end 0s 1 normal;
+	-webkit-animation: fadeIn 4s step-end 0s 1 normal;
+}
+
 @keyframes fadeIn {
   0% {opacity: 0}
   100% {opacity: 1}

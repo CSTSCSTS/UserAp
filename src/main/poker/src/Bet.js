@@ -107,7 +107,7 @@ class Bet extends Component {
         </FormGroup>
         <FormGroup>
           <MoneyInfo
-            money={this.props.location.state.betMoney.money}
+            money={this.props.money}
           />
         </FormGroup>
         <FormGroup>

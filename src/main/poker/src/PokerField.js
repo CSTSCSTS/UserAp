@@ -12,6 +12,7 @@ class PokerField extends Component {
       this.state = {
         pokerPhase: 'BET',
         isSurrender: false,
+        money: this.props.location.state.betMoney.money,
         betMoney: 0,
         deck: null,
         playerHands: null,
@@ -59,10 +60,11 @@ class PokerField extends Component {
 		})
 	}
 
-	stateReset = () => {
+	stateReset = (money) => {
 		this.setState({
 			pokerPhase: 'BET',
       isSurrender: false,
+      money: money,
       betMoney: 0,
       deck: null,
       playerHands: null,
@@ -100,7 +102,7 @@ class PokerField extends Component {
   		return (
   		  <div>
   		    <Bet
-  		      betMoney={this.props.location.state.betMoney.money}
+  		      money={this.state.money}
   		      pokerPhaseChange={this.pokerPhaseChange}
   		      pokerPrepare={this.pokerPrepare}
   		      jokerIncluded={this.props.location.state.jokerIncluded}
@@ -396,8 +398,8 @@ class AfterPokerPlayMoney extends Component {
   	}
 
     return (
-      <div class="center-block">
-        勝負後の所持金: {this.props.money}円
+      <div id="after_poker_money" style={{ margin: 'auto', width: 300 }}>
+        <h3>勝負後の所持金: {this.props.money}円</h3>
       </div>
     )
   }
@@ -441,11 +443,9 @@ class RetryButton extends Component {
         .get(url)
         .responseType('text')
         .type('form')
-        .send({jokerIncluded: this.props.jokerIncluded})
         .then(res => {
-          const pokerInfo = res.body;
           // stateを初期化する
-          this.handleToRePlay();
+          this.handleToRePlay(res.body.money);
         })
         // システムエラー画面へ遷移
         .catch(err => {
@@ -459,8 +459,8 @@ class RetryButton extends Component {
   			  })
         });
       }
-        handleToRePlay = () => {
-          this.props.stateReset();
+        handleToRePlay = (money) => {
+          this.props.stateReset(money);
         }
 
   render() {
