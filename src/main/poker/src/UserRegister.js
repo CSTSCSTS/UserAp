@@ -65,7 +65,6 @@ class UserRegister extends Component {
 			  })
 	    })
 			.catch(err => {
-				console.log(err.response.body);
 				if(err.response.body.status === 500) {
 				  // システムエラー画面へ遷移
       		this.props.history.push({

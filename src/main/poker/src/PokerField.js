@@ -345,9 +345,6 @@ class PlayButton extends Component {
        // 掛け金と勝者の情報を送る
        .send({betMoney: this.props.betMoney, winner: this.props.winner})
        .then(res => {
-      	 console.log(res);
-      	 console.log(res.body);
-      	 console.log(res.body.money);
       	 this.props.setAfterPokerMoney(res.body.money);
          this.props.pokerPhaseChange('AFTER_BATTLE');
          return;
