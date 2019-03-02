@@ -19,7 +19,8 @@ class PokerField extends Component {
         isFinishedChange: false,
         playerRole: null,
         computerRole: null,
-        winner: null
+        winner: null,
+        afterPokerMoney: null
 	  };
 	}
 
@@ -28,6 +29,13 @@ class PokerField extends Component {
 			pokerPhase: pokerPhase
 		})
 	}
+
+	setAfterPokerMoney = (money) => {
+		this.setState({
+			afterPokerMoney: money
+		})
+	}
+
 
 	pokerPrepare = (fieldInfo) => {
 		this.setState({
@@ -115,6 +123,7 @@ class PokerField extends Component {
 	    	      history={this.props.history}
 	    	      pokerPhase={this.state.pokerPhase}
 	            pokerPhaseChange={this.pokerPhaseChange}
+	          	setAfterPokerMoney={this.setAfterPokerMoney}
 	            surrender={this.surrender}
 	            betMoney={this.state.betMoney}
 	            winner={this.state.winner}
@@ -143,6 +152,11 @@ class PokerField extends Component {
           isFinishedChange={this.state.isFinishedChange}
           pokerPhase={this.state.pokerPhase}
           handsChange={this.handsChange}
+        />
+        <AfterPokerPlayMoney
+          pokerPhase={this.state.pokerPhase}
+          isSurrender={this.state.isSurrender}
+          money={this.state.afterPokerMoney}
         />
         <AfterPokerPlayingButtons
 	        stateReset={this.stateReset}
@@ -329,6 +343,10 @@ class PlayButton extends Component {
        // 掛け金と勝者の情報を送る
        .send({betMoney: this.props.betMoney, winner: this.props.winner})
        .then(res => {
+      	 console.log(res);
+      	 console.log(res.body);
+      	 console.log(res.body.money);
+      	 this.props.setAfterPokerMoney(res.body.money);
          this.props.pokerPhaseChange('AFTER_BATTLE');
          return;
        })
@@ -369,10 +387,26 @@ class PlayButton extends Component {
   }
 }
 
+class AfterPokerPlayMoney extends Component {
+
+  render() {
+  	// pokerPhaseがAFTER_BATTLEでない or 勝負しない場合は何も表示しない
+  	if(this.props.pokerPhase !== 'AFTER_BATTLE' || this.props.isSurrender) {
+      return null;
+  	}
+
+    return (
+      <div class="center-block">
+        勝負後の所持金: {this.props.money}円
+      </div>
+    )
+  }
+}
+
 class AfterPokerPlayingButtons extends Component {
 
   render() {
-  	// pokerPhaseがAFTER_BATTLE出ない場合は何も表示しない
+  	// pokerPhaseがAFTER_BATTLEでない場合は何も表示しない
   	if(this.props.pokerPhase !== 'AFTER_BATTLE') {
       return null;
   	}
