@@ -63,7 +63,7 @@ class PokerStart extends Component {
         <CommonHeader />
         <LoginServicePopUp
           isOpen={this.props.location.state.isOpen}
-          username={this.props.location.state.user.userName}
+          username={this.props.location.state.userName}
         />
       	<h1 id="title">茶 圓 ポ ー カ ー</h1>
 	    <Container id="form">

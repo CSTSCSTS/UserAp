@@ -67,7 +67,7 @@ class Login extends Component {
       	this.props.history.push({
       		pathname: '/start',
       		// ログインがその日初めてかどうか情報をサーバー側で返してもらう
-      		state: {isOpen: res.body.isFirstLogin, user: res.body}
+      		state: {isOpen: res.body.isFirstLogin, userName: res.body.userName}
       	});
       })
       .catch(err => {
