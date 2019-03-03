@@ -7,7 +7,6 @@ boundary handleToChange
 boundary handlePlaySubmit
 boundary handleSurrenderSubmit
 participant PokerController
-participant MoneyController
 participant PokerService
 participant MoneyService
 participant MoneyRepository
@@ -19,6 +18,11 @@ handleSubmit -> ユーザー : ベット画面にエラー表示
 note left : 必須チェック・0円チェックを\n実施して、いずれかにひっかかった場合
 handleSubmit -> PokerController : ポーカー開始のためのPOSTリクエスト
 note right: Controllerは以下の情報を受け取る\n・ベット額\n・ジョーカーを含むかどうかフラグ
+PokerController -> PokerController : sessionCheck()
+alt セッションタイムアウト時
+  PokerController -> PokerController : throw LoginSessionTimeOutException()をする
+  PokerController -> ユーザー : セッションタイムアウト画面を表示する
+end
 PokerController -> PokerService : PokerPlayingInfo pokerPrepare(int userId, BigDecimal betMoney, boolean jokerIncluded)
 note left: ポーカーの準備\nメソッド呼ぶ
 PokerService -> MoneyRepository : Money getMoney(int userId);
@@ -34,6 +38,11 @@ PokerController -> ユーザー : ポーカープレイ画面にプレイヤー�
 ユーザー -> handleToChange : 手札交換ボタンをクリック
 handleToChange -> PokerController : ポーカーの手札交換のためのPOSTリクエスト
 note right: Controllerは以下の情報を受け取る\n・山札\n・プレイヤーの手札\n・CPUの手札
+PokerController -> PokerController : sessionCheck()
+alt セッションタイムアウト時
+  PokerController -> PokerController : throw LoginSessionTimeOutException()をする
+  PokerController -> ユーザー : セッションタイムアウト画面を表示する
+end
 PokerController -> PokerService : PokerPlayingInfo handChangeAfterProcess(PokerPlayingInfo.builder().build())
 note left: handChangeAfterProcessメソッドには以下の情報を渡している\n・山札\n・プレイヤーの手札\n・CPUの手札
 note right: プレイヤー・CPU双方の手札交換、役判定、勝者判定を実施するメソッドを呼ぶ
@@ -45,9 +54,14 @@ PokerController -> ユーザー : ポーカープレイ画面に勝負するか�
 
 alt 勝負する
   ユーザー -> handlePlaySubmit : 勝負するボタンをクリック
-  handlePlaySubmit -> MoneyController : 所持金更新のためのPOSTリクエスト
+  handlePlaySubmit -> PokerController : 所持金更新のためのPOSTリクエスト
   note right: Controllerは以下の情報を受け取る\n・ベット指定額\n・勝者はだれか(PLAYER or CPU or NOTHING)
-  MoneyController -> MoneyService : Money update(int userId, BigDecimal betMoney, Winner winner);
+  PokerController -> PokerController : sessionCheck()
+alt セッションタイムアウト時
+  PokerController -> PokerController : throw LoginSessionTimeOutException()をする
+  PokerController -> ユーザー : セッションタイムアウト画面を表示する
+end
+  PokerController -> MoneyService : Money update(int userId, BigDecimal betMoney, Winner winner);
   MoneyService -> MoneyRepository : Money getMoney(int userId)
   note right : 所持金情報を取得
   MoneyRepository -> possession_money : SELECT
