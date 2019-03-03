@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import InputNumber from "rmc-input-number";
 import CommonHeader from './commonHeader'
 import './bet.css'
+import { UN_EXPECTED_ERROR_CODE, UN_AUTHORIZE_ERROR_CODE } from './PokerConstNumber.js';
 
 class Bet extends Component {
 	constructor(props) {
@@ -47,13 +48,13 @@ class Bet extends Component {
 	    	this.props.updateBetMoney(this.state.betMoney);
 	    })
 	    .catch(err => {
-	    	if(err.response.body.status === 401) {
+	    	if(err.response.body.status === UN_AUTHORIZE_ERROR_CODE) {
 	    		this.props.history.push({
 	      		pathname: '/session-timeout'
 	      	})
 	      	return;
 	    	}
-	    	if(err.response.body.status === 500) {
+	    	if(err.response.body.status === UN_EXPECTED_ERROR_CODE) {
 	    	// システムエラー画面へ遷移
       		this.props.history.push({
   				  pathname: '/error'

@@ -11,7 +11,8 @@ import CommonHeader from './commonHeader'
 import Bet from './bet';
 import { withRouter } from 'react-router';
 import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import { Button, Container, Form, FormGroup, Input } from 'reactstrap';
+import { Button, Container, Row, Col, Form, FormGroup, Input } from 'reactstrap';
+import { UN_EXPECTED_ERROR_CODE } from './PokerConstNumber.js';
 
 class App extends Component {
   render() {
@@ -71,7 +72,7 @@ class Login extends Component {
       	});
       })
       .catch(err => {
-      	if(err.response.body.status === 500) {
+      	if(err.response.body.status === UN_EXPECTED_ERROR_CODE) {
         	// システムエラー画面へ遷移
       		this.props.history.push({
   				  pathname: '/error'
@@ -106,21 +107,37 @@ class Login extends Component {
 	    <Container id="">
 	      <div>
           {this.state.errorMessage.map((item) => (
-            <p class="text-danger">{item}</p>
+            <p class="alert alert-danger">{item}</p>
           ))}
         </div>
 	      <Form>
-	        <FormGroup>
-            <label>ユーザー名入力</label>
-            <Input type="text" onChange={this.usernameHandleChange.bind(this)}></Input>
-          </FormGroup>
-          <FormGroup>
-            <label>パスワード入力</label>
-            <Input type="password" onChange={this.passwordHandleChange.bind(this)}></Input>
-            </FormGroup>
-	    	<Button color="primary" size="lg" block onClick={this.handleSubmit.bind(this)}>ログイン</Button>
+	        <Row>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
+	            <FormGroup>
+                <label>ユーザー名入力</label>
+                <Input type="text" onChange={this.usernameHandleChange.bind(this)}></Input>
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
+            	<FormGroup>
+            		<label>パスワード入力</label>
+            		<Input type="password" onChange={this.passwordHandleChange.bind(this)}></Input>
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
+	    	      <Button color="primary" size="lg" block onClick={this.handleSubmit.bind(this)}>ログイン</Button>
+	    	    </Col>
+	        </Row>
+	        <Row>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
+	            <Link to="/user">ユーザー登録はこちら</Link>
+	          </Col>
+	  	    </Row>
 	      </Form>
-	      <Link to="/user">ユーザー登録はこちら</Link>
 	    </Container>
 	  </div>
     );

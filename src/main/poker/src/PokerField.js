@@ -5,6 +5,7 @@ import { withRouter } from 'react-router'
 import Bet from './bet';
 import CommonHeader from './commonHeader'
 import './pokerField.css';
+import { UN_EXPECTED_ERROR_CODE, UN_AUTHORIZE_ERROR_CODE } from './PokerConstNumber.js';
 
 class PokerField extends Component {
 	constructor(props) {
@@ -307,7 +308,7 @@ class HandChangeButton extends Component {
 	      this.props.pokerPhaseChange('CHOICE_BATTLE_OR_FOLD');
 	    })
 	    .catch(err => {
-	    	if(err.response.body.status === 401) {
+	    	if(err.response.body.status === UN_AUTHORIZE_ERROR_CODE) {
       		this.props.history.push({
         		pathname: '/session-timeout'
         	})
@@ -350,12 +351,12 @@ class PlayButton extends Component {
          return;
        })
        .catch(err => {
-      	 if(err.response.body.status === 401) {
+      	 if(err.response.body.status === UN_AUTHORIZE_ERROR_CODE) {
          		this.props.history.push({
            		pathname: '/session-timeout'
            	})
        	}
-      	 if(err.response.body.status === 500) {
+      	 if(err.response.body.status === UN_EXPECTED_ERROR_CODE) {
         	 this.props.history.push({
         		 pathname: '/error'
         	 })
@@ -446,7 +447,7 @@ class RetryButton extends Component {
         })
         // システムエラー画面へ遷移
         .catch(err => {
-        	if(err.response.body.status === 401) {
+        	if(err.response.body.status === UN_AUTHORIZE_ERROR_CODE) {
         		this.props.history.push({
           		pathname: '/session-timeout'
           	})

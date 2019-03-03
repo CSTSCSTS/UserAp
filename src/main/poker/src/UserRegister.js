@@ -5,7 +5,7 @@ import CommonHeader from './commonHeader'
 import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Input, ButtonGroup, Button } from 'reactstrap';
 import { Grid, FormGroup } from 'react-bootstrap';
-
+import { UN_EXPECTED_ERROR_CODE, USER_NAME_MAX_LENGTH, PASSWORD_MAX_LENGTH } from './PokerConstNumber.js';
 
 class UserRegister extends Component {
 
@@ -33,8 +33,6 @@ class UserRegister extends Component {
 
 	handleSubmit(e) {
 
-		const USER_NAME_MAX_LENGTH = 255;
-		const PASSWORD_MAX_LENGTH = 255;
 		// リクエスト前に必須チェック・文字数チェック・パスワード一致チェックを実施
 		var errorList = [];
 		// 必須チェック
@@ -65,7 +63,7 @@ class UserRegister extends Component {
 			  })
 	    })
 			.catch(err => {
-				if(err.response.body.status === 500) {
+				if(err.response.body.status === UN_EXPECTED_ERROR_CODE) {
 				  // システムエラー画面へ遷移
       		this.props.history.push({
   				  pathname: '/error'
@@ -124,7 +122,7 @@ class UserRegister extends Component {
               </div>
               </Col>
               </Row>
-    	      <form id="frame">
+    	      <form>
     	        <Row>
     	          <Col sm="12" md={{ size: 6, offset: 3 }}>
     	          	<FormGroup>
@@ -158,7 +156,7 @@ class UserRegister extends Component {
       	    	</Col>
       	    	</Row>
     	      </form>
-    	      </Container>
+    	    </Container>
 	  </div>
     );
   }
