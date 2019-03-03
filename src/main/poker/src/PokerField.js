@@ -12,7 +12,7 @@ class PokerField extends Component {
 	  super(props);
       this.state = {
         pokerPhase: 'BET',
-        isSurrender: false,
+        isBattle: false,
         money: this.props.location.state.betMoney.money,
         betMoney: 0,
         deck: null,
@@ -57,14 +57,14 @@ class PokerField extends Component {
 	// 勝負を降りるフラグをtrueにする。
 	surrender = () => {
 		this.setState({
-	    isSurrender: true
+	    isBattle: true
 		})
 	}
 
 	stateReset = (money) => {
 		this.setState({
 			pokerPhase: 'BET',
-      isSurrender: false,
+      isBattle: false,
       money: money,
       betMoney: 0,
       deck: null,
@@ -136,7 +136,7 @@ class PokerField extends Component {
     	    	  computerRole={this.state.computerRole}
     	    	  winner={this.state.winner}
 	            pokerPhase={this.state.pokerPhase}
-	            isSurrender={this.state.isSurrender}
+	            isBattle={this.state.isBattle}
 
     	    	/>
     	    	<PlayerHands
@@ -158,7 +158,7 @@ class PokerField extends Component {
         />
         <AfterPokerPlayMoney
           pokerPhase={this.state.pokerPhase}
-          isSurrender={this.state.isSurrender}
+          isBattle={this.state.isBattle}
           money={this.state.afterPokerMoney}
         />
         <AfterPokerPlayingButtons
@@ -214,7 +214,7 @@ class WinOrLossJudge extends Component {
   	}
 
   	// 勝負しないを選択した場合
-  	if(this.props.isSurrender) {
+  	if(this.props.isBattle) {
   		return(
   		  <div>
           <h3 id="result">勝負を降りました</h3>
@@ -334,7 +334,7 @@ class HandChangeButton extends Component {
 
 class PlayButton extends Component {
 
-	 handleToPlay(e) {
+	 handleToPlaySubmit(e) {
    	var request = require('superagent');
        e.preventDefault();
        var currentUrl = window.location.toString();
@@ -364,7 +364,7 @@ class PlayButton extends Component {
        });
    }
 
-	 handleToSurrender(e) {
+	 handleSurrenderSubmit(e) {
      this.props.surrender();
      this.props.pokerPhaseChange('AFTER_BATTLE');
    }
@@ -376,10 +376,10 @@ class PlayButton extends Component {
     return (
       <div id="after_poker_playing_buttons">
         <h2>勝負しますか？</h2>
-        <Button onClick={this.handleToPlay.bind(this)}>
+        <Button onClick={this.handleToPlaySubmit.bind(this)}>
 	        勝負する
 	      </Button>
-	      <Button onClick={this.handleToSurrender.bind(this)}>
+	      <Button onClick={this.handleSurrenderSubmit.bind(this)}>
 	        勝負しない
 	      </Button>
 	    </div>
@@ -391,7 +391,7 @@ class AfterPokerPlayMoney extends Component {
 
   render() {
   	// pokerPhaseがAFTER_BATTLEでない or 勝負しない場合は何も表示しない
-  	if(this.props.pokerPhase !== 'AFTER_BATTLE' || this.props.isSurrender) {
+  	if(this.props.pokerPhase !== 'AFTER_BATTLE' || this.props.isBattle) {
       return null;
   	}
 
