@@ -5,6 +5,7 @@ import InputNumber from "rmc-input-number";
 import CommonHeader from './commonHeader'
 import './bet.css'
 import { UN_EXPECTED_ERROR_CODE, UN_AUTHORIZE_ERROR_CODE } from './PokerConstNumber.js';
+import { betMoneyNotInputMessage, betMoneyisZeroMessage, betMoneyExpectNumberMessage } from './PokerConstMessage.js';
 
 class Bet extends Component {
 	constructor(props) {
@@ -23,11 +24,11 @@ class Bet extends Component {
 	// リクエスト前に必須チェック・0円チェックを実施
 		var errorList = [];
 		// 必須チェック
-		this.nullOrEmptyCheck(errorList, this.state.betMoney, "ベット額が未入力です。");
+		this.nullOrEmptyCheck(errorList, this.state.betMoney, betMoneyNotInputMessage);
 		// 0円チェック
-		this.inputValueIsZeroCheck(errorList, this.state.betMoney, "ベット額は1円以上になるように入力してください。");
+		this.inputValueIsZeroCheck(errorList, this.state.betMoney, betMoneyisZeroMessage);
 	  // 正規表現チェック(数字以外が存在しないか)
-		this.onlyNumberCheck(errorList, this.state.betMoney, "数字以外が入力されています。");
+		this.onlyNumberCheck(errorList, this.state.betMoney, betMoneyExpectNumberMessage);
 
     if(errorList.length != 0) {
       this.setState({errorMessage: errorList});

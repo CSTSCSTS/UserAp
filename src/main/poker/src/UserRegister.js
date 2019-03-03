@@ -6,6 +6,14 @@ import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Input, ButtonGroup, Button } from 'reactstrap';
 import { Grid, FormGroup } from 'react-bootstrap';
 import { UN_EXPECTED_ERROR_CODE, USER_NAME_MAX_LENGTH, PASSWORD_MAX_LENGTH } from './PokerConstNumber.js';
+import {
+	userNameNotInputMessage,
+	passwordNotInputMessage,
+	confirmationPasswordNotInputMessage,
+	userNameExceedMaxLengthMessage,
+	passwordExceedMaxLengthMessage,
+	passwordNotMatchMessage
+} from './PokerConstMessage.js';
 
 class UserRegister extends Component {
 
@@ -36,12 +44,12 @@ class UserRegister extends Component {
 		// リクエスト前に必須チェック・文字数チェック・パスワード一致チェックを実施
 		var errorList = [];
 		// 必須チェック
-		this.nullOrEmptyCheck(errorList, this.state.userName, "ユーザー名が未入力です。");
-		this.nullOrEmptyCheck(errorList, this.state.password, "パスワードが未入力です。");
-		this.nullOrEmptyCheck(errorList, this.state.confirmationPassword, "パスワード(確認)が未入力です。");
+		this.nullOrEmptyCheck(errorList, this.state.userName, userNameNotInputMessage);
+		this.nullOrEmptyCheck(errorList, this.state.password, passwordNotInputMessage);
+		this.nullOrEmptyCheck(errorList, this.state.confirmationPassword, confirmationPasswordNotInputMessage);
 		// 文字数チェック
-		this.lengthOverCheck(errorList, this.state.userName, USER_NAME_MAX_LENGTH, "ユーザー名が255文字を超えています。");
-		this.lengthOverCheck(errorList, this.state.password, PASSWORD_MAX_LENGTH, "パスワードが255文字を超えています。");
+		this.lengthOverCheck(errorList, this.state.userName, USER_NAME_MAX_LENGTH, userNameExceedMaxLengthMessage);
+		this.lengthOverCheck(errorList, this.state.password, PASSWORD_MAX_LENGTH, passwordExceedMaxLengthMessage);
 		// パスワード一致チェック
 		this.passwordSameCheck(errorList, this.state.password, this.state.confirmationPassword);
 
@@ -100,7 +108,7 @@ class UserRegister extends Component {
 	// パスワード一致チェック
 	passwordSameCheck(errorList, password, confirmationPassword) {
     if(password !== confirmationPassword){
-      errorList.push("パスワードとパスワード(確認)が一致していません。");
+      errorList.push(passwordNotMatchMessage);
     }
     return errorList;
 	}

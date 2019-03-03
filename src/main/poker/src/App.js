@@ -13,6 +13,8 @@ import { withRouter } from 'react-router';
 import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Button, Container, Row, Col, Form, FormGroup, Input } from 'reactstrap';
 import { UN_EXPECTED_ERROR_CODE } from './PokerConstNumber.js';
+import { userNameNotInputMessage, passwordNotInputMessage } from './PokerConstMessage.js';
+
 
 class App extends Component {
   render() {
@@ -48,8 +50,8 @@ class Login extends Component {
     // リクエスト前に必須チェックを実施
   	var errorList = [];
 
-  	this.NullOrEmptyCheck(errorList, this.state.userName, "ユーザー名が未入力です。");
-  	this.NullOrEmptyCheck(errorList, this.state.password, "パスワードが未入力です。");
+  	this.NullOrEmptyCheck(errorList, this.state.userName, userNameNotInputMessage);
+  	this.NullOrEmptyCheck(errorList, this.state.password, passwordNotInputMessage);
 
   	if(errorList.length != 0) {
       this.setState({errorMessage: errorList});
@@ -104,7 +106,7 @@ class Login extends Component {
       <div>
         <CommonHeader />
       	<h1 id="title">茶 圓 ポ ー カ ーログイン</h1>
-	    <Container id="">
+	    <Container>
 	      <div>
           {this.state.errorMessage.map((item) => (
             <p class="alert alert-danger">{item}</p>
