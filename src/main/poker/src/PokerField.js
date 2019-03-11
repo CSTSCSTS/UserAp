@@ -478,8 +478,7 @@ class RestartButton extends Component {
 
 	handleToRestart = (body) => {
 		this.props.history.push({
-			pathname: '/start',
-			state: {isOpen: false, userName: ''}
+			pathname: '/start'
 		})
   }
   render() {
