@@ -6,14 +6,7 @@ import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Input, ButtonGroup, Button } from 'reactstrap';
 import { Grid, FormGroup } from 'react-bootstrap';
 import * as PokerConstNumber from './PokerConstNumber.js';
-import {
-	userNameNotInputMessage,
-	passwordNotInputMessage,
-	confirmationPasswordNotInputMessage,
-	userNameExceedMaxLengthMessage,
-	passwordExceedMaxLengthMessage,
-	passwordNotMatchMessage
-} from './PokerConstMessage.js';
+import * as PokerConstMessage from './PokerConstMessage.js';
 
 class UserRegister extends Component {
 
@@ -44,12 +37,12 @@ class UserRegister extends Component {
 		// リクエスト前に必須チェック・文字数チェック・パスワード一致チェックを実施
 		var errorList = [];
 		// 必須チェック
-		this.nullOrEmptyCheck(errorList, this.state.userName, userNameNotInputMessage);
-		this.nullOrEmptyCheck(errorList, this.state.password, passwordNotInputMessage);
-		this.nullOrEmptyCheck(errorList, this.state.confirmationPassword, confirmationPasswordNotInputMessage);
+		this.nullOrEmptyCheck(errorList, this.state.userName, PokerConstMessage.userNameNotInputMessage);
+		this.nullOrEmptyCheck(errorList, this.state.password, PokerConstMessage.passwordNotInputMessage);
+		this.nullOrEmptyCheck(errorList, this.state.confirmationPassword, PokerConstMessage.confirmationPasswordNotInputMessage);
 		// 文字数チェック
-		this.lengthOverCheck(errorList, this.state.userName, PokerConstNumber.USER_NAME_MAX_LENGTH, userNameExceedMaxLengthMessage);
-		this.lengthOverCheck(errorList, this.state.password, PokerConstNumber.PASSWORD_MAX_LENGTH, passwordExceedMaxLengthMessage);
+		this.lengthOverCheck(errorList, this.state.userName, PokerConstNumber.USER_NAME_MAX_LENGTH, PokerConstMessage.userNameExceedMaxLengthMessage);
+		this.lengthOverCheck(errorList, this.state.password, PokerConstNumber.PASSWORD_MAX_LENGTH, PokerConstMessage.passwordExceedMaxLengthMessage);
 		// パスワード一致チェック
 		this.passwordSameCheck(errorList, this.state.password, this.state.confirmationPassword);
 
@@ -108,7 +101,7 @@ class UserRegister extends Component {
 	// パスワード一致チェック
 	passwordSameCheck(errorList, password, confirmationPassword) {
     if(password !== confirmationPassword){
-      errorList.push(passwordNotMatchMessage);
+      errorList.push(PokerConstMessage.passwordNotMatchMessage);
     }
     return errorList;
 	}

@@ -13,7 +13,7 @@ import { withRouter } from 'react-router';
 import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Button, Container, Row, Col, Form, FormGroup, Input } from 'reactstrap';
 import * as PokerConstNumber from './PokerConstNumber.js';
-import { userNameNotInputMessage, passwordNotInputMessage } from './PokerConstMessage.js';
+import * as PokerConstMessage from './PokerConstMessage.js';
 
 class App extends Component {
   render() {
@@ -49,8 +49,8 @@ class Login extends Component {
     // リクエスト前に必須チェックを実施
   	var errorList = [];
 
-  	this.NullOrEmptyCheck(errorList, this.state.userName, userNameNotInputMessage);
-  	this.NullOrEmptyCheck(errorList, this.state.password, passwordNotInputMessage);
+  	this.NullOrEmptyCheck(errorList, this.state.userName, PokerConstMessage.userNameNotInputMessage);
+  	this.NullOrEmptyCheck(errorList, this.state.password, PokerConstMessage.passwordNotInputMessage);
 
   	if(errorList.length != 0) {
       this.setState({errorMessage: errorList});
