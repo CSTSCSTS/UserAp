@@ -12,9 +12,8 @@ import Bet from './bet';
 import { withRouter } from 'react-router';
 import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Button, Container, Row, Col, Form, FormGroup, Input } from 'reactstrap';
-import { UN_EXPECTED_ERROR_CODE } from './PokerConstNumber.js';
+import * as PokerConstNumber from './PokerConstNumber.js';
 import { userNameNotInputMessage, passwordNotInputMessage } from './PokerConstMessage.js';
-
 
 class App extends Component {
   render() {
@@ -74,7 +73,7 @@ class Login extends Component {
       	});
       })
       .catch(err => {
-      	if(err.response.body.status === UN_EXPECTED_ERROR_CODE) {
+      	if(err.response.body.status === PokerConstNumber.UN_EXPECTED_ERROR_CODE) {
         	// システムエラー画面へ遷移
       		this.props.history.push({
   				  pathname: '/error'

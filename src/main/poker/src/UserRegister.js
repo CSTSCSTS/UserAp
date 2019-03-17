@@ -5,7 +5,7 @@ import CommonHeader from './commonHeader'
 import {BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Input, ButtonGroup, Button } from 'reactstrap';
 import { Grid, FormGroup } from 'react-bootstrap';
-import { UN_EXPECTED_ERROR_CODE, USER_NAME_MAX_LENGTH, PASSWORD_MAX_LENGTH } from './PokerConstNumber.js';
+import * as PokerConstNumber from './PokerConstNumber.js';
 import {
 	userNameNotInputMessage,
 	passwordNotInputMessage,
@@ -48,8 +48,8 @@ class UserRegister extends Component {
 		this.nullOrEmptyCheck(errorList, this.state.password, passwordNotInputMessage);
 		this.nullOrEmptyCheck(errorList, this.state.confirmationPassword, confirmationPasswordNotInputMessage);
 		// 文字数チェック
-		this.lengthOverCheck(errorList, this.state.userName, USER_NAME_MAX_LENGTH, userNameExceedMaxLengthMessage);
-		this.lengthOverCheck(errorList, this.state.password, PASSWORD_MAX_LENGTH, passwordExceedMaxLengthMessage);
+		this.lengthOverCheck(errorList, this.state.userName, PokerConstNumber.USER_NAME_MAX_LENGTH, userNameExceedMaxLengthMessage);
+		this.lengthOverCheck(errorList, this.state.password, PokerConstNumber.PASSWORD_MAX_LENGTH, passwordExceedMaxLengthMessage);
 		// パスワード一致チェック
 		this.passwordSameCheck(errorList, this.state.password, this.state.confirmationPassword);
 
@@ -71,7 +71,7 @@ class UserRegister extends Component {
 			  })
 	    })
 			.catch(err => {
-				if(err.response.body.status === UN_EXPECTED_ERROR_CODE) {
+				if(err.response.body.status === PokerConstNumber.UN_EXPECTED_ERROR_CODE) {
 				  // システムエラー画面へ遷移
       		this.props.history.push({
   				  pathname: '/error'

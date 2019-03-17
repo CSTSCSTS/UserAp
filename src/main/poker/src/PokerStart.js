@@ -6,8 +6,7 @@ import { withRouter } from 'react-router';
 import CommonHeader from './commonHeader'
 import { Button, Container, Form, FormGroup, Input } from 'reactstrap';
 import Modal from "react-modal";
-import { UN_EXPECTED_ERROR_CODE, UN_AUTHORIZE_ERROR_CODE } from './PokerConstNumber.js';
-
+import * as PokerConstNumber from './PokerConstNumber.js';
 
 class PokerStart extends Component {
 
@@ -30,13 +29,13 @@ class PokerStart extends Component {
     })
     // システムエラー画面へ遷移
     .catch(err => {
-    	if(err.response.body.status === UN_AUTHORIZE_ERROR_CODE) {
+    	if(err.response.body.status === PokerConstNumber.UN_AUTHORIZE_ERROR_CODE) {
     		this.props.history.push({
       		pathname: '/session-timeout'
       	})
       	return;
     	}
-    	if(err.response.body.status === UN_EXPECTED_ERROR_CODE) {
+    	if(err.response.body.status === PokerConstNumber.UN_EXPECTED_ERROR_CODE) {
     	  this.props.history.push({
     		  pathname: '/error'
     	  })
