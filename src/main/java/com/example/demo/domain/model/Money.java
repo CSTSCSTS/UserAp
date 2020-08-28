@@ -2,6 +2,7 @@ package com.example.demo.domain.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,14 @@ public class Money {
 
  public void minusMoney(BigDecimal betMoney) {
  	 money = money.subtract(betMoney);
+	}
+
+
+ public static Money convertMoney(MoneyDto moneyDto) {
+			return new Money(
+							moneyDto.getUserId(),
+							new BigDecimal(moneyDto.getMoney()),
+							LocalDateTime.parse(moneyDto.getUpdateDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
 	}
 
 }

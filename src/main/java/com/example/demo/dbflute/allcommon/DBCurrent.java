@@ -21,7 +21,7 @@ public class DBCurrent {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    protected final String _projectName = "pokerdb";
+    protected final String _projectName = "poker";
     protected final String _projectPrefix = "";
     protected final String _generationGapBasePrefix = "Bs";
 

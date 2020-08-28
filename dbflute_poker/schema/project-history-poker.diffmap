@@ -1,0 +1,24 @@
+map:{
+    ; 2020/05/07 11:58:15 = map:{
+        ; diffDate = 2020/05/07 11:58:15
+        ; tableCount = map:{
+            ; next = 3
+            ; previous = 0
+        }
+        ; diffAuthor = OWNER
+        ; tableDiff = map:{
+            ; OAUTH_POKER_USER_INFO = map:{
+                ; tableName = OAUTH_POKER_USER_INFO
+                ; diffType = ADD
+            }
+            ; POKER_USER_INFO = map:{
+                ; tableName = POKER_USER_INFO
+                ; diffType = ADD
+            }
+            ; POSSESSION_MONEY = map:{
+                ; tableName = POSSESSION_MONEY
+                ; diffType = ADD
+            }
+        }
+    }
+}

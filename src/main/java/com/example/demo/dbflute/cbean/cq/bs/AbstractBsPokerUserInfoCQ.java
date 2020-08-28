@@ -444,7 +444,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param loginDate The value of loginDate as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setLoginDate_Equal(java.time.LocalDateTime loginDate) {
@@ -453,7 +453,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param loginDate The value of loginDate as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setLoginDate_GreaterThan(java.time.LocalDateTime loginDate) {
@@ -462,7 +462,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param loginDate The value of loginDate as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setLoginDate_LessThan(java.time.LocalDateTime loginDate) {
@@ -471,7 +471,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param loginDate The value of loginDate as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setLoginDate_GreaterEqual(java.time.LocalDateTime loginDate) {
@@ -480,7 +480,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param loginDate The value of loginDate as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setLoginDate_LessEqual(java.time.LocalDateTime loginDate) {
@@ -490,7 +490,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * <pre>e.g. setLoginDate_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of loginDate. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of loginDate. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -503,7 +503,7 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * <pre>e.g. setLoginDate_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of loginDate. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of loginDate. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -513,18 +513,6 @@ public abstract class AbstractBsPokerUserInfoCQ extends AbstractConditionQuery {
         String nm = "LOGIN_DATE"; FromToOption op = fromToOption;
         regFTQ(xfFTHD(fromDatetime, nm, op), xfFTHD(toDatetime, nm, op), xgetCValueLoginDate(), nm, op);
     }
-
-    /**
-     * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
-     */
-    public void setLoginDate_IsNull() { regLoginDate(CK_ISN, DOBJ); }
-
-    /**
-     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
-     */
-    public void setLoginDate_IsNotNull() { regLoginDate(CK_ISNN, DOBJ); }
 
     protected void regLoginDate(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueLoginDate(), "LOGIN_DATE"); }
     protected abstract ConditionValue xgetCValueLoginDate();

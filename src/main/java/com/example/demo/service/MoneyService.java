@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.constants.PokerConstants;
 import com.example.demo.domain.model.Money;
-import com.example.demo.domain.model.PokerPlayingInfo.Winner;
+import com.example.demo.domain.model.Winner;
 import com.example.demo.repository.MoneyRepository;
 
 @Service
@@ -42,6 +42,13 @@ public Money update(int userId, BigDecimal betMoney, Winner winner) {
 
 		return money;
 
-	}
+}
+
+//所持金を更新する
+public Money update(Money money) {
+  moneyRepository.save(money);
+  return money;
+}
+
 
 }

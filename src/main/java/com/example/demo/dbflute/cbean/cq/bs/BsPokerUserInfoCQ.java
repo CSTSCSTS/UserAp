@@ -141,14 +141,14 @@ public class BsPokerUserInfoCQ extends AbstractBsPokerUserInfoCQ {
 
     /**
      * Add order-by as ascend. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @return this. (NotNull)
      */
     public BsPokerUserInfoCQ addOrderBy_LoginDate_Asc() { regOBA("LOGIN_DATE"); return this; }
 
     /**
      * Add order-by as descend. <br>
-     * LOGIN_DATE: {TIMESTAMP(26, 6)}
+     * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @return this. (NotNull)
      */
     public BsPokerUserInfoCQ addOrderBy_LoginDate_Desc() { regOBD("LOGIN_DATE"); return this; }
@@ -192,34 +192,11 @@ public class BsPokerUserInfoCQ extends AbstractBsPokerUserInfoCQ {
     //                                                                         Union Query
     //                                                                         ===========
     public void reflectRelationOnUnionQuery(ConditionQuery bqs, ConditionQuery uqs) {
-        PokerUserInfoCQ bq = (PokerUserInfoCQ)bqs;
-        PokerUserInfoCQ uq = (PokerUserInfoCQ)uqs;
-        if (bq.hasConditionQueryPossessionMoneyAsOne()) {
-            uq.queryPossessionMoneyAsOne().reflectRelationOnUnionQuery(bq.queryPossessionMoneyAsOne(), uq.queryPossessionMoneyAsOne());
-        }
     }
 
     // ===================================================================================
     //                                                                       Foreign Query
     //                                                                       =============
-    /**
-     * Get the condition-query for relation table. <br>
-     * POSSESSION_MONEY by USER_ID, named 'possessionMoneyAsOne'.
-     * @return The instance of condition-query. (NotNull)
-     */
-    public PossessionMoneyCQ queryPossessionMoneyAsOne() { return xdfgetConditionQueryPossessionMoneyAsOne(); }
-    public PossessionMoneyCQ xdfgetConditionQueryPossessionMoneyAsOne() {
-        String prop = "possessionMoneyAsOne";
-        if (!xhasQueRlMap(prop)) { xregQueRl(prop, xcreateQueryPossessionMoneyAsOne()); xsetupOuterJoinPossessionMoneyAsOne(); }
-        return xgetQueRlMap(prop);
-    }
-    protected PossessionMoneyCQ xcreateQueryPossessionMoneyAsOne() {
-        String nrp = xresolveNRP("POKER_USER_INFO", "possessionMoneyAsOne"); String jan = xresolveJAN(nrp, xgetNNLvl());
-        return xinitRelCQ(new PossessionMoneyCQ(this, xgetSqlClause(), jan, xgetNNLvl()), _baseCB, "possessionMoneyAsOne", nrp);
-    }
-    protected void xsetupOuterJoinPossessionMoneyAsOne() { xregOutJo("possessionMoneyAsOne"); }
-    public boolean hasConditionQueryPossessionMoneyAsOne() { return xhasQueRlMap("possessionMoneyAsOne"); }
-
     protected Map<String, Object> xfindFixedConditionDynamicParameterMap(String property) {
         return null;
     }

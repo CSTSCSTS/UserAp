@@ -2,39 +2,24 @@ package com.example.demo.dbflute.bsbhv;
 
 import java.util.List;
 
-import org.dbflute.Entity;
-import org.dbflute.bhv.AbstractBehaviorWritable;
-import org.dbflute.bhv.BehaviorSelector;
+import org.dbflute.*;
+import org.dbflute.bhv.*;
 import org.dbflute.bhv.core.BehaviorCommandInvoker;
-import org.dbflute.bhv.readable.CBCall;
-import org.dbflute.bhv.readable.EntityRowHandler;
-import org.dbflute.bhv.referrer.ReferrerLoaderHandler;
-import org.dbflute.bhv.writable.DeleteOption;
-import org.dbflute.bhv.writable.InsertOption;
-import org.dbflute.bhv.writable.QueryInsertSetupper;
-import org.dbflute.bhv.writable.UpdateOption;
-import org.dbflute.bhv.writable.WritableOptionCall;
-import org.dbflute.cbean.ConditionBean;
+import org.dbflute.bhv.readable.*;
+import org.dbflute.bhv.writable.*;
+import org.dbflute.bhv.referrer.*;
+import org.dbflute.cbean.*;
 import org.dbflute.cbean.chelper.HpSLSFunction;
-import org.dbflute.cbean.result.ListResultBean;
-import org.dbflute.cbean.result.PagingResultBean;
-import org.dbflute.exception.DangerousResultSizeException;
-import org.dbflute.exception.EntityAlreadyDeletedException;
-import org.dbflute.exception.EntityAlreadyExistsException;
-import org.dbflute.exception.EntityDuplicatedException;
-import org.dbflute.exception.NonQueryDeleteNotAllowedException;
-import org.dbflute.exception.NonQueryUpdateNotAllowedException;
-import org.dbflute.exception.SelectEntityConditionNotFoundException;
+import org.dbflute.cbean.result.*;
+import org.dbflute.exception.*;
 import org.dbflute.hook.CommonColumnAutoSetupper;
 import org.dbflute.optional.OptionalEntity;
-import org.dbflute.outsidesql.executor.OutsideSqlAllFacadeExecutor;
-
-import com.example.demo.dbflute.bsbhv.loader.LoaderOfPokerUserInfo;
-import com.example.demo.dbflute.bsentity.dbmeta.PokerUserInfoDbm;
-import com.example.demo.dbflute.cbean.PokerUserInfoCB;
-import com.example.demo.dbflute.exbhv.PokerUserInfoBhv;
-import com.example.demo.dbflute.exentity.PokerUserInfo;
-import com.example.demo.dbflute.exentity.PossessionMoney;
+import org.dbflute.outsidesql.executor.*;
+import com.example.demo.dbflute.exbhv.*;
+import com.example.demo.dbflute.bsbhv.loader.*;
+import com.example.demo.dbflute.exentity.*;
+import com.example.demo.dbflute.bsentity.dbmeta.*;
+import com.example.demo.dbflute.cbean.*;
 
 /**
  * The behavior of POKER_USER_INFO as TABLE. <br>
@@ -49,22 +34,22 @@ import com.example.demo.dbflute.exentity.PossessionMoney;
  *     POKER_USER_ID_SEQ1
  *
  * [identity]
- *
+ *     
  *
  * [version-no]
- *
+ *     
  *
  * [foreign table]
- *     POSSESSION_MONEY(AsOne)
+ *     
  *
  * [referrer table]
- *     POSSESSION_MONEY
+ *     
  *
  * [foreign property]
- *     possessionMoneyAsOne
+ *     
  *
  * [referrer property]
- *
+ *     
  * </pre>
  * @author DBFlute(AutoGenerator)
  */
@@ -423,14 +408,6 @@ public abstract class BsPokerUserInfoBhv extends AbstractBehaviorWritable<PokerU
     // ===================================================================================
     //                                                                   Pull out Relation
     //                                                                   =================
-    /**
-     * Pull out the list of referrer-as-one table 'PossessionMoney'.
-     * @param pokerUserInfoList The list of pokerUserInfo. (NotNull, EmptyAllowed)
-     * @return The list of referrer-as-one table. (NotNull, EmptyAllowed, NotNullElement)
-     */
-    public List<PossessionMoney> pulloutPossessionMoneyAsOne(List<PokerUserInfo> pokerUserInfoList)
-    { return helpPulloutInternally(pokerUserInfoList, "possessionMoneyAsOne"); }
-
     // ===================================================================================
     //                                                                      Extract Column
     //                                                                      ==============

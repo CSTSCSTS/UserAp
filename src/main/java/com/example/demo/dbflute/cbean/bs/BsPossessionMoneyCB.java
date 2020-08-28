@@ -18,7 +18,6 @@ import com.example.demo.dbflute.allcommon.ImplementedInvokerAssistant;
 import com.example.demo.dbflute.allcommon.ImplementedSqlClauseCreator;
 import com.example.demo.dbflute.cbean.*;
 import com.example.demo.dbflute.cbean.cq.*;
-import com.example.demo.dbflute.cbean.nss.*;
 
 /**
  * The base condition-bean of POSSESSION_MONEY.
@@ -48,6 +47,9 @@ public class BsPossessionMoneyCB extends AbstractConditionBean {
             enableSpecifyColumnRequired();
         }
         xsetSpecifyColumnRequiredExceptDeterminer(DBFluteConfig.getInstance().getSpecifyColumnRequiredExceptDeterminer());
+        if (DBFluteConfig.getInstance().isSpecifyColumnRequiredWarningOnly()) {
+            xenableSpecifyColumnRequiredWarningOnly();
+        }
         if (DBFluteConfig.getInstance().isQueryUpdateCountPreCheck()) {
             enableQueryUpdateCountPreCheck();
         }
@@ -82,7 +84,7 @@ public class BsPossessionMoneyCB extends AbstractConditionBean {
     //                                                                 ===================
     /**
      * Accept the query condition of primary key as equal.
-     * @param userId : PK, NotNull, INTEGER(10), FK to POKER_USER_INFO. (NotNull)
+     * @param userId : PK, NotNull, INTEGER(10). (NotNull)
      * @return this. (NotNull)
      */
     public PossessionMoneyCB acceptPK(Integer userId) {
@@ -239,32 +241,6 @@ public class BsPossessionMoneyCB extends AbstractConditionBean {
     // ===================================================================================
     //                                                                         SetupSelect
     //                                                                         ===========
-    protected PokerUserInfoNss _nssPokerUserInfo;
-    public PokerUserInfoNss xdfgetNssPokerUserInfo() {
-        if (_nssPokerUserInfo == null) { _nssPokerUserInfo = new PokerUserInfoNss(null); }
-        return _nssPokerUserInfo;
-    }
-    /**
-     * Set up relation columns to select clause. <br>
-     * POKER_USER_INFO by my USER_ID, named 'pokerUserInfo'.
-     * <pre>
-     * <span style="color: #0000C0">possessionMoneyBhv</span>.selectEntity(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
-     *     <span style="color: #553000">cb</span>.<span style="color: #CC4747">setupSelect_PokerUserInfo()</span>; <span style="color: #3F7E5E">// ...().with[nested-relation]()</span>
-     *     <span style="color: #553000">cb</span>.query().set...
-     * }).alwaysPresent(<span style="color: #553000">possessionMoney</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
-     *     ... = <span style="color: #553000">possessionMoney</span>.<span style="color: #CC4747">getPokerUserInfo()</span>; <span style="color: #3F7E5E">// you can get by using SetupSelect</span>
-     * });
-     * </pre>
-     * @return The set-upper of nested relation. {setupSelect...().with[nested-relation]} (NotNull)
-     */
-    public PokerUserInfoNss setupSelect_PokerUserInfo() {
-        assertSetupSelectPurpose("pokerUserInfo");
-        doSetupSelect(() -> query().queryPokerUserInfo());
-        if (_nssPokerUserInfo == null || !_nssPokerUserInfo.hasConditionQuery())
-        { _nssPokerUserInfo = new PokerUserInfoNss(query().queryPokerUserInfo()); }
-        return _nssPokerUserInfo;
-    }
-
     // [DBFlute-0.7.4]
     // ===================================================================================
     //                                                                             Specify
@@ -306,13 +282,12 @@ public class BsPossessionMoneyCB extends AbstractConditionBean {
     }
 
     public static class HpSpecification extends HpAbstractSpecification<PossessionMoneyCQ> {
-        protected PokerUserInfoCB.HpSpecification _pokerUserInfo;
         public HpSpecification(ConditionBean baseCB, HpSpQyCall<PossessionMoneyCQ> qyCall
                              , HpCBPurpose purpose, DBMetaProvider dbmetaProvider
                              , HpSDRFunctionFactory sdrFuncFactory)
         { super(baseCB, qyCall, purpose, dbmetaProvider, sdrFuncFactory); }
         /**
-         * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+         * USER_ID: {PK, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnUserId() { return doColumn("USER_ID"); }
@@ -322,7 +297,7 @@ public class BsPossessionMoneyCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnPossessionMoney() { return doColumn("POSSESSION_MONEY"); }
         /**
-         * UPDATE_DATE: {TIMESTAMP(26, 6)}
+         * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnUpdateDate() { return doColumn("UPDATE_DATE"); }
@@ -334,26 +309,6 @@ public class BsPossessionMoneyCB extends AbstractConditionBean {
         }
         @Override
         protected String getTableDbName() { return "POSSESSION_MONEY"; }
-        /**
-         * Prepare to specify functions about relation table. <br>
-         * POKER_USER_INFO by my USER_ID, named 'pokerUserInfo'.
-         * @return The instance for specification for relation table to specify. (NotNull)
-         */
-        public PokerUserInfoCB.HpSpecification specifyPokerUserInfo() {
-            assertRelation("pokerUserInfo");
-            if (_pokerUserInfo == null) {
-                _pokerUserInfo = new PokerUserInfoCB.HpSpecification(_baseCB
-                    , xcreateSpQyCall(() -> _qyCall.has() && _qyCall.qy().hasConditionQueryPokerUserInfo()
-                                    , () -> _qyCall.qy().queryPokerUserInfo())
-                    , _purpose, _dbmetaProvider, xgetSDRFnFc());
-                if (xhasSyncQyCall()) { // inherits it
-                    _pokerUserInfo.xsetSyncQyCall(xcreateSpQyCall(
-                        () -> xsyncQyCall().has() && xsyncQyCall().qy().hasConditionQueryPokerUserInfo()
-                      , () -> xsyncQyCall().qy().queryPokerUserInfo()));
-                }
-            }
-            return _pokerUserInfo;
-        }
         /**
          * Prepare for (Specify)MyselfDerived (SubQuery).
          * @return The object to set up a function for myself table. (NotNull)

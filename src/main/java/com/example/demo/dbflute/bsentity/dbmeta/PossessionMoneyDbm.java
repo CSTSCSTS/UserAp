@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.dbflute.Entity;
-import org.dbflute.optional.OptionalEntity;
 import org.dbflute.dbmeta.AbstractDBMeta;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
@@ -50,18 +49,6 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
 
-    // -----------------------------------------------------
-    //                                      Foreign Property
-    //                                      ----------------
-    protected final Map<String, PropertyGateway> _efpgMap = newHashMap();
-    { xsetupEfpg(); }
-    @SuppressWarnings("unchecked")
-    protected void xsetupEfpg() {
-        setupEfpg(_efpgMap, et -> ((PossessionMoney)et).getPokerUserInfo(), (et, vl) -> ((PossessionMoney)et).setPokerUserInfo((OptionalEntity<PokerUserInfo>)vl), "pokerUserInfo");
-    }
-    public PropertyGateway findForeignPropertyGateway(String prop)
-    { return doFindEfpg(_efpgMap, prop); }
-
     // ===================================================================================
     //                                                                          Table Info
     //                                                                          ==========
@@ -78,12 +65,12 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnUserId = cci("USER_ID", "USER_ID", null, null, Integer.class, "userId", null, true, false, true, "INTEGER", 10, 0, null, null, false, null, null, "pokerUserInfo", null, null, false);
+    protected final ColumnInfo _columnUserId = cci("USER_ID", "USER_ID", null, null, Integer.class, "userId", null, true, false, true, "INTEGER", 10, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnPossessionMoney = cci("POSSESSION_MONEY", "POSSESSION_MONEY", null, null, java.math.BigDecimal.class, "possessionMoney", null, false, false, true, "DECIMAL", 65535, 32767, null, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnUpdateDate = cci("UPDATE_DATE", "UPDATE_DATE", null, null, java.time.LocalDateTime.class, "updateDate", null, false, false, false, "TIMESTAMP", 26, 6, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnUpdateDate = cci("UPDATE_DATE", "UPDATE_DATE", null, null, java.time.LocalDateTime.class, "updateDate", null, false, false, true, "TIMESTAMP", 26, 6, null, "NOW()", false, null, null, null, null, null, false);
 
     /**
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnUserId() { return _columnUserId; }
@@ -93,7 +80,7 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
      */
     public ColumnInfo columnPossessionMoney() { return _columnPossessionMoney; }
     /**
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnUpdateDate() { return _columnUpdateDate; }
@@ -126,14 +113,6 @@ public class PossessionMoneyDbm extends AbstractDBMeta {
     // -----------------------------------------------------
     //                                      Foreign Property
     //                                      ----------------
-    /**
-     * POKER_USER_INFO by my USER_ID, named 'pokerUserInfo'.
-     * @return The information object of foreign property. (NotNull)
-     */
-    public ForeignInfo foreignPokerUserInfo() {
-        Map<ColumnInfo, ColumnInfo> mp = newLinkedHashMap(columnUserId(), PokerUserInfoDbm.getInstance().columnUserId());
-        return cfi("FK_USER_ID", "pokerUserInfo", this, PokerUserInfoDbm.getInstance(), mp, 0, org.dbflute.optional.OptionalEntity.class, true, false, false, false, null, null, false, "possessionMoneyAsOne", false);
-    }
 
     // -----------------------------------------------------
     //                                     Referrer Property

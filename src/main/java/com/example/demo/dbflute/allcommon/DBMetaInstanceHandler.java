@@ -31,6 +31,7 @@ public class DBMetaInstanceHandler implements DBMetaProvider {
     protected static final Map<String, String> _tableDbNameClassNameMap;
     static {
         final Map<String, String> tmpMap = newHashMap();
+        tmpMap.put("OAUTH_POKER_USER_INFO", "com.example.demo.dbflute.bsentity.dbmeta.OauthPokerUserInfoDbm");
         tmpMap.put("POKER_USER_INFO", "com.example.demo.dbflute.bsentity.dbmeta.PokerUserInfoDbm");
         tmpMap.put("POSSESSION_MONEY", "com.example.demo.dbflute.bsentity.dbmeta.PossessionMoneyDbm");
         _tableDbNameClassNameMap = Collections.unmodifiableMap(tmpMap);

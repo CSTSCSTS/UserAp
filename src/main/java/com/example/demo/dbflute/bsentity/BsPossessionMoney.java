@@ -3,11 +3,9 @@ package com.example.demo.dbflute.bsentity;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.dbflute.Entity;
 import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.dbmeta.AbstractEntity;
 import org.dbflute.dbmeta.accessory.DomainEntity;
-import org.dbflute.optional.OptionalEntity;
 import com.example.demo.dbflute.allcommon.DBMetaInstanceHandler;
 import com.example.demo.dbflute.exentity.*;
 
@@ -31,13 +29,13 @@ import com.example.demo.dbflute.exentity.*;
  *     
  *
  * [foreign table]
- *     POKER_USER_INFO
+ *     
  *
  * [referrer table]
  *     
  *
  * [foreign property]
- *     pokerUserInfo
+ *     
  *
  * [referrer property]
  *     
@@ -65,13 +63,13 @@ public abstract class BsPossessionMoney extends AbstractEntity implements Domain
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    /** USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO} */
+    /** USER_ID: {PK, NotNull, INTEGER(10)} */
     protected Integer _userId;
 
     /** POSSESSION_MONEY: {NotNull, DECIMAL(65535, 32767)} */
     protected java.math.BigDecimal _possessionMoney;
 
-    /** UPDATE_DATE: {TIMESTAMP(26, 6)} */
+    /** UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]} */
     protected java.time.LocalDateTime _updateDate;
 
     // ===================================================================================
@@ -99,27 +97,6 @@ public abstract class BsPossessionMoney extends AbstractEntity implements Domain
     // ===================================================================================
     //                                                                    Foreign Property
     //                                                                    ================
-    /** POKER_USER_INFO by my USER_ID, named 'pokerUserInfo'. */
-    protected OptionalEntity<PokerUserInfo> _pokerUserInfo;
-
-    /**
-     * [get] POKER_USER_INFO by my USER_ID, named 'pokerUserInfo'. <br>
-     * Optional: alwaysPresent(), ifPresent().orElse(), get(), ...
-     * @return The entity of foreign property 'pokerUserInfo'. (NotNull, EmptyAllowed: when e.g. null FK column, no setupSelect)
-     */
-    public OptionalEntity<PokerUserInfo> getPokerUserInfo() {
-        if (_pokerUserInfo == null) { _pokerUserInfo = OptionalEntity.relationEmpty(this, "pokerUserInfo"); }
-        return _pokerUserInfo;
-    }
-
-    /**
-     * [set] POKER_USER_INFO by my USER_ID, named 'pokerUserInfo'.
-     * @param pokerUserInfo The entity of foreign property 'pokerUserInfo'. (NullAllowed)
-     */
-    public void setPokerUserInfo(OptionalEntity<PokerUserInfo> pokerUserInfo) {
-        _pokerUserInfo = pokerUserInfo;
-    }
-
     // ===================================================================================
     //                                                                   Referrer Property
     //                                                                   =================
@@ -151,13 +128,7 @@ public abstract class BsPossessionMoney extends AbstractEntity implements Domain
 
     @Override
     protected String doBuildStringWithRelation(String li) {
-        StringBuilder sb = new StringBuilder();
-        if (_pokerUserInfo != null && _pokerUserInfo.isPresent())
-        { sb.append(li).append(xbRDS(_pokerUserInfo, "pokerUserInfo")); }
-        return sb.toString();
-    }
-    protected <ET extends Entity> String xbRDS(org.dbflute.optional.OptionalEntity<ET> et, String name) { // buildRelationDisplayString()
-        return et.get().buildDisplayString(name, true, true);
+        return "";
     }
 
     @Override
@@ -175,13 +146,7 @@ public abstract class BsPossessionMoney extends AbstractEntity implements Domain
 
     @Override
     protected String doBuildRelationString(String dm) {
-        StringBuilder sb = new StringBuilder();
-        if (_pokerUserInfo != null && _pokerUserInfo.isPresent())
-        { sb.append(dm).append("pokerUserInfo"); }
-        if (sb.length() > dm.length()) {
-            sb.delete(0, dm.length()).insert(0, "(").append(")");
-        }
-        return sb.toString();
+        return "";
     }
 
     @Override
@@ -193,7 +158,7 @@ public abstract class BsPossessionMoney extends AbstractEntity implements Domain
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO} <br>
+     * [get] USER_ID: {PK, NotNull, INTEGER(10)} <br>
      * ユーザーID
      * @return The value of the column 'USER_ID'. (basically NotNull if selected: for the constraint)
      */
@@ -203,7 +168,7 @@ public abstract class BsPossessionMoney extends AbstractEntity implements Domain
     }
 
     /**
-     * [set] USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO} <br>
+     * [set] USER_ID: {PK, NotNull, INTEGER(10)} <br>
      * ユーザーID
      * @param userId The value of the column 'USER_ID'. (basically NotNull if update: for the constraint)
      */
@@ -233,9 +198,9 @@ public abstract class BsPossessionMoney extends AbstractEntity implements Domain
     }
 
     /**
-     * [get] UPDATE_DATE: {TIMESTAMP(26, 6)} <br>
+     * [get] UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]} <br>
      * 更新日時
-     * @return The value of the column 'UPDATE_DATE'. (NullAllowed even if selected: for no constraint)
+     * @return The value of the column 'UPDATE_DATE'. (basically NotNull if selected: for the constraint)
      */
     public java.time.LocalDateTime getUpdateDate() {
         checkSpecifiedProperty("updateDate");
@@ -243,9 +208,9 @@ public abstract class BsPossessionMoney extends AbstractEntity implements Domain
     }
 
     /**
-     * [set] UPDATE_DATE: {TIMESTAMP(26, 6)} <br>
+     * [set] UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]} <br>
      * 更新日時
-     * @param updateDate The value of the column 'UPDATE_DATE'. (NullAllowed: null update allowed for no constraint)
+     * @param updateDate The value of the column 'UPDATE_DATE'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateDate(java.time.LocalDateTime updateDate) {
         registerModifiedProperty("updateDate");

@@ -40,13 +40,13 @@ import com.example.demo.dbflute.cbean.*;
  *     
  *
  * [foreign table]
- *     POKER_USER_INFO
+ *     
  *
  * [referrer table]
  *     
  *
  * [foreign property]
- *     pokerUserInfo
+ *     
  *
  * [referrer property]
  *     
@@ -159,7 +159,7 @@ public abstract class BsPossessionMoneyBhv extends AbstractBehaviorWritable<Poss
 
     /**
      * Select the entity by the primary-key value.
-     * @param userId : PK, NotNull, INTEGER(10), FK to POKER_USER_INFO. (NotNull)
+     * @param userId : PK, NotNull, INTEGER(10). (NotNull)
      * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
      * @throws EntityAlreadyDeletedException When get(), required() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
@@ -364,14 +364,6 @@ public abstract class BsPossessionMoneyBhv extends AbstractBehaviorWritable<Poss
     // ===================================================================================
     //                                                                   Pull out Relation
     //                                                                   =================
-    /**
-     * Pull out the list of foreign table 'PokerUserInfo'.
-     * @param possessionMoneyList The list of possessionMoney. (NotNull, EmptyAllowed)
-     * @return The list of foreign table. (NotNull, EmptyAllowed, NotNullElement)
-     */
-    public List<PokerUserInfo> pulloutPokerUserInfo(List<PossessionMoney> possessionMoneyList)
-    { return helpPulloutInternally(possessionMoneyList, "pokerUserInfo"); }
-
     // ===================================================================================
     //                                                                      Extract Column
     //                                                                      ==============

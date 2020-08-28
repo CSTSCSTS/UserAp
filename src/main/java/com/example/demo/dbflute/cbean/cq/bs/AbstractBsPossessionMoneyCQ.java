@@ -45,7 +45,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
     //                                                                               =====
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param userId The value of userId as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_Equal(Integer userId) {
@@ -58,7 +58,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param userId The value of userId as notEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_NotEqual(Integer userId) {
@@ -71,7 +71,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param userId The value of userId as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_GreaterThan(Integer userId) {
@@ -80,7 +80,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param userId The value of userId as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_LessThan(Integer userId) {
@@ -89,7 +89,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param userId The value of userId as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_GreaterEqual(Integer userId) {
@@ -98,7 +98,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param userId The value of userId as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUserId_LessEqual(Integer userId) {
@@ -109,7 +109,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
      * RangeOf with various options. (versatile) <br>
      * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param minNumber The min number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param opLambda The callback for option of range-of. (NotNull)
@@ -122,7 +122,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
      * RangeOf with various options. (versatile) <br>
      * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param minNumber The min number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of userId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
@@ -133,7 +133,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * InScope {in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param userIdList The collection of userId as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserId_InScope(Collection<Integer> userIdList) {
@@ -146,7 +146,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * NotInScope {not in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @param userIdList The collection of userId as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
     public void setUserId_NotInScope(Collection<Integer> userIdList) {
@@ -159,13 +159,13 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      */
     public void setUserId_IsNull() { regUserId(CK_ISN, DOBJ); }
 
     /**
      * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      */
     public void setUserId_IsNotNull() { regUserId(CK_ISNN, DOBJ); }
 
@@ -291,7 +291,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param updateDate The value of updateDate as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDate_Equal(java.time.LocalDateTime updateDate) {
@@ -300,7 +300,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param updateDate The value of updateDate as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDate_GreaterThan(java.time.LocalDateTime updateDate) {
@@ -309,7 +309,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param updateDate The value of updateDate as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDate_LessThan(java.time.LocalDateTime updateDate) {
@@ -318,7 +318,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param updateDate The value of updateDate as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDate_GreaterEqual(java.time.LocalDateTime updateDate) {
@@ -327,7 +327,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @param updateDate The value of updateDate as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDate_LessEqual(java.time.LocalDateTime updateDate) {
@@ -337,7 +337,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * <pre>e.g. setUpdateDate_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDate. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDate. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -350,7 +350,7 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * <pre>e.g. setUpdateDate_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDate. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDate. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -360,18 +360,6 @@ public abstract class AbstractBsPossessionMoneyCQ extends AbstractConditionQuery
         String nm = "UPDATE_DATE"; FromToOption op = fromToOption;
         regFTQ(xfFTHD(fromDatetime, nm, op), xfFTHD(toDatetime, nm, op), xgetCValueUpdateDate(), nm, op);
     }
-
-    /**
-     * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
-     */
-    public void setUpdateDate_IsNull() { regUpdateDate(CK_ISN, DOBJ); }
-
-    /**
-     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
-     */
-    public void setUpdateDate_IsNotNull() { regUpdateDate(CK_ISNN, DOBJ); }
 
     protected void regUpdateDate(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateDate(), "UPDATE_DATE"); }
     protected abstract ConditionValue xgetCValueUpdateDate();

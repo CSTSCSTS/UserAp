@@ -25,13 +25,13 @@ import com.example.demo.dbflute.exentity.*;
  *     
  *
  * [foreign table]
- *     POKER_USER_INFO
+ *     
  *
  * [referrer table]
  *     
  *
  * [foreign property]
- *     pokerUserInfo
+ *     
  *
  * [referrer property]
  *     
@@ -59,13 +59,6 @@ public class LoaderOfPossessionMoney {
     // ===================================================================================
     //                                                                    Pull out Foreign
     //                                                                    ================
-    protected LoaderOfPokerUserInfo _foreignPokerUserInfoLoader;
-    public LoaderOfPokerUserInfo pulloutPokerUserInfo() {
-        if (_foreignPokerUserInfoLoader == null)
-        { _foreignPokerUserInfoLoader = new LoaderOfPokerUserInfo().ready(myBhv().pulloutPokerUserInfo(_selectedList), _selector); }
-        return _foreignPokerUserInfoLoader;
-    }
-
     // ===================================================================================
     //                                                                            Accessor
     //                                                                            ========

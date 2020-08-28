@@ -18,7 +18,6 @@ import com.example.demo.dbflute.allcommon.ImplementedInvokerAssistant;
 import com.example.demo.dbflute.allcommon.ImplementedSqlClauseCreator;
 import com.example.demo.dbflute.cbean.*;
 import com.example.demo.dbflute.cbean.cq.*;
-import com.example.demo.dbflute.cbean.nss.*;
 
 /**
  * The base condition-bean of POKER_USER_INFO.
@@ -48,6 +47,9 @@ public class BsPokerUserInfoCB extends AbstractConditionBean {
             enableSpecifyColumnRequired();
         }
         xsetSpecifyColumnRequiredExceptDeterminer(DBFluteConfig.getInstance().getSpecifyColumnRequiredExceptDeterminer());
+        if (DBFluteConfig.getInstance().isSpecifyColumnRequiredWarningOnly()) {
+            xenableSpecifyColumnRequiredWarningOnly();
+        }
         if (DBFluteConfig.getInstance().isQueryUpdateCountPreCheck()) {
             enableQueryUpdateCountPreCheck();
         }
@@ -251,32 +253,6 @@ public class BsPokerUserInfoCB extends AbstractConditionBean {
     // ===================================================================================
     //                                                                         SetupSelect
     //                                                                         ===========
-    protected PossessionMoneyNss _nssPossessionMoneyAsOne;
-    public PossessionMoneyNss xdfgetNssPossessionMoneyAsOne() {
-        if (_nssPossessionMoneyAsOne == null) { _nssPossessionMoneyAsOne = new PossessionMoneyNss(null); }
-        return _nssPossessionMoneyAsOne;
-    }
-    /**
-     * Set up relation columns to select clause. <br>
-     * POSSESSION_MONEY by USER_ID, named 'possessionMoneyAsOne'.
-     * <pre>
-     * <span style="color: #0000C0">pokerUserInfoBhv</span>.selectEntity(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
-     *     <span style="color: #553000">cb</span>.<span style="color: #CC4747">setupSelect_PossessionMoneyAsOne(${dynamicFixedConditionVariables})</span>; <span style="color: #3F7E5E">// ...().with[nested-relation]()</span>
-     *     <span style="color: #553000">cb</span>.query().set...
-     * }).alwaysPresent(<span style="color: #553000">pokerUserInfo</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
-     *     ... = <span style="color: #553000">pokerUserInfo</span>.<span style="color: #CC4747">getPossessionMoneyAsOne()</span>; <span style="color: #3F7E5E">// you can get by using SetupSelect</span>
-     * });
-     * </pre>
-     * @return The set-upper of nested relation. {setupSelect...().with[nested-relation]} (NotNull)
-     */
-    public PossessionMoneyNss setupSelect_PossessionMoneyAsOne() {
-        assertSetupSelectPurpose("possessionMoneyAsOne");
-        doSetupSelect(() -> query().queryPossessionMoneyAsOne());
-        if (_nssPossessionMoneyAsOne == null || !_nssPossessionMoneyAsOne.hasConditionQuery())
-        { _nssPossessionMoneyAsOne = new PossessionMoneyNss(query().queryPossessionMoneyAsOne()); }
-        return _nssPossessionMoneyAsOne;
-    }
-
     // [DBFlute-0.7.4]
     // ===================================================================================
     //                                                                             Specify
@@ -318,7 +294,6 @@ public class BsPokerUserInfoCB extends AbstractConditionBean {
     }
 
     public static class HpSpecification extends HpAbstractSpecification<PokerUserInfoCQ> {
-        protected PossessionMoneyCB.HpSpecification _possessionMoneyAsOne;
         public HpSpecification(ConditionBean baseCB, HpSpQyCall<PokerUserInfoCQ> qyCall
                              , HpCBPurpose purpose, DBMetaProvider dbmetaProvider
                              , HpSDRFunctionFactory sdrFuncFactory)
@@ -339,7 +314,7 @@ public class BsPokerUserInfoCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnPassword() { return doColumn("PASSWORD"); }
         /**
-         * LOGIN_DATE: {TIMESTAMP(26, 6)}
+         * LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnLoginDate() { return doColumn("LOGIN_DATE"); }
@@ -351,26 +326,6 @@ public class BsPokerUserInfoCB extends AbstractConditionBean {
         }
         @Override
         protected String getTableDbName() { return "POKER_USER_INFO"; }
-        /**
-         * Prepare to specify functions about relation table. <br>
-         * POSSESSION_MONEY by USER_ID, named 'possessionMoneyAsOne'.
-         * @return The instance for specification for relation table to specify. (NotNull)
-         */
-        public PossessionMoneyCB.HpSpecification specifyPossessionMoneyAsOne() {
-            assertRelation("possessionMoneyAsOne");
-            if (_possessionMoneyAsOne == null) {
-                _possessionMoneyAsOne = new PossessionMoneyCB.HpSpecification(_baseCB
-                    , xcreateSpQyCall(() -> _qyCall.has() && _qyCall.qy().hasConditionQueryPossessionMoneyAsOne()
-                                    , () -> _qyCall.qy().queryPossessionMoneyAsOne())
-                    , _purpose, _dbmetaProvider, xgetSDRFnFc());
-                if (xhasSyncQyCall()) { // inherits it
-                    _possessionMoneyAsOne.xsetSyncQyCall(xcreateSpQyCall(
-                        () -> xsyncQyCall().has() && xsyncQyCall().qy().hasConditionQueryPossessionMoneyAsOne()
-                      , () -> xsyncQyCall().qy().queryPossessionMoneyAsOne()));
-                }
-            }
-            return _possessionMoneyAsOne;
-        }
         /**
          * Prepare for (Specify)MyselfDerived (SubQuery).
          * @return The object to set up a function for myself table. (NotNull)

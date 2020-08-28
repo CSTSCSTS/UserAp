@@ -3,11 +3,9 @@ package com.example.demo.dbflute.bsentity;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.dbflute.Entity;
 import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.dbmeta.AbstractEntity;
 import org.dbflute.dbmeta.accessory.DomainEntity;
-import org.dbflute.optional.OptionalEntity;
 import com.example.demo.dbflute.allcommon.DBMetaInstanceHandler;
 import com.example.demo.dbflute.exentity.*;
 
@@ -31,13 +29,13 @@ import com.example.demo.dbflute.exentity.*;
  *     
  *
  * [foreign table]
- *     POSSESSION_MONEY(AsOne)
+ *     
  *
  * [referrer table]
- *     POSSESSION_MONEY
+ *     
  *
  * [foreign property]
- *     possessionMoneyAsOne
+ *     
  *
  * [referrer property]
  *     
@@ -76,7 +74,7 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     /** PASSWORD: {NotNull, VARCHAR(255)} */
     protected String _password;
 
-    /** LOGIN_DATE: {TIMESTAMP(26, 6)} */
+    /** LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]} */
     protected java.time.LocalDateTime _loginDate;
 
     // ===================================================================================
@@ -115,27 +113,6 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     // ===================================================================================
     //                                                                    Foreign Property
     //                                                                    ================
-    /** POSSESSION_MONEY by USER_ID, named 'possessionMoneyAsOne'. */
-    protected OptionalEntity<PossessionMoney> _possessionMoneyAsOne;
-
-    /**
-     * [get] POSSESSION_MONEY by USER_ID, named 'possessionMoneyAsOne'.
-     * Optional: alwaysPresent(), ifPresent().orElse(), get(), ...
-     * @return the entity of foreign property(referrer-as-one) 'possessionMoneyAsOne'. (NotNull, EmptyAllowed: when e.g. no data, no setupSelect)
-     */
-    public OptionalEntity<PossessionMoney> getPossessionMoneyAsOne() {
-        if (_possessionMoneyAsOne == null) { _possessionMoneyAsOne = OptionalEntity.relationEmpty(this, "possessionMoneyAsOne"); }
-        return _possessionMoneyAsOne;
-    }
-
-    /**
-     * [set] POSSESSION_MONEY by USER_ID, named 'possessionMoneyAsOne'.
-     * @param possessionMoneyAsOne The entity of foreign property(referrer-as-one) 'possessionMoneyAsOne'. (NullAllowed)
-     */
-    public void setPossessionMoneyAsOne(OptionalEntity<PossessionMoney> possessionMoneyAsOne) {
-        _possessionMoneyAsOne = possessionMoneyAsOne;
-    }
-
     // ===================================================================================
     //                                                                   Referrer Property
     //                                                                   =================
@@ -167,13 +144,7 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
 
     @Override
     protected String doBuildStringWithRelation(String li) {
-        StringBuilder sb = new StringBuilder();
-        if (_possessionMoneyAsOne != null && _possessionMoneyAsOne.isPresent())
-        { sb.append(li).append(xbRDS(_possessionMoneyAsOne, "possessionMoneyAsOne")); }
-        return sb.toString();
-    }
-    protected <ET extends Entity> String xbRDS(org.dbflute.optional.OptionalEntity<ET> et, String name) { // buildRelationDisplayString()
-        return et.get().buildDisplayString(name, true, true);
+        return "";
     }
 
     @Override
@@ -192,13 +163,7 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
 
     @Override
     protected String doBuildRelationString(String dm) {
-        StringBuilder sb = new StringBuilder();
-        if (_possessionMoneyAsOne != null && _possessionMoneyAsOne.isPresent())
-        { sb.append(dm).append("possessionMoneyAsOne"); }
-        if (sb.length() > dm.length()) {
-            sb.delete(0, dm.length()).insert(0, "(").append(")");
-        }
-        return sb.toString();
+        return "";
     }
 
     @Override
@@ -270,9 +235,9 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     }
 
     /**
-     * [get] LOGIN_DATE: {TIMESTAMP(26, 6)} <br>
+     * [get] LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]} <br>
      * ログイン日時
-     * @return The value of the column 'LOGIN_DATE'. (NullAllowed even if selected: for no constraint)
+     * @return The value of the column 'LOGIN_DATE'. (basically NotNull if selected: for the constraint)
      */
     public java.time.LocalDateTime getLoginDate() {
         checkSpecifiedProperty("loginDate");
@@ -280,9 +245,9 @@ public abstract class BsPokerUserInfo extends AbstractEntity implements DomainEn
     }
 
     /**
-     * [set] LOGIN_DATE: {TIMESTAMP(26, 6)} <br>
+     * [set] LOGIN_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]} <br>
      * ログイン日時
-     * @param loginDate The value of the column 'LOGIN_DATE'. (NullAllowed: null update allowed for no constraint)
+     * @param loginDate The value of the column 'LOGIN_DATE'. (basically NotNull if update: for the constraint)
      */
     public void setLoginDate(java.time.LocalDateTime loginDate) {
         registerModifiedProperty("loginDate");

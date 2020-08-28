@@ -1,0 +1,1197 @@
+2020-05-07 11:48:56,428 [main] INFO  (LastaDiProperties@deriveSmartDeployModeFromLocation():157) - ...Loading specified properties and get by the key: intro_env_production.properties, lasta_di.smart.deploy.mode
+2020-05-07 11:48:56,437 [main] INFO  (SmartDeployMode@setValue():62) - ...Setting smart deploy mode: cool
+2020-05-07 11:48:56,461 [main] INFO  (LaContainerFactory@show():158) - ...Reading lasta_di.xml
+2020-05-07 11:48:56,513 [main] INFO  (LaContainerFactory@show():158) - ...Reading   redefiner.xml
+2020-05-07 11:48:56,613 [main] INFO  (LaContainerFactory@show():158) - ...Reading   smartdeploy.xml
+2020-05-07 11:48:57,022 [main] INFO  (LaContainerFactory@show():158) - ...Reading     smart/cooldeploy.xml
+2020-05-07 11:48:57,060 [main] INFO  (LaContainerFactory@show():158) - ...Reading app.xml
+2020-05-07 11:48:57,064 [main] INFO  (LaContainerFactory@show():158) - ...Reading   convention.xml
+2020-05-07 11:48:57,071 [main] INFO  (LaContainerFactory@show():158) - ...Reading     embedded_convention.xml
+2020-05-07 11:48:57,080 [main] INFO  (LaContainerFactory@show():158) - ...Reading   dbflute.xml
+2020-05-07 11:48:57,087 [main] INFO  (LaContainerFactory@show():158) - ...Reading     rdb.xml
+2020-05-07 11:48:57,090 [main] INFO  (LaContainerFactory@show():158) - ...Reading       jta.xml
+2020-05-07 11:48:57,115 [main] INFO  (LaContainerFactory@show():158) - ...Reading       jdbc.xml
+2020-05-07 11:48:57,120 [main] INFO  (LaContainerFactory@show():158) - ...Reading         jta.xml (recycle)
+2020-05-07 11:48:57,122 [main] INFO  (LaContainerFactory@show():158) - ...Reading         lastaflute_assist.xml
+2020-05-07 11:48:57,125 [main] INFO  (LaContainerFactory@show():158) - ...Reading           lastaflute_director.xml
+2020-05-07 11:48:57,186 [main] INFO  (LaContainerFactory@show():158) - ...Reading       tx_aop.xml
+2020-05-07 11:48:57,190 [main] INFO  (LaContainerFactory@show():158) - ...Reading         jta.xml (recycle)
+2020-05-07 11:48:57,339 [main] INFO  (LaContainerFactory@show():158) - ...Reading   lastaflute.xml
+2020-05-07 11:48:57,343 [main] INFO  (LaContainerFactory@show():158) - ...Reading     lastaflute_core.xml
+2020-05-07 11:48:57,347 [main] INFO  (LaContainerFactory@show():158) - ...Reading       lastaflute_assist.xml (recycle)
+2020-05-07 11:48:57,392 [main] INFO  (LaContainerFactory@show():158) - ...Reading     lastaflute_db.xml
+2020-05-07 11:48:57,395 [main] INFO  (LaContainerFactory@show():158) - ...Reading       jta.xml (recycle)
+2020-05-07 11:48:57,399 [main] INFO  (LaContainerFactory@show():158) - ...Reading     lastaflute_web.xml
+2020-05-07 11:48:57,405 [main] INFO  (LaContainerFactory@show():158) - ...Reading       lastaflute_core.xml (recycle)
+2020-05-07 11:48:57,405 [main] INFO  (LaContainerFactory@show():158) - ...Reading       lastaflute_db.xml (recycle)
+2020-05-07 11:48:57,406 [main] INFO  (LaContainerFactory@show():158) - ...Reading       convention.xml (recycle)
+2020-05-07 11:48:57,453 [main] INFO  (LaContainerFactory@show():158) - ...Reading smart/cooldeploy-autoregister.xml
+2020-05-07 11:48:57,456 [main] INFO  (LaContainerFactory@show():158) - ...Reading   convention.xml (recycle)
+2020-05-07 11:48:57,457 [main] INFO  (LaContainerFactory@show():158) - ...Reading   creator.xml
+2020-05-07 11:48:57,460 [main] INFO  (LaContainerFactory@show():158) - ...Reading     convention.xml (recycle)
+2020-05-07 11:48:57,461 [main] INFO  (LaContainerFactory@show():158) - ...Reading     customizer.xml
+2020-05-07 11:48:57,464 [main] INFO  (LaContainerFactory@show():158) - ...Reading       lastafw_customizer.xml
+2020-05-07 11:48:57,479 [main] INFO  (LaContainerFactory@show():158) - ...Reading       embedded_customizer.xml
+2020-05-07 11:48:57,483 [main] INFO  (LaContainerFactory@show():158) - ...Reading         tx_customizer.xml
+2020-05-07 11:48:57,501 [main] INFO  (LaContainerFactory@show():158) - ...Reading     lastafw_creator.xml
+2020-05-07 11:48:57,507 [main] INFO  (LaContainerFactory@show():158) - ...Reading       convention.xml (recycle)
+2020-05-07 11:48:57,509 [main] INFO  (LaContainerFactory@show():158) - ...Reading       customizer.xml (recycle)
+2020-05-07 11:48:57,527 [main] INFO  (LaContainerFactory@show():158) - ...Reading     embedded_creator.xml
+2020-05-07 11:48:57,531 [main] INFO  (LaContainerFactory@show():158) - ...Reading       convention.xml (recycle)
+2020-05-07 11:48:57,532 [main] INFO  (LaContainerFactory@show():158) - ...Reading       customizer.xml (recycle)
+2020-05-07 11:48:57,546 [main] INFO  (LaContainerFactory@show():158) - ...Reading   customizer.xml (recycle)
+2020-05-07 11:48:57,632 [main] INFO  (ObjectiveConfig@showBootLogging():242) - [Objective Config]
+2020-05-07 11:48:57,633 [main] INFO  (ObjectiveConfig@showBootLogging():243) -  intro_config.properties extends [intro_env_production.properties]
+2020-05-07 11:48:57,634 [main] INFO  (ObjectiveConfig@showBootLogging():246) -  checkImplicitOverride=true, propertyCount=20
+2020-05-07 11:48:57,643 [main] INFO  (HookedXADataSource@showBootLogging():78) - [XA DataSource]
+2020-05-07 11:48:57,644 [main] INFO  (HookedXADataSource@showBootLogging():79) -  driver: org.h2.Driver
+2020-05-07 11:48:57,645 [main] INFO  (HookedXADataSource@showBootLogging():80) -  url: jdbc:h2:mem:introdb;DB_CLOSE_DELAY=-1
+2020-05-07 11:48:57,648 [main] INFO  (HookedXADataSource@showBootLogging():81) -  newbornConnectionHook: null
+2020-05-07 11:48:57,795 [main] INFO  (HookedConnectionPool@showBootLogging():60) - [Connection Pool]
+2020-05-07 11:48:57,796 [main] INFO  (HookedConnectionPool@showBootLogging():61) -  maxPoolSize: 10
+2020-05-07 11:48:57,797 [main] INFO  (HookedConnectionPool@showBootLogging():62) -  minPoolSize: 0
+2020-05-07 11:48:57,801 [main] INFO  (HookedConnectionPool@showBootLogging():63) -  maxWait: 10000 milliseconds
+2020-05-07 11:48:57,802 [main] INFO  (HookedConnectionPool@showBootLogging():64) -  timeout: 600 seconds
+2020-05-07 11:48:57,805 [main] INFO  (DBFluteInitializer@announce():58) - ...Initializing DBFlute components
+2020-05-07 11:48:57,831 [main] INFO  (SimplePrimaryCipher@showBootLogging():80) - [Primary Cipher]
+2020-05-07 11:48:57,832 [main] INFO  (SimplePrimaryCipher@showBootLogging():81) -  invertibleCryptographer: {Blowfish, UTF-8}
+2020-05-07 11:48:57,833 [main] INFO  (SimplePrimaryCipher@showBootLogging():82) -  oneWayCryptographer: {SHA-256, UTF-8}
+2020-05-07 11:48:57,840 [main] INFO  (SimpleTimeManager@showBootLogging():111) - [Time Manager]
+2020-05-07 11:48:57,840 [main] INFO  (SimpleTimeManager@showBootLogging():112) -  businessTimeHandler: TypicalBusinessTimeHandler:{IntroTimeResourceProvider$$Lambda$47/1686934746, IntroTimeResourceProvider$$Lambda$48/1409092880}
+2020-05-07 11:48:57,841 [main] INFO  (SimpleTimeManager@showBootLogging():116) -  currentIgnoreTransaction: false
+2020-05-07 11:48:57,843 [main] INFO  (SimpleTimeManager@showBootLogging():117) -  adjustTimeMillis: 0
+2020-05-07 11:48:57,844 [main] INFO  (SimpleTimeManager@showBootLogging():118) -  adjustAbsoluteMode: false
+2020-05-07 11:48:57,966 [main] INFO  (SimpleJsonManager@showBootLogging():147) - [JSON Manager]
+2020-05-07 11:48:57,968 [main] INFO  (SimpleJsonManager@showBootLogging():148) -  realJsonParser: GsonJsonEngine
+2020-05-07 11:48:57,973 [main] INFO  (ExceptionTranslator@showBootLogging():68) - [Exception Translator]
+2020-05-07 11:48:57,974 [main] INFO  (ExceptionTranslator@showBootLogging():69) -  exceptionTranslationProvider: null
+2020-05-07 11:48:58,012 [main] INFO  (SimpleAsyncManager@showBootLogging():242) - [Async Manager]
+2020-05-07 11:48:58,013 [main] INFO  (SimpleAsyncManager@showBootLogging():243) -  defaultConcurrentAsyncOption: {no option}
+2020-05-07 11:48:58,014 [main] INFO  (SimpleAsyncManager@showBootLogging():244) -  primaryExecutorService: ThreadPoolExecutor@4a194c39
+2020-05-07 11:48:58,018 [main] INFO  (SimpleAsyncManager@showBootLogging():245) -  secondaryExecutorService: ThreadPoolExecutor@52066604
+2020-05-07 11:48:58,019 [main] INFO  (SimpleAsyncManager@showBootLogging():246) -  tertiaryExecutorService: ThreadPoolExecutor@340b9973
+2020-05-07 11:48:58,022 [main] INFO  (Postbox@showBootLogging():81) - [Postbox]
+2020-05-07 11:48:58,025 [main] INFO  (Postbox@showBootLogging():88) -  postOffice: *no used
+2020-05-07 11:48:58,040 [main] INFO  (ActionPathResolver@showBootLogging():94) - [Action Resolver]
+2020-05-07 11:48:58,040 [main] INFO  (ActionPathResolver@showBootLogging():95) -  actionAdjustmentProvider: org.dbflute.intro.mylasta.direction.sponsor.IntroActionAdjustmentProvider@542e560f
+2020-05-07 11:48:58,041 [main] INFO  (SimpleResponseManager@showBootLogging():106) - [Response Manager]
+2020-05-07 11:48:58,042 [main] INFO  (SimpleResponseManager@showBootLogging():107) -  responseWritePerformerCreator: null
+2020-05-07 11:48:58,042 [main] INFO  (SimpleResponseManager@showBootLogging():108) -  responseDownloadPerformerCreator: null
+2020-05-07 11:48:58,044 [main] INFO  (SimpleResponseManager@showBootLogging():109) -  downloadExtensionContentTypeMap: null
+2020-05-07 11:48:58,046 [main] INFO  (SimpleSessionManager@showBootLogging():109) - [Session Manager]
+2020-05-07 11:48:58,047 [main] INFO  (SimpleSessionManager@showBootLogging():110) -  sessionSharedStorage: opt:{null}
+2020-05-07 11:48:58,048 [main] INFO  (SimpleSessionManager@showBootLogging():111) -  httpSessionArranger: opt:{null}
+2020-05-07 11:48:58,049 [main] INFO  (SimpleCookieManager@showBootLogging():93) - [Cookie Manager]
+2020-05-07 11:48:58,050 [main] INFO  (SimpleCookieManager@showBootLogging():94) -  cookieCipher: {{Blowfish, UTF-8}}
+2020-05-07 11:48:58,050 [main] INFO  (SimpleCookieManager@showBootLogging():95) -  defaultPath: /
+2020-05-07 11:48:58,050 [main] INFO  (SimpleCookieManager@showBootLogging():96) -  defaultExpire: 31556926
+2020-05-07 11:48:58,053 [main] INFO  (SimpleApiManager@showBootLogging():79) - [API Manager]
+2020-05-07 11:48:58,055 [main] INFO  (SimpleApiManager@showBootLogging():80) -  apiFailureHook: IntroApiFailureHook
+2020-05-07 11:48:58,056 [main] INFO  (SimpleRequestManager@showBootLogging():164) - [Request Manager]
+2020-05-07 11:48:58,058 [main] INFO  (SimpleRequestManager@showBootLogging():165) -  localeProvider: {acceptCookieLocale=false}
+2020-05-07 11:48:58,059 [main] INFO  (SimpleRequestManager@showBootLogging():166) -  timeZoneProvider: {useTimeZoneHandling=false, acceptCookieTimeZone=false}
+2020-05-07 11:48:58,059 [main] INFO  (SimpleCsrfManager@showBootLogging():109) - [Csrf Manager]
+2020-05-07 11:48:58,060 [main] INFO  (SimpleCsrfManager@showBootLogging():110) -  tokenHeaderName: X-CSRF-TOKEN
+2020-05-07 11:48:58,060 [main] INFO  (SimpleCsrfManager@showBootLogging():111) -  tokenParameterName: _csrf
+2020-05-07 11:48:58,061 [main] INFO  (SimpleCsrfManager@showBootLogging():112) -  tokenGenerator: org.lastaflute.web.token.SimpleCsrfManager$$Lambda$70/902860396@53d102a2
+2020-05-07 11:48:58,061 [main] INFO  (SimpleDoubleSubmitManager@showBootLogging():96) - [DoubleSubmit Manager]
+2020-05-07 11:48:58,061 [main] INFO  (SimpleDoubleSubmitManager@showBootLogging():97) -  allowsVerifyTokenBeforeValidation: false
+2020-05-07 11:48:58,100 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.client.ClientInfoLogic[client_clientInfoLogic]).
+2020-05-07 11:48:58,104 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.client.ClientPhysicalLogic[client_clientPhysicalLogic]).
+2020-05-07 11:48:58,107 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.client.ClientUpdateLogic[client_clientUpdateLogic]).
+2020-05-07 11:48:58,112 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.context.AccessContextLogic[context_accessContextLogic]).
+2020-05-07 11:48:58,113 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.core.FlutyFileLogic[core_flutyFileLogic]).
+2020-05-07 11:48:58,115 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.core.MapStringLogic[core_mapStringLogic]).
+2020-05-07 11:48:58,120 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.core.PublicPropertiesLogic[core_publicPropertiesLogic]).
+2020-05-07 11:48:58,122 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.database.DatabaseInfoLogic[database_databaseInfoLogic]).
+2020-05-07 11:48:58,131 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.dfprop.DfpropInfoLogic[dfprop_dfpropInfoLogic]).
+2020-05-07 11:48:58,133 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.dfprop.DfpropPhysicalLogic[dfprop_dfpropPhysicalLogic]).
+2020-05-07 11:48:58,138 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.dfprop.DfpropUpdateLogic[dfprop_dfpropUpdateLogic]).
+2020-05-07 11:48:58,140 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.dfprop.TestConnectionLogic[dfprop_testConnectionLogic]).
+2020-05-07 11:48:58,150 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.document.decomment.DocumentDecommentPhysicalLogic[document_decomment_documentDecommentPhysicalLogic]).
+2020-05-07 11:48:58,155 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.document.DocumentAuthorLogic[document_documentAuthorLogic]).
+2020-05-07 11:48:58,158 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.document.DocumentDisplayLogic[document_documentDisplayLogic]).
+2020-05-07 11:48:58,160 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.document.DocumentPhysicalLogic[document_documentPhysicalLogic]).
+2020-05-07 11:48:58,165 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.document.hacomment.DocumentHacommentPhysicalLogic[document_hacomment_documentHacommentPhysicalLogic]).
+2020-05-07 11:48:58,171 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.engine.EngineInfoLogic[engine_engineInfoLogic]).
+2020-05-07 11:48:58,173 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.engine.EngineInstallLogic[engine_engineInstallLogic]).
+2020-05-07 11:48:58,175 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.engine.EnginePhysicalLogic[engine_enginePhysicalLogic]).
+2020-05-07 11:48:58,177 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.intro.IntroInfoLogic[intro_introInfoLogic]).
+2020-05-07 11:48:58,178 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.intro.IntroPhysicalLogic[intro_introPhysicalLogic]).
+2020-05-07 11:48:58,180 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.intro.IntroSystemLogic[intro_introSystemLogic]).
+2020-05-07 11:48:58,182 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.intro.IntroUpgradeLogic[intro_introUpgradeLogic]).
+2020-05-07 11:48:58,187 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.log.LogPhysicalLogic[log_logPhysicalLogic]).
+2020-05-07 11:48:58,195 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.playsql.migration.PlaysqlMigrationLogic[playsql_migration_playsqlMigrationLogic]).
+2020-05-07 11:48:58,199 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.playsql.PlaysqlPhysicalLogic[playsql_playsqlPhysicalLogic]).
+2020-05-07 11:48:58,202 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.settings.SettingsUpdateLogic[settings_settingsUpdateLogic]).
+2020-05-07 11:48:58,214 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.logic.task.TaskExecutionLogic[task_taskExecutionLogic]).
+2020-05-07 11:48:58,310 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.alter.AlterAction[alter_alterAction]).
+2020-05-07 11:48:58,315 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.base.cls.IntroClsAssist[base_cls_introClsAssist]).
+2020-05-07 11:48:58,333 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.client.ClientAction[client_clientAction]).
+2020-05-07 11:48:58,373 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.dfprop.DfpropAction[dfprop_dfpropAction]).
+2020-05-07 11:48:58,397 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.document.decomment.DocumentDecommentAction[document_decomment_documentDecommentAction]).
+2020-05-07 11:48:58,403 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.document.DocumentAction[document_documentAction]).
+2020-05-07 11:48:58,416 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.document.hacomment.DocumentHacommentAction[document_hacomment_documentHacommentAction]).
+2020-05-07 11:48:58,427 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.engine.EngineAction[engine_engineAction]).
+2020-05-07 11:48:58,430 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.intro.IntroAction[intro_introAction]).
+2020-05-07 11:48:58,436 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.log.LogAction[log_logAction]).
+2020-05-07 11:48:58,443 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.playsql.migration.PlaysqlMigrationAction[playsql_migration_playsqlMigrationAction]).
+2020-05-07 11:48:58,446 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.playsql.PlaysqlAction[playsql_playsqlAction]).
+2020-05-07 11:48:58,455 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.settings.SettingsAction[settings_settingsAction]).
+2020-05-07 11:48:58,459 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.SwaggerAction[swaggerAction]).
+2020-05-07 11:48:58,463 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.task.TaskAction[task_taskAction]).
+2020-05-07 11:48:58,469 [main] DEBUG (LaLogger@log():118) - Registering component definition of class(org.dbflute.intro.app.web.welcome.WelcomeAction[welcome_welcomeAction]).
+2020-05-07 11:48:58,473 [main] INFO  (SingletonLaContainerFactory@showBoot():120) - Lasta Di boot successfully.
+2020-05-07 11:48:58,474 [main] INFO  (SingletonLaContainerFactory@showBoot():121) -   SmartDeploy Mode: Cool Deploy
+2020-05-07 11:48:58,474 [main] INFO  (SingletonLaContainerFactory@showBoot():131) -   Smart Package: org.dbflute.intro.app
+2020-05-07 11:48:58,478 [main] INFO  (MessageResourcesHolder@acceptGateway():61) - ...Accepting the gateway of message resources: gateway:{ObjectiveMessageResources:{application=not initialized yet, cached=[no cached bundle]}}
+2020-05-07 11:48:58,478 [main] INFO  (DBFluteSystem@unlock():242) - ...Unlocking the DBFlute system
+2020-05-07 11:48:58,481 [main] INFO  (DBFluteSystem@setFinalTimeZoneProvider():218) - ...Setting finalTimeZoneProvider: IntroCurtainBeforeHook$1:{Asia/Tokyo}
+2020-05-07 11:48:58,482 [main] INFO  (DBFluteSystem@lock():232) - ...Locking the DBFlute system
+2020-05-07 11:48:58,484 [main] DEBUG (IntroDBInitializer@createSchema():70) - ...Creating IntroDB: introdb/create-schema.sql
+2020-05-07 11:48:58,712 [main] DEBUG (SimpleConnectionPool@createConnection():277) - Created physical connection: tx=null, conn=conn0: url=jdbc:h2:mem:introdb user=INTRODB
+2020-05-07 11:48:58,786 [main] DEBUG (IntroDBInitializer@registerTsv():123) - ...Registering TSV: 10-CLS_TARGET_DATABASE.tsv
+2020-05-07 11:48:58,891 [main] DEBUG (XLog@log():43) - ...Initializing sqlExecution for the key 'CLS_TARGET_DATABASE:batchInsert(List<ClsTargetDatabase>)'
+2020-05-07 11:48:58,933 [main] DEBUG (XLog@log():43) - SqlExecution Initialization Cost: [00m00s042ms]
+2020-05-07 11:48:58,941 [main] DEBUG (XLog@log():43) - /==================================================================================
+2020-05-07 11:48:58,942 [main] DEBUG (XLog@log():43) -                                                       BehaviorWritable.lumpCreate()
+2020-05-07 11:48:58,942 [main] DEBUG (XLog@log():43) -                                                       ============================/
+2020-05-07 11:48:58,956 [main] DEBUG (QLog@log():43) - 
+insert into CLS_TARGET_DATABASE (DATABASE_CODE, DATABASE_NAME, JDBC_DRIVER_FQCN, URL_TEMPLATE, DEFAULT_SCHEMA, SCHEMA_REQUIRED_FLG, SCHEMA_UPPER_CASE_FLG, USER_INPUT_ASSIST_FLG, EMBEDDED_JAR_FLG, DISPLAY_ORDER)
+ values ('mysql', 'MySQL', 'com.mysql.jdbc.Driver', 'jdbc:mysql://localhost:3306/xxx', null, 0, 0, 0, 1, 1);
+insert into CLS_TARGET_DATABASE (DATABASE_CODE, DATABASE_NAME, JDBC_DRIVER_FQCN, URL_TEMPLATE, DEFAULT_SCHEMA, SCHEMA_REQUIRED_FLG, SCHEMA_UPPER_CASE_FLG, USER_INPUT_ASSIST_FLG, EMBEDDED_JAR_FLG, DISPLAY_ORDER)
+ values ('postgresql', 'PostgreSQL', 'org.postgresql.Driver', 'jdbc:postgresql://localhost:5432/xxx', 'public', 1, 0, 0, 1, 2);
+insert into CLS_TARGET_DATABASE (DATABASE_CODE, DATABASE_NAME, JDBC_DRIVER_FQCN, URL_TEMPLATE, DEFAULT_SCHEMA, SCHEMA_REQUIRED_FLG, SCHEMA_UPPER_CASE_FLG, USER_INPUT_ASSIST_FLG, EMBEDDED_JAR_FLG, DISPLAY_ORDER)
+ values ('oracle', 'Oracle', 'oracle.jdbc.OracleDriver', 'jdbc:oracle:thin:@localhost:1521:xxx', 'xxx', 1, 1, 1, 0, 3);
+insert into CLS_TARGET_DATABASE (DATABASE_CODE, DATABASE_NAME, JDBC_DRIVER_FQCN, URL_TEMPLATE, DEFAULT_SCHEMA, SCHEMA_REQUIRED_FLG, SCHEMA_UPPER_CASE_FLG, USER_INPUT_ASSIST_FLG, EMBEDDED_JAR_FLG, DISPLAY_ORDER)
+ values ('db2', 'DB2', 'com.ibm.db2.jcc.DB2Driver', 'jdbc:db2://localhost:50000/xxx', 'xxx', 1, 1, 1, 0, 4);
+insert into CLS_TARGET_DATABASE (DATABASE_CODE, DATABASE_NAME, JDBC_DRIVER_FQCN, URL_TEMPLATE, DEFAULT_SCHEMA, SCHEMA_REQUIRED_FLG, SCHEMA_UPPER_CASE_FLG, USER_INPUT_ASSIST_FLG, EMBEDDED_JAR_FLG, DISPLAY_ORDER)
+ values ('sqlserver', 'SQLServer', 'com.microsoft.sqlserver.jdbc.SQLServerDriver', 'jdbc:sqlserver://localhost:1433;DatabaseName=xxx;', 'dbo', 1, 0, 0, 0, 5);
+insert into CLS_TARGET_DATABASE (DATABASE_CODE, DATABASE_NAME, JDBC_DRIVER_FQCN, URL_TEMPLATE, DEFAULT_SCHEMA, SCHEMA_REQUIRED_FLG, SCHEMA_UPPER_CASE_FLG, USER_INPUT_ASSIST_FLG, EMBEDDED_JAR_FLG, DISPLAY_ORDER)
+ values ('h2', 'H2 Database', 'org.h2.Driver', 'jdbc:h2:file:xxx', 'PUBLIC', 1, 0, 0, 1, 6);
+insert into CLS_TARGET_DATABASE (DATABASE_CODE, DATABASE_NAME, JDBC_DRIVER_FQCN, URL_TEMPLATE, DEFAULT_SCHEMA, SCHEMA_REQUIRED_FLG, SCHEMA_UPPER_CASE_FLG, USER_INPUT_ASSIST_FLG, EMBEDDED_JAR_FLG, DISPLAY_ORDER)
+ values ('derby', 'Apache Derby', 'org.apache.derby.jdbc.EmbeddedDriver', 'jdbc:derby:xxx;create=true', 'xxx', 1, 1, 1, 0, 7);
+2020-05-07 11:48:58,966 [main] DEBUG (XLog@log():43) - ===========/ [00m00s022ms all-updated=(7) result={1,1,1,1,1,1,1}]
+2020-05-07 11:48:58,966 [main] DEBUG (XLog@log():43) -  
+2020-05-07 11:48:58,968 [main] DEBUG (IntroDBInitializer@registerTsv():123) - ...Registering TSV: 12-CLS_TARGET_LANGUAGE.tsv
+2020-05-07 11:48:58,976 [main] DEBUG (XLog@log():43) - ...Initializing sqlExecution for the key 'CLS_TARGET_LANGUAGE:batchInsert(List<ClsTargetLanguage>)'
+2020-05-07 11:48:58,977 [main] DEBUG (XLog@log():43) - SqlExecution Initialization Cost: [00m00s001ms]
+2020-05-07 11:48:58,978 [main] DEBUG (XLog@log():43) - /==================================================================================
+2020-05-07 11:48:58,979 [main] DEBUG (XLog@log():43) -                                                       BehaviorWritable.lumpCreate()
+2020-05-07 11:48:58,982 [main] DEBUG (XLog@log():43) -                                                       ============================/
+2020-05-07 11:48:58,983 [main] DEBUG (QLog@log():43) - 
+insert into CLS_TARGET_LANGUAGE (LANGUAGE_CODE, LANGUAGE_NAME, DISPLAY_ORDER)
+ values ('java', 'Java', 1);
+insert into CLS_TARGET_LANGUAGE (LANGUAGE_CODE, LANGUAGE_NAME, DISPLAY_ORDER)
+ values ('csharp', 'C#', 2);
+insert into CLS_TARGET_LANGUAGE (LANGUAGE_CODE, LANGUAGE_NAME, DISPLAY_ORDER)
+ values ('scala', 'Scala', 3);
+2020-05-07 11:48:58,986 [main] DEBUG (XLog@log():43) - ===========/ [00m00s003ms all-updated=(3) result={1,1,1}]
+2020-05-07 11:48:58,986 [main] DEBUG (XLog@log():43) -  
+2020-05-07 11:48:58,987 [main] DEBUG (IntroDBInitializer@registerTsv():123) - ...Registering TSV: 14-CLS_TARGET_CONTAINER.tsv
+2020-05-07 11:48:58,993 [main] DEBUG (XLog@log():43) - ...Initializing sqlExecution for the key 'CLS_TARGET_CONTAINER:batchInsert(List<ClsTargetContainer>)'
+2020-05-07 11:48:58,994 [main] DEBUG (XLog@log():43) - SqlExecution Initialization Cost: [00m00s001ms]
+2020-05-07 11:48:58,995 [main] DEBUG (XLog@log():43) - /==================================================================================
+2020-05-07 11:48:58,995 [main] DEBUG (XLog@log():43) -                                                       BehaviorWritable.lumpCreate()
+2020-05-07 11:48:58,996 [main] DEBUG (XLog@log():43) -                                                       ============================/
+2020-05-07 11:48:58,997 [main] DEBUG (QLog@log():43) - 
+insert into CLS_TARGET_CONTAINER (CONTAINER_CODE, CONTAINER_NAME, DISPLAY_ORDER)
+ values ('lasta_di', 'Lasta Di', 1);
+insert into CLS_TARGET_CONTAINER (CONTAINER_CODE, CONTAINER_NAME, DISPLAY_ORDER)
+ values ('spring', 'Spring Framework', 2);
+insert into CLS_TARGET_CONTAINER (CONTAINER_CODE, CONTAINER_NAME, DISPLAY_ORDER)
+ values ('guice', 'Google Guice', 3);
+insert into CLS_TARGET_CONTAINER (CONTAINER_CODE, CONTAINER_NAME, DISPLAY_ORDER)
+ values ('seasar', 'Seasar (S2Container)', 4);
+insert into CLS_TARGET_CONTAINER (CONTAINER_CODE, CONTAINER_NAME, DISPLAY_ORDER)
+ values ('cdi', 'CDI', 5);
+2020-05-07 11:48:59,000 [main] DEBUG (XLog@log():43) - ===========/ [00m00s004ms all-updated=(5) result={1,1,1,1,1}]
+2020-05-07 11:48:59,000 [main] DEBUG (XLog@log():43) -  
+2020-05-07 11:48:59,010 [main] INFO  (LastaToActionFilter@showBoot():106) - _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+2020-05-07 11:48:59,010 [main] INFO  (LastaToActionFilter@showBoot():107) -  the system has been initialized:
+2020-05-07 11:48:59,011 [main] INFO  (LastaToActionFilter@showBoot():108) - 
+2020-05-07 11:48:59,013 [main] INFO  (LastaToActionFilter@showBoot():109) -   -> Intro (Production)
+2020-05-07 11:48:59,014 [main] INFO  (LastaToActionFilter@showBoot():110) - _/_/_/_/_/_/_/_/_/_/
+2020-05-07 11:49:02,249 [qtp325333723-29] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/intro/manifest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=null
+  ; url=http://192.168.0.13:8926/api/intro/manifest
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+2020-05-07 11:49:02,296 [qtp325333723-29] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=intro_introAction params=manifest
+2020-05-07 11:49:02,517 [qtp325333723-17] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/engine/versions
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=null
+  ; url=http://192.168.0.13:8926/api/engine/versions
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+2020-05-07 11:49:02,521 [qtp325333723-29] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:49:02,529 [qtp325333723-17] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=engine_engineAction params=versions
+2020-05-07 11:49:02,539 [qtp325333723-14] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/engine/latest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=null
+  ; url=http://192.168.0.13:8926/api/engine/latest
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+2020-05-07 11:49:02,542 [qtp325333723-14] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=engine_engineAction params=latest
+2020-05-07 11:49:02,564 [qtp325333723-29] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for IntroAction
+2020-05-07 11:49:02,599 [qtp325333723-34] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/intro/configuration
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=null
+  ; url=http://192.168.0.13:8926/api/intro/configuration
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+2020-05-07 11:49:02,613 [qtp325333723-34] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=intro_introAction params=configuration
+2020-05-07 11:49:02,614 [qtp325333723-17] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:49:02,615 [qtp325333723-35] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/client/list
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=null
+  ; url=http://192.168.0.13:8926/api/client/list
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+2020-05-07 11:49:02,642 [qtp325333723-17] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for EngineAction
+2020-05-07 11:49:02,615 [qtp325333723-14] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:49:02,639 [qtp325333723-34] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:49:02,643 [qtp325333723-35] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=client_clientAction params=list
+2020-05-07 11:49:02,650 [qtp325333723-34] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for IntroAction
+2020-05-07 11:49:02,650 [qtp325333723-35] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:49:02,655 [qtp325333723-35] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for ClientAction
+2020-05-07 11:49:02,672 [qtp325333723-14] DEBUG (ActionFormMapper@prepareJsonFromRequestBody():235) - #flow ...Parsing JSON from request body: *empty body
+2020-05-07 11:49:02,677 [qtp325333723-34] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/0, BranchId=]
+2020-05-07 11:49:02,678 [qtp325333723-17] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/1, BranchId=]
+2020-05-07 11:49:02,678 [qtp325333723-29] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/2, BranchId=]
+2020-05-07 11:49:02,699 [qtp325333723-29] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action IntroAction@manifest()
+2020-05-07 11:49:02,679 [qtp325333723-35] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/3, BranchId=]
+2020-05-07 11:49:02,685 [qtp325333723-17] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action EngineAction@versions()
+2020-05-07 11:49:02,689 [qtp325333723-34] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action IntroAction@configuration()
+2020-05-07 11:49:02,692 [qtp325333723-14] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for EngineAction
+2020-05-07 11:49:02,702 [qtp325333723-35] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action ClientAction@list()
+2020-05-07 11:49:02,713 [qtp325333723-14] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/4, BranchId=]
+2020-05-07 11:49:02,716 [qtp325333723-14] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action EngineAction@latest()
+2020-05-07 11:49:04,029 [qtp325333723-14] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/4, BranchId=]
+2020-05-07 11:49:04,038 [qtp325333723-14] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for EngineAction
+2020-05-07 11:49:04,105 [qtp325333723-17] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/1, BranchId=]
+2020-05-07 11:49:04,191 [qtp325333723-29] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/2, BranchId=]
+2020-05-07 11:49:04,211 [qtp325333723-14] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"latestReleaseVersion":"1.2.2","latestSnapshotVersion":"1.2.2"}
+2020-05-07 11:49:04,211 [qtp325333723-35] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/3, BranchId=]
+2020-05-07 11:49:04,219 [qtp325333723-17] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for EngineAction
+2020-05-07 11:49:04,225 [qtp325333723-34] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/0, BranchId=]
+2020-05-07 11:49:04,231 [qtp325333723-29] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for IntroAction
+2020-05-07 11:49:04,241 [qtp325333723-35] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for ClientAction
+2020-05-07 11:49:04,244 [qtp325333723-14] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:49:02 GMT
+  [header] Expires=Thu, 01 Jan 1970 00:00:00 GMT
+  [header] Set-Cookie=JSESSIONID=node0ohpvo69relnq1hq3k9jnbrpkl2.node0;Path=/
+  [request] engine_engineAction=org.dbflute.intro.app.web.engine.EngineAction@5dc23623
+  [request] engine_engineAction_latest_Form=VirtualForm:{formMeta:{engine_engineAction_latest_Form, org.dbflute.intro.app.web.engine.EngineLatestBody, props=1}, realForm=org.dbflute.intro.app.web.engine.EngineLatestBody@46739bb5}@f2aefa9
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/engine/latest, public JsonResponse EngineAction@latest(EngineLatestBody), pathParam:{{}}, JsonResponse:{EngineLatestBean}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse EngineAction@latest(EngineLatestBody), urlPattern:{latest, ^latest$}}@1e7c7375
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [request] org.eclipse.jetty.server.newSessionId=node0ohpvo69relnq1hq3k9jnbrpkl2
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/engine/latest [00m01s698ms]
+
+
+2020-05-07 11:49:04,244 [qtp325333723-34] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for IntroAction
+2020-05-07 11:49:04,244 [qtp325333723-17] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+[]
+2020-05-07 11:49:04,248 [qtp325333723-35] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+[]
+2020-05-07 11:49:04,248 [qtp325333723-29] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"Implementation-Title":"dbflute-intro","Implementation-Version":"0.3.10","SCM-Revision":"b7e43f8ea276c161719bf29fe8594a73c2e4b2cc","Build-Timestamp":"2020/02/21 21:53:13.436","Jenkins-Build-Number":"","SCM-Branch":"release/20200221","Manifest-Version":"1.0","Main-Class":"org.dbflute.intro.IntroBoot"}
+2020-05-07 11:49:04,255 [qtp325333723-34] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"serverUrl":"http://null/","apiServerUrl":"http://null/api/"}
+2020-05-07 11:49:04,264 [qtp325333723-17] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:49:02 GMT
+  [header] Expires=Thu, 01 Jan 1970 00:00:00 GMT
+  [header] Set-Cookie=JSESSIONID=node01bgdlnmt63eqn3t18lxp262pb1.node0;Path=/
+  [request] engine_engineAction=org.dbflute.intro.app.web.engine.EngineAction@59edd2a8
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/engine/versions, public JsonResponse EngineAction@versions(), pathParam:{{}}, JsonResponse:{ArrayList}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse EngineAction@versions(), urlPattern:{versions, ^versions$}}@31916f88
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [request] org.eclipse.jetty.server.newSessionId=node01bgdlnmt63eqn3t18lxp262pb1
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/engine/versions [00m01s749ms]
+
+
+2020-05-07 11:49:04,270 [qtp325333723-35] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:49:02 GMT
+  [header] Expires=Thu, 01 Jan 1970 00:00:00 GMT
+  [header] Set-Cookie=JSESSIONID=node0l8etg7t0oihs20x2ukkpt7rs4.node0;Path=/
+  [request] client_clientAction=org.dbflute.intro.app.web.client.ClientAction@cf98269
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/client/list, public JsonResponse ClientAction@list(), pathParam:{{}}, JsonResponse:{ArrayList}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse ClientAction@list(), urlPattern:{list, ^list$}}@4c748b6c
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [request] org.eclipse.jetty.server.newSessionId=node0l8etg7t0oihs20x2ukkpt7rs4
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/client/list [00m01s656ms]
+
+
+2020-05-07 11:49:04,285 [qtp325333723-29] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:49:02 GMT
+  [header] Expires=Thu, 01 Jan 1970 00:00:00 GMT
+  [header] Set-Cookie=JSESSIONID=node0179b7nwagwje31ceb3xe6xtdxq0.node0;Path=/
+  [request] intro_introAction=org.dbflute.intro.app.web.intro.IntroAction@403aa294
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/intro/manifest, public JsonResponse IntroAction@manifest(), pathParam:{{}}, JsonResponse:{LinkedHashMap}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse IntroAction@manifest(), urlPattern:{manifest, ^manifest$}}@dbdbbaf
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [request] org.eclipse.jetty.server.newSessionId=node0179b7nwagwje31ceb3xe6xtdxq0
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/intro/manifest [00m02s041ms]
+
+
+2020-05-07 11:49:04,295 [qtp325333723-34] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:49:02 GMT
+  [header] Expires=Thu, 01 Jan 1970 00:00:00 GMT
+  [header] Set-Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0;Path=/
+  [request] intro_introAction=org.dbflute.intro.app.web.intro.IntroAction@1eee5d94
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/intro/configuration, public JsonResponse IntroAction@configuration(), pathParam:{{}}, JsonResponse:{LinkedHashMap}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse IntroAction@configuration(), urlPattern:{configuration, ^configuration$}}@6ebbe17f
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [request] org.eclipse.jetty.server.newSessionId=node017cjpiiwvw1img72ec58kf9xb3
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/intro/configuration [00m01s696ms]
+
+
+2020-05-07 11:49:04,371 [qtp325333723-18] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/intro/classifications
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/intro/classifications
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:49:04,371 [qtp325333723-11] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/engine/latest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/engine/latest
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:49:04,372 [qtp325333723-18] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=intro_introAction params=classifications
+2020-05-07 11:49:04,375 [qtp325333723-11] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=engine_engineAction params=latest
+2020-05-07 11:49:04,376 [qtp325333723-18] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:49:04,376 [qtp325333723-11] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:49:04,377 [qtp325333723-18] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for IntroAction
+2020-05-07 11:49:04,377 [qtp325333723-11] DEBUG (ActionFormMapper@prepareJsonFromRequestBody():235) - #flow ...Parsing JSON from request body: *empty body
+2020-05-07 11:49:04,379 [qtp325333723-18] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/5, BranchId=]
+2020-05-07 11:49:04,380 [qtp325333723-11] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for EngineAction
+2020-05-07 11:49:04,380 [qtp325333723-18] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action IntroAction@classifications()
+2020-05-07 11:49:04,382 [qtp325333723-11] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/6, BranchId=]
+2020-05-07 11:49:04,394 [qtp325333723-11] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action EngineAction@latest()
+2020-05-07 11:49:04,397 [qtp325333723-11] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/6, BranchId=]
+2020-05-07 11:49:04,398 [qtp325333723-18] DEBUG (XLog@log():43) - ...Initializing sqlExecution for the key 'CLS_TARGET_DATABASE:selectList(ClsTargetDatabaseCB):ClsTargetDatabase'
+2020-05-07 11:49:04,398 [qtp325333723-11] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for EngineAction
+2020-05-07 11:49:04,401 [qtp325333723-11] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"latestReleaseVersion":"1.2.2","latestSnapshotVersion":"1.2.2"}
+2020-05-07 11:49:04,407 [qtp325333723-11] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:49:04 GMT
+  [request] engine_engineAction=org.dbflute.intro.app.web.engine.EngineAction@6601ab75
+  [request] engine_engineAction_latest_Form=VirtualForm:{formMeta:{engine_engineAction_latest_Form, org.dbflute.intro.app.web.engine.EngineLatestBody, props=1}, realForm=org.dbflute.intro.app.web.engine.EngineLatestBody@2a64cb62}@50bbad45
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/engine/latest, public JsonResponse EngineAction@latest(EngineLatestBody), pathParam:{{}}, JsonResponse:{EngineLatestBean}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse EngineAction@latest(EngineLatestBody), urlPattern:{latest, ^latest$}}@1e7c7375
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/engine/latest [00m00s036ms]
+
+
+2020-05-07 11:49:04,414 [qtp325333723-18] DEBUG (XLog@log():43) - SqlExecution Initialization Cost: [00m00s017ms]
+2020-05-07 11:49:04,416 [qtp325333723-18] DEBUG (XLog@log():43) - /======================================================================================
+2020-05-07 11:49:04,417 [qtp325333723-18] DEBUG (XLog@log():43) -                                                       ClsTargetDatabaseBhv.selectList()
+2020-05-07 11:49:04,421 [qtp325333723-18] DEBUG (XLog@log():43) -                                                       ================================/
+2020-05-07 11:49:04,422 [qtp325333723-18] DEBUG (XLog@log():43) - IntroAction.classifications():56 -> ...
+2020-05-07 11:49:04,483 [qtp325333723-18] DEBUG (QLog@log():43) - 
+select dfloc.DATABASE_CODE as DATABASE_CODE, dfloc.DATABASE_NAME as DATABASE_NAME, dfloc.JDBC_DRIVER_FQCN as JDBC_DRIVER_FQCN, dfloc.URL_TEMPLATE as URL_TEMPLATE, dfloc.DEFAULT_SCHEMA as DEFAULT_SCHEMA, dfloc.SCHEMA_REQUIRED_FLG as SCHEMA_REQUIRED_FLG, dfloc.SCHEMA_UPPER_CASE_FLG as SCHEMA_UPPER_CASE_FLG, dfloc.USER_INPUT_ASSIST_FLG as USER_INPUT_ASSIST_FLG, dfloc.EMBEDDED_JAR_FLG as EMBEDDED_JAR_FLG, dfloc.DISPLAY_ORDER as DISPLAY_ORDER
+  from CLS_TARGET_DATABASE dfloc 
+ order by dfloc.DISPLAY_ORDER asc
+-- org.dbflute.intro.app.web.intro.IntroAction@classifications(): (ITR)
+2020-05-07 11:49:04,535 [qtp325333723-18] DEBUG (XLog@log():43) - ===========/ [00m00s109ms (7) first={mysql, MySQL, com.mysql.jdbc.Driver, jdbc:mysql://localhost:3306/xxx, null, 0, 0, 0, 1, 1}@d8315fbf]
+2020-05-07 11:49:04,535 [qtp325333723-18] DEBUG (XLog@log():43) -  
+2020-05-07 11:49:04,547 [qtp325333723-18] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/5, BranchId=]
+2020-05-07 11:49:04,548 [qtp325333723-18] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for IntroAction
+2020-05-07 11:49:04,555 [qtp325333723-18] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"targetDatabaseMap":{"mysql":{"databaseName":"MySQL","driverName":"com.mysql.jdbc.Driver","urlTemplate":"jdbc:mysql://localhost:3306/xxx","defaultSchema":null,"schemaRequired":false,"schemaUpperCase":false,"userInputAssist":false,"embeddedJar":true},"postgresql":{"databaseName":"PostgreSQL","driverName":"org.postgresql.Driver","urlTemplate":"jdbc:postgresql://localhost:5432/xxx","defaultSchema":"public","schemaRequired":true,"schemaUpperCase":false,"userInputAssist":false,"embeddedJar":true},"o...
+2020-05-07 11:49:04,557 [qtp325333723-18] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:49:04 GMT
+  [request] intro_introAction=org.dbflute.intro.app.web.intro.IntroAction@27ed10ed
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/intro/classifications, public JsonResponse IntroAction@classifications(), pathParam:{{}}, JsonResponse:{LinkedHashMap}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse IntroAction@classifications(), urlPattern:{classifications, ^classifications$}}@54273737
+  [request] lastaflute.dbflute.SQL_COUNT={total=1, selectCB=1}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/intro/classifications [00m00s187ms]
+
+
+2020-05-07 11:55:36,488 [qtp325333723-16] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/welcome/create
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/welcome/create
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=385 ; contentType=application/json ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=385
+  [header] Content-Type=application/json
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:55:36,490 [qtp325333723-16] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=welcome_welcomeAction params=create
+2020-05-07 11:55:36,500 [qtp325333723-16] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:55:36,504 [qtp325333723-16] DEBUG (ActionFormMapper@prepareJsonFromRequestBody():235) - #flow ...Parsing JSON from request body:
+{"client":{"projectName":"poker","databaseCode":"h2","create":true,"mainSchemaSettings":{"user":"sa","url":"jdbc:h2:file:../src/main/resources/database/poker","schema":"PUBLIC","password":""},"schemaSyncCheckMap":{},"dbfluteVersion":"1.2.2","packageBase":"com.example.demo.dbflute","containerCode":"spring","languageCode":"java","jdbcDriverFqcn":"org.h2.Driver"},"testConnection":true}
+2020-05-07 11:55:36,524 [qtp325333723-16] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for WelcomeAction
+2020-05-07 11:55:36,526 [qtp325333723-16] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/7, BranchId=]
+2020-05-07 11:55:36,529 [qtp325333723-16] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action WelcomeAction@create()
+2020-05-07 11:55:36,550 [qtp325333723-16] DEBUG (XLog@log():43) - ...Initializing sqlExecution for the key 'CLS_TARGET_DATABASE:selectEntity(ClsTargetDatabaseCB):ClsTargetDatabase'
+2020-05-07 11:55:36,552 [qtp325333723-16] DEBUG (XLog@log():43) - SqlExecution Initialization Cost: [00m00s002ms]
+2020-05-07 11:55:36,554 [qtp325333723-16] DEBUG (XLog@log():43) - /========================================================================================
+2020-05-07 11:55:36,559 [qtp325333723-16] DEBUG (XLog@log():43) -                                                       ClsTargetDatabaseBhv.selectEntity()
+2020-05-07 11:55:36,559 [qtp325333723-16] DEBUG (XLog@log():43) -                                                       ==================================/
+2020-05-07 11:55:36,560 [qtp325333723-16] DEBUG (XLog@log():43) - WelcomeAction.lambda$create$3():88 -> DatabaseInfoLogic.isEmbeddedJar():36 -> ...
+2020-05-07 11:55:36,568 [qtp325333723-16] DEBUG (QLog@log():43) - 
+select dfloc.DATABASE_CODE as DATABASE_CODE, dfloc.DATABASE_NAME as DATABASE_NAME, dfloc.JDBC_DRIVER_FQCN as JDBC_DRIVER_FQCN, dfloc.URL_TEMPLATE as URL_TEMPLATE, dfloc.DEFAULT_SCHEMA as DEFAULT_SCHEMA, dfloc.SCHEMA_REQUIRED_FLG as SCHEMA_REQUIRED_FLG, dfloc.SCHEMA_UPPER_CASE_FLG as SCHEMA_UPPER_CASE_FLG, dfloc.USER_INPUT_ASSIST_FLG as USER_INPUT_ASSIST_FLG, dfloc.EMBEDDED_JAR_FLG as EMBEDDED_JAR_FLG, dfloc.DISPLAY_ORDER as DISPLAY_ORDER
+  from CLS_TARGET_DATABASE dfloc
+ where dfloc.DATABASE_CODE = 'h2'
+-- org.dbflute.intro.app.web.welcome.WelcomeAction@create(): (ITR)
+2020-05-07 11:55:36,579 [qtp325333723-16] DEBUG (XLog@log():43) - ===========/ [00m00s016ms (1) entity={h2, H2 Database, org.h2.Driver, jdbc:h2:file:xxx, PUBLIC, 1, 0, 0, 1, 6}@d1f8abe7]
+2020-05-07 11:55:36,580 [qtp325333723-16] DEBUG (XLog@log():43) -  
+2020-05-07 11:55:36,583 [qtp325333723-16] DEBUG (EngineInstallLogic@downloadUnzipping():68) - ...Downloading DBflute Engine: 1.2.2
+2020-05-07 11:55:42,891 [qtp325333723-16] DEBUG (EngineInstallLogic@downloadUnzipping():74) - ...Unzipping DBflute Engine: dbflute-1.2.2.zip
+2020-05-07 11:55:44,179 [qtp325333723-16] DEBUG (TestConnectionLogic@testConnection():76) - ...Connecting the database: database:{org.h2.Driver, box:{jdbc:h2:file:../src/main/resources/database/poker, PUBLIC, sa}, []}
+2020-05-07 11:55:44,388 [qtp325333723-16] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/7, BranchId=]
+2020-05-07 11:55:44,389 [qtp325333723-16] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for WelcomeAction
+2020-05-07 11:55:44,390 [qtp325333723-16] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{}
+2020-05-07 11:55:44,395 [qtp325333723-16] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:55:36 GMT
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/welcome/create, public JsonResponse WelcomeAction@create(WelcomeCreateBody), pathParam:{{}}, JsonResponse:{Object, emptyBody}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse WelcomeAction@create(WelcomeCreateBody), urlPattern:{create, ^create$}}@1f74aa9b
+  [request] lastaflute.dbflute.SQL_COUNT={total=1, selectCB=1}
+  [request] welcome_welcomeAction=org.dbflute.intro.app.web.welcome.WelcomeAction@32f2f6af
+  [request] welcome_welcomeAction_create_Form=VirtualForm:{formMeta:{welcome_welcomeAction_create_Form, org.dbflute.intro.app.web.welcome.WelcomeCreateBody, props=3}, realForm=org.dbflute.intro.app.web.welcome.WelcomeCreateBody@60f5af0a}@5abe627b
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/welcome/create [00m07s908ms]
+
+
+2020-05-07 11:55:44,451 [qtp325333723-18] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/intro/manifest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/intro/manifest
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:55:44,452 [qtp325333723-18] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=intro_introAction params=manifest
+2020-05-07 11:55:44,454 [qtp325333723-30] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/engine/versions
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/engine/versions
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:55:44,457 [qtp325333723-18] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:55:44,457 [qtp325333723-17] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/engine/latest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/engine/latest
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:55:44,458 [qtp325333723-30] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=engine_engineAction params=versions
+2020-05-07 11:55:44,460 [qtp325333723-33] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/intro/configuration
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/intro/configuration
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:55:44,461 [qtp325333723-29] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/client/list
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/client/list
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:55:44,462 [qtp325333723-18] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for IntroAction
+2020-05-07 11:55:44,464 [qtp325333723-17] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=engine_engineAction params=latest
+2020-05-07 11:55:44,471 [qtp325333723-30] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:55:44,472 [qtp325333723-33] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=intro_introAction params=configuration
+2020-05-07 11:55:44,473 [qtp325333723-29] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=client_clientAction params=list
+2020-05-07 11:55:44,474 [qtp325333723-18] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/8, BranchId=]
+2020-05-07 11:55:44,475 [qtp325333723-17] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:55:44,476 [qtp325333723-33] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:55:44,476 [qtp325333723-30] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for EngineAction
+2020-05-07 11:55:44,478 [qtp325333723-29] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:55:44,479 [qtp325333723-18] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action IntroAction@manifest()
+2020-05-07 11:55:44,481 [qtp325333723-17] DEBUG (ActionFormMapper@prepareJsonFromRequestBody():235) - #flow ...Parsing JSON from request body: *empty body
+2020-05-07 11:55:44,485 [qtp325333723-33] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for IntroAction
+2020-05-07 11:55:44,485 [qtp325333723-30] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/9, BranchId=]
+2020-05-07 11:55:44,487 [qtp325333723-29] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for ClientAction
+2020-05-07 11:55:44,488 [qtp325333723-17] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for EngineAction
+2020-05-07 11:55:44,488 [qtp325333723-33] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/10, BranchId=]
+2020-05-07 11:55:44,489 [qtp325333723-30] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action EngineAction@versions()
+2020-05-07 11:55:44,489 [qtp325333723-29] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/11, BranchId=]
+2020-05-07 11:55:44,490 [qtp325333723-17] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/12, BranchId=]
+2020-05-07 11:55:44,491 [qtp325333723-29] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action ClientAction@list()
+2020-05-07 11:55:44,491 [qtp325333723-17] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action EngineAction@latest()
+2020-05-07 11:55:44,490 [qtp325333723-33] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action IntroAction@configuration()
+2020-05-07 11:55:44,511 [qtp325333723-17] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/12, BranchId=]
+2020-05-07 11:55:44,516 [qtp325333723-17] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for EngineAction
+2020-05-07 11:55:44,518 [qtp325333723-17] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"latestReleaseVersion":"1.2.2","latestSnapshotVersion":"1.2.2"}
+2020-05-07 11:55:44,493 [qtp325333723-30] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/9, BranchId=]
+2020-05-07 11:55:44,512 [qtp325333723-33] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/10, BranchId=]
+2020-05-07 11:55:44,512 [qtp325333723-18] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/8, BranchId=]
+2020-05-07 11:55:44,521 [qtp325333723-17] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:55:44 GMT
+  [request] engine_engineAction=org.dbflute.intro.app.web.engine.EngineAction@2e84342a
+  [request] engine_engineAction_latest_Form=VirtualForm:{formMeta:{engine_engineAction_latest_Form, org.dbflute.intro.app.web.engine.EngineLatestBody, props=1}, realForm=org.dbflute.intro.app.web.engine.EngineLatestBody@332f250d}@14d3f35d
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/engine/latest, public JsonResponse EngineAction@latest(EngineLatestBody), pathParam:{{}}, JsonResponse:{EngineLatestBean}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse EngineAction@latest(EngineLatestBody), urlPattern:{latest, ^latest$}}@1e7c7375
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/engine/latest [00m00s063ms]
+
+
+2020-05-07 11:55:44,521 [qtp325333723-30] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for EngineAction
+2020-05-07 11:55:44,530 [qtp325333723-33] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for IntroAction
+2020-05-07 11:55:44,531 [qtp325333723-18] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for IntroAction
+2020-05-07 11:55:44,535 [qtp325333723-30] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+["1.2.2"]
+2020-05-07 11:55:44,535 [qtp325333723-33] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"serverUrl":"http://null/","apiServerUrl":"http://null/api/"}
+2020-05-07 11:55:44,536 [qtp325333723-18] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"Implementation-Title":"dbflute-intro","Implementation-Version":"0.3.10","SCM-Revision":"b7e43f8ea276c161719bf29fe8594a73c2e4b2cc","Build-Timestamp":"2020/02/21 21:53:13.436","Jenkins-Build-Number":"","SCM-Branch":"release/20200221","Manifest-Version":"1.0","Main-Class":"org.dbflute.intro.IntroBoot"}
+2020-05-07 11:55:44,538 [qtp325333723-30] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:55:44 GMT
+  [request] engine_engineAction=org.dbflute.intro.app.web.engine.EngineAction@4f2bbac8
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/engine/versions, public JsonResponse EngineAction@versions(), pathParam:{{}}, JsonResponse:{ArrayList}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse EngineAction@versions(), urlPattern:{versions, ^versions$}}@31916f88
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/engine/versions [00m00s085ms]
+
+
+2020-05-07 11:55:44,541 [qtp325333723-33] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:55:44 GMT
+  [request] intro_introAction=org.dbflute.intro.app.web.intro.IntroAction@1cc0a234
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/intro/configuration, public JsonResponse IntroAction@configuration(), pathParam:{{}}, JsonResponse:{LinkedHashMap}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse IntroAction@configuration(), urlPattern:{configuration, ^configuration$}}@6ebbe17f
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/intro/configuration [00m00s082ms]
+
+
+2020-05-07 11:55:44,544 [qtp325333723-18] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:55:44 GMT
+  [request] intro_introAction=org.dbflute.intro.app.web.intro.IntroAction@45661f16
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/intro/manifest, public JsonResponse IntroAction@manifest(), pathParam:{{}}, JsonResponse:{LinkedHashMap}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse IntroAction@manifest(), urlPattern:{manifest, ^manifest$}}@dbdbbaf
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/intro/manifest [00m00s094ms]
+
+
+2020-05-07 11:55:44,571 [qtp325333723-29] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/11, BranchId=]
+2020-05-07 11:55:44,572 [qtp325333723-29] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for ClientAction
+2020-05-07 11:55:44,578 [qtp325333723-29] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+[{"projectName":"poker","databaseCode":"h2","languageCode":"java","containerCode":"spring","packageBase":"com.example.demo.dbflute","jdbcDriverFqcn":"org.h2.Driver","mainSchemaSettings":{"url":"jdbc:h2:file:../src/main/resources/database/poker","schema":"PUBLIC","user":"sa","password":null},"systemUserSettings":null,"dbfluteVersion":"1.2.2","jdbcDriverJarPath":null,"optionBean":{"dbCommentOnAliasBasis":false,"aliasDelimiterInDbComment":null,"checkColumnDefOrderDiff":false,"checkDbCommentDiff":fa...
+2020-05-07 11:55:44,583 [qtp325333723-29] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:55:44 GMT
+  [request] client_clientAction=org.dbflute.intro.app.web.client.ClientAction@5f6210b
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/client/list, public JsonResponse ClientAction@list(), pathParam:{{}}, JsonResponse:{ArrayList}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse ClientAction@list(), urlPattern:{list, ^list$}}@4c748b6c
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/client/list [00m00s122ms]
+
+
+2020-05-07 11:56:05,159 [qtp325333723-18] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/client/operation/poker
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/client/operation/poker
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:05,159 [qtp325333723-18] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=client_clientAction params=operation/poker
+2020-05-07 11:56:05,161 [qtp325333723-18] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:05,162 [qtp325333723-18] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for ClientAction
+2020-05-07 11:56:05,163 [qtp325333723-18] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/13, BranchId=]
+2020-05-07 11:56:05,163 [qtp325333723-18] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action ClientAction@operation()
+2020-05-07 11:56:05,183 [qtp325333723-18] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/13, BranchId=]
+2020-05-07 11:56:05,184 [qtp325333723-18] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for ClientAction
+2020-05-07 11:56:05,189 [qtp325333723-18] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"projectName":"poker","databaseCode":"h2","languageCode":"java","containerCode":"spring","dbfluteVersion":"1.2.2","hasSchemaHtml":false,"hasHistoryHtml":false,"hasSyncCheckResultHtml":false,"hasAlterCheckResultHtml":false,"violatesSchemaPolicy":false}
+2020-05-07 11:56:05,191 [qtp325333723-18] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:05 GMT
+  [request] client_clientAction=org.dbflute.intro.app.web.client.ClientAction@2e0a56fd
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/client/operation/poker, public JsonResponse ClientAction@operation(String), pathParam:{{0=poker}}, JsonResponse:{ClientBasicResult}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse ClientAction@operation(String), urlPattern:{operation/{}, ^operation/([^/]+)$}}@22ba137d
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/client/operation/poker [00m00s033ms]
+
+
+2020-05-07 11:56:05,259 [qtp325333723-17] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/dfprop/poker/document
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/dfprop/poker/document
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:05,260 [qtp325333723-17] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=dfprop_dfpropAction params=poker/document
+2020-05-07 11:56:05,263 [qtp325333723-29] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/log/undefined/undefined/latest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/log/undefined/undefined/latest
+  ; method=GET ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=-1 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:05,264 [qtp325333723-17] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:05,263 [qtp325333723-30] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/log/poker/doc/latest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/log/poker/doc/latest
+  ; method=GET ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=-1 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:05,266 [qtp325333723-29] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=log_logAction params=undefined/undefined/latest
+2020-05-07 11:56:05,267 [qtp325333723-17] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for DfpropAction
+2020-05-07 11:56:05,268 [qtp325333723-29] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:05,267 [qtp325333723-30] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=log_logAction params=poker/doc/latest
+2020-05-07 11:56:05,269 [qtp325333723-17] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/14, BranchId=]
+2020-05-07 11:56:05,269 [qtp325333723-30] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:05,269 [qtp325333723-29] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for LogAction
+2020-05-07 11:56:05,269 [qtp325333723-17] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action DfpropAction@document()
+2020-05-07 11:56:05,270 [qtp325333723-30] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for LogAction
+2020-05-07 11:56:05,270 [qtp325333723-29] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/15, BranchId=]
+2020-05-07 11:56:05,271 [qtp325333723-30] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/16, BranchId=]
+2020-05-07 11:56:05,272 [qtp325333723-17] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/14, BranchId=]
+2020-05-07 11:56:05,275 [qtp325333723-30] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action LogAction@latest()
+2020-05-07 11:56:05,274 [qtp325333723-29] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action LogAction@latest()
+2020-05-07 11:56:05,275 [qtp325333723-17] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for DfpropAction
+2020-05-07 11:56:05,276 [qtp325333723-30] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/16, BranchId=]
+2020-05-07 11:56:05,276 [qtp325333723-29] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/15, BranchId=]
+2020-05-07 11:56:05,277 [qtp325333723-17] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"upperCaseBasic":false,"aliasDelimiterInDbComment":null,"dbCommentOnAliasBasis":false,"checkColumnDefOrderDiff":false,"checkDbCommentDiff":false,"checkProcedureDiff":false}
+2020-05-07 11:56:05,277 [qtp325333723-30] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for LogAction
+2020-05-07 11:56:05,277 [qtp325333723-29] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for LogAction
+2020-05-07 11:56:05,279 [qtp325333723-17] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:05 GMT
+  [request] dfprop_dfpropAction=org.dbflute.intro.app.web.dfprop.DfpropAction@7b60db13
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/dfprop/poker/document, public JsonResponse DfpropAction@document(String), pathParam:{{0=poker}}, JsonResponse:{DfpropDocumentResult}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse DfpropAction@document(String), urlPattern:{{}/document, ^([^/]+)/document$}}@70228639
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/dfprop/poker/document [00m00s020ms]
+
+
+2020-05-07 11:56:05,280 [qtp325333723-30] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{}
+2020-05-07 11:56:05,282 [qtp325333723-29] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{}
+2020-05-07 11:56:05,287 [qtp325333723-30] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:05 GMT
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/log/poker/doc/latest, public JsonResponse LogAction@latest(String, String), pathParam:{{0=poker, 1=doc}}, JsonResponse:{Object, emptyBody}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse LogAction@latest(String, String), urlPattern:{{}/{}/latest, ^([^/]+)/([^/]+)/latest$}}@6425fbcd
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [request] log_logAction=org.dbflute.intro.app.web.log.LogAction@68b4343
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/log/poker/doc/latest [00m00s024ms]
+
+
+2020-05-07 11:56:05,289 [qtp325333723-29] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:05 GMT
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/log/undefined/undefined/latest, public JsonResponse LogAction@latest(String, String), pathParam:{{0=undefined, 1=undefined}}, JsonResponse:{Object, emptyBody}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse LogAction@latest(String, String), urlPattern:{{}/{}/latest, ^([^/]+)/([^/]+)/latest$}}@6425fbcd
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [request] log_logAction=org.dbflute.intro.app.web.log.LogAction@13ec0179
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/log/undefined/undefined/latest [00m00s026ms]
+
+
+2020-05-07 11:56:05,394 [qtp325333723-38] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/log/undefined/undefined/latest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/log/undefined/undefined/latest
+  ; method=GET ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=-1 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:05,395 [qtp325333723-38] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=log_logAction params=undefined/undefined/latest
+2020-05-07 11:56:05,401 [qtp325333723-38] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:05,402 [qtp325333723-38] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for LogAction
+2020-05-07 11:56:05,403 [qtp325333723-38] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/17, BranchId=]
+2020-05-07 11:56:05,404 [qtp325333723-38] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action LogAction@latest()
+2020-05-07 11:56:05,405 [qtp325333723-38] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/17, BranchId=]
+2020-05-07 11:56:05,405 [qtp325333723-38] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for LogAction
+2020-05-07 11:56:05,408 [qtp325333723-38] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{}
+2020-05-07 11:56:05,409 [qtp325333723-38] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:05 GMT
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/log/undefined/undefined/latest, public JsonResponse LogAction@latest(String, String), pathParam:{{0=undefined, 1=undefined}}, JsonResponse:{Object, emptyBody}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse LogAction@latest(String, String), urlPattern:{{}/{}/latest, ^([^/]+)/([^/]+)/latest$}}@6425fbcd
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [request] log_logAction=org.dbflute.intro.app.web.log.LogAction@710140e8
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/log/undefined/undefined/latest [00m00s015ms]
+
+
+2020-05-07 11:56:07,560 [qtp325333723-29] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/intro/manifest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/intro/manifest
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:07,560 [qtp325333723-18] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/engine/latest
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/engine/latest
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:07,560 [qtp325333723-12] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/engine/versions
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/engine/versions
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:07,561 [qtp325333723-29] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=intro_introAction params=manifest
+2020-05-07 11:56:07,564 [qtp325333723-16] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/intro/configuration
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/intro/configuration
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:07,564 [qtp325333723-17] DEBUG (RequestLoggingFilter@before():405) - * * * * * * * * * * {BEGIN}: /api/client/list
+  requestClass=org.eclipse.jetty.server.Request ; sessionId=node017cjpiiwvw1img72ec58kf9xb3.node0
+  ; url=http://192.168.0.13:8926/api/client/list
+  ; method=POST ; protocol=HTTP/1.1 ; scheme=http ; secure=false ; remoteAddr=192.168.0.13 ; remoteHost=192.168.0.13
+  ; characterEncoding=UTF-8 ; contentLength=0 ; contentType=null ; locale=ja ; locales=ja,en_US,en
+  [header] Accept=*/*
+  [header] Accept-Encoding=gzip, deflate
+  [header] Accept-Language=ja,en-US;q=0.9,en;q=0.8
+  [header] Connection=keep-alive
+  [header] Content-Length=0
+  [header] Cookie=JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [header] DNT=1
+  [header] Host=192.168.0.13:8926
+  [header] Origin=http://192.168.0.13:8926
+  [header] Referer=http://192.168.0.13:8926/
+  [header] User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36
+  [cookie] JSESSIONID=node017cjpiiwvw1img72ec58kf9xb3.node0
+  [session] lastaflute.action.USER_LOCALE=ja
+2020-05-07 11:56:07,565 [qtp325333723-18] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=engine_engineAction params=latest
+2020-05-07 11:56:07,567 [qtp325333723-12] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=engine_engineAction params=versions
+2020-05-07 11:56:07,569 [qtp325333723-29] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:07,571 [qtp325333723-16] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=intro_introAction params=configuration
+2020-05-07 11:56:07,573 [qtp325333723-17] DEBUG (RequestRoutingFilter@processAction():264) - ...Routing to action: name=client_clientAction params=list
+2020-05-07 11:56:07,575 [qtp325333723-18] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:07,576 [qtp325333723-12] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:07,576 [qtp325333723-29] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for IntroAction
+2020-05-07 11:56:07,577 [qtp325333723-16] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:07,577 [qtp325333723-17] DEBUG (SimpleRequestManager@saveUserLocaleToSession():738) - ...Saving user locale to session: ja
+2020-05-07 11:56:07,577 [qtp325333723-18] DEBUG (ActionFormMapper@prepareJsonFromRequestBody():235) - #flow ...Parsing JSON from request body: *empty body
+2020-05-07 11:56:07,579 [qtp325333723-17] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for ClientAction
+2020-05-07 11:56:07,578 [qtp325333723-12] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for EngineAction
+2020-05-07 11:56:07,578 [qtp325333723-29] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/18, BranchId=]
+2020-05-07 11:56:07,578 [qtp325333723-16] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for IntroAction
+2020-05-07 11:56:07,579 [qtp325333723-17] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/19, BranchId=]
+2020-05-07 11:56:07,579 [qtp325333723-18] DEBUG (GodHandableAction@showBefore():243) - #flow ...Calling back #before for EngineAction
+2020-05-07 11:56:07,579 [qtp325333723-12] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/20, BranchId=]
+2020-05-07 11:56:07,580 [qtp325333723-29] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action IntroAction@manifest()
+2020-05-07 11:56:07,580 [qtp325333723-16] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/21, BranchId=]
+2020-05-07 11:56:07,580 [qtp325333723-17] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action ClientAction@list()
+2020-05-07 11:56:07,581 [qtp325333723-18] DEBUG (LaTransaction@begin():83) - Begin transaction: [FormatId=4360, GlobalId=1588819742676/22, BranchId=]
+2020-05-07 11:56:07,581 [qtp325333723-12] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action EngineAction@versions()
+2020-05-07 11:56:07,581 [qtp325333723-16] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action IntroAction@configuration()
+2020-05-07 11:56:07,588 [qtp325333723-18] DEBUG (GodHandableAction@showAction():325) - #flow ...Beginning #action EngineAction@latest()
+2020-05-07 11:56:07,590 [qtp325333723-18] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/22, BranchId=]
+2020-05-07 11:56:07,590 [qtp325333723-12] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/20, BranchId=]
+2020-05-07 11:56:07,590 [qtp325333723-16] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/21, BranchId=]
+2020-05-07 11:56:07,591 [qtp325333723-18] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for EngineAction
+2020-05-07 11:56:07,591 [qtp325333723-12] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for EngineAction
+2020-05-07 11:56:07,591 [qtp325333723-29] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/18, BranchId=]
+2020-05-07 11:56:07,591 [qtp325333723-16] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for IntroAction
+2020-05-07 11:56:07,592 [qtp325333723-18] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"latestReleaseVersion":"1.2.2","latestSnapshotVersion":"1.2.2"}
+2020-05-07 11:56:07,592 [qtp325333723-12] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+["1.2.2"]
+2020-05-07 11:56:07,593 [qtp325333723-29] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for IntroAction
+2020-05-07 11:56:07,593 [qtp325333723-16] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"serverUrl":"http://null/","apiServerUrl":"http://null/api/"}
+2020-05-07 11:56:07,594 [qtp325333723-18] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:07 GMT
+  [request] engine_engineAction=org.dbflute.intro.app.web.engine.EngineAction@2601f182
+  [request] engine_engineAction_latest_Form=VirtualForm:{formMeta:{engine_engineAction_latest_Form, org.dbflute.intro.app.web.engine.EngineLatestBody, props=1}, realForm=org.dbflute.intro.app.web.engine.EngineLatestBody@289327df}@5ac0f601
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/engine/latest, public JsonResponse EngineAction@latest(EngineLatestBody), pathParam:{{}}, JsonResponse:{EngineLatestBean}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse EngineAction@latest(EngineLatestBody), urlPattern:{latest, ^latest$}}@1e7c7375
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/engine/latest [00m00s034ms]
+
+
+2020-05-07 11:56:07,594 [qtp325333723-12] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:07 GMT
+  [request] engine_engineAction=org.dbflute.intro.app.web.engine.EngineAction@29677e57
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/engine/versions, public JsonResponse EngineAction@versions(), pathParam:{{}}, JsonResponse:{ArrayList}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse EngineAction@versions(), urlPattern:{versions, ^versions$}}@31916f88
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/engine/versions [00m00s034ms]
+
+
+2020-05-07 11:56:07,595 [qtp325333723-29] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+{"Implementation-Title":"dbflute-intro","Implementation-Version":"0.3.10","SCM-Revision":"b7e43f8ea276c161719bf29fe8594a73c2e4b2cc","Build-Timestamp":"2020/02/21 21:53:13.436","Jenkins-Build-Number":"","SCM-Branch":"release/20200221","Manifest-Version":"1.0","Main-Class":"org.dbflute.intro.IntroBoot"}
+2020-05-07 11:56:07,595 [qtp325333723-17] DEBUG (LaTransaction@commit():210) - Commit transaction: [FormatId=4360, GlobalId=1588819742676/19, BranchId=]
+2020-05-07 11:56:07,596 [qtp325333723-16] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:07 GMT
+  [request] intro_introAction=org.dbflute.intro.app.web.intro.IntroAction@505bf076
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/intro/configuration, public JsonResponse IntroAction@configuration(), pathParam:{{}}, JsonResponse:{LinkedHashMap}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse IntroAction@configuration(), urlPattern:{configuration, ^configuration$}}@6ebbe17f
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/intro/configuration [00m00s032ms]
+
+
+2020-05-07 11:56:07,603 [qtp325333723-29] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:07 GMT
+  [request] intro_introAction=org.dbflute.intro.app.web.intro.IntroAction@4ca0fb8e
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/intro/manifest, public JsonResponse IntroAction@manifest(), pathParam:{{}}, JsonResponse:{LinkedHashMap}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse IntroAction@manifest(), urlPattern:{manifest, ^manifest$}}@dbdbbaf
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/intro/manifest [00m00s044ms]
+
+
+2020-05-07 11:56:07,603 [qtp325333723-17] DEBUG (GodHandableAction@showFinally():283) - #flow ...Calling back #finally for ClientAction
+2020-05-07 11:56:07,605 [qtp325333723-17] DEBUG (ResponseWritePerformer@showWritingResponse():75) - #flow ...Writing response as application/json; charset=UTF-8: 
+[{"projectName":"poker","databaseCode":"h2","languageCode":"java","containerCode":"spring","packageBase":"com.example.demo.dbflute","jdbcDriverFqcn":"org.h2.Driver","mainSchemaSettings":{"url":"jdbc:h2:file:../src/main/resources/database/poker","schema":"PUBLIC","user":"sa","password":null},"systemUserSettings":null,"dbfluteVersion":"1.2.2","jdbcDriverJarPath":null,"optionBean":{"dbCommentOnAliasBasis":false,"aliasDelimiterInDbComment":null,"checkColumnDefOrderDiff":false,"checkDbCommentDiff":fa...
+2020-05-07 11:56:07,606 [qtp325333723-17] DEBUG (RequestLoggingFilter@after():480) - 
+  responseClass=org.eclipse.jetty.server.Response ; committed=true
+  ; httpStatus=200 ; contentType=application/json;charset=utf-8 ; locale=ja_JP
+  [header] Content-Type=application/json;charset=utf-8
+  [header] Date=Thu, 07 May 2020 02:56:07 GMT
+  [request] client_clientAction=org.dbflute.intro.app.web.client.ClientAction@157e3fef
+  [request] lastaflute.action.ACTION_RUMTIME=runtime:{/api/client/list, public JsonResponse ClientAction@list(), pathParam:{{}}, JsonResponse:{ArrayList}}
+  [request] lastaflute.action.USER_LOCALE=ja
+  [request] lastaflute.config.ACTION_EXECUTE=execute:{public JsonResponse ClientAction@list(), urlPattern:{list, ^list$}}@4c748b6c
+  [request] lastaflute.dbflute.SQL_COUNT={total=0}
+  [session] lastaflute.action.USER_LOCALE=ja
+* * * * * * * * * * {END}: /api/client/list [00m00s042ms]
+
+
+2020-05-07 12:05:45,442 [LastaDi-JTA-TimeoutManager] DEBUG (ConnectionWrapperImpl@closeReally():142) - Closed the physical connection: 
+HookedConnectionWrapper:{closed, xaConnection:{xaResource:{null, status=0}}@3ef27ee8}@30358746
+ latest checkOut(): /api/welcome/create, JsonResponse create(WelcomeCreateBody), null, 1588820136568
+ latest checkIn(): /api/welcome/create, JsonResponse create(WelcomeCreateBody), null, 1588820144389
+ closeReally(): caller1::org.lastaflute.db.dbcp.HookedConnectionWrapper@closeReally(), caller5::java.lang.Thread@run(), null, null

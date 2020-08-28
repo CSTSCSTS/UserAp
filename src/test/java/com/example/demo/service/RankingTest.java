@@ -17,7 +17,7 @@ import com.example.demo.dbflute.exbhv.PokerUserInfoBhv;
 import com.example.demo.dbflute.exbhv.PossessionMoneyBhv;
 import com.example.demo.dbflute.exentity.PokerUserInfo;
 import com.example.demo.dbflute.exentity.PossessionMoney;
-import com.example.demo.domain.model.MoneyRanking.MoneyRankingItem;
+import com.example.demo.domain.model.MoneyRankingItem;
 import com.example.demo.domain.model.Ranking;
 import com.example.demo.repository.UserRepository;
 

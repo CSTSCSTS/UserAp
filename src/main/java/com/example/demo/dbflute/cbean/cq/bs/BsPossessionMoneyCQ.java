@@ -81,14 +81,14 @@ public class BsPossessionMoneyCQ extends AbstractBsPossessionMoneyCQ {
 
     /**
      * Add order-by as ascend. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @return this. (NotNull)
      */
     public BsPossessionMoneyCQ addOrderBy_UserId_Asc() { regOBA("USER_ID"); return this; }
 
     /**
      * Add order-by as descend. <br>
-     * USER_ID: {PK, NotNull, INTEGER(10), FK to POKER_USER_INFO}
+     * USER_ID: {PK, NotNull, INTEGER(10)}
      * @return this. (NotNull)
      */
     public BsPossessionMoneyCQ addOrderBy_UserId_Desc() { regOBD("USER_ID"); return this; }
@@ -121,14 +121,14 @@ public class BsPossessionMoneyCQ extends AbstractBsPossessionMoneyCQ {
 
     /**
      * Add order-by as ascend. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @return this. (NotNull)
      */
     public BsPossessionMoneyCQ addOrderBy_UpdateDate_Asc() { regOBA("UPDATE_DATE"); return this; }
 
     /**
      * Add order-by as descend. <br>
-     * UPDATE_DATE: {TIMESTAMP(26, 6)}
+     * UPDATE_DATE: {NotNull, TIMESTAMP(26, 6), default=[NOW()]}
      * @return this. (NotNull)
      */
     public BsPossessionMoneyCQ addOrderBy_UpdateDate_Desc() { regOBD("UPDATE_DATE"); return this; }
@@ -172,36 +172,11 @@ public class BsPossessionMoneyCQ extends AbstractBsPossessionMoneyCQ {
     //                                                                         Union Query
     //                                                                         ===========
     public void reflectRelationOnUnionQuery(ConditionQuery bqs, ConditionQuery uqs) {
-        PossessionMoneyCQ bq = (PossessionMoneyCQ)bqs;
-        PossessionMoneyCQ uq = (PossessionMoneyCQ)uqs;
-        if (bq.hasConditionQueryPokerUserInfo()) {
-            uq.queryPokerUserInfo().reflectRelationOnUnionQuery(bq.queryPokerUserInfo(), uq.queryPokerUserInfo());
-        }
     }
 
     // ===================================================================================
     //                                                                       Foreign Query
     //                                                                       =============
-    /**
-     * Get the condition-query for relation table. <br>
-     * POKER_USER_INFO by my USER_ID, named 'pokerUserInfo'.
-     * @return The instance of condition-query. (NotNull)
-     */
-    public PokerUserInfoCQ queryPokerUserInfo() {
-        return xdfgetConditionQueryPokerUserInfo();
-    }
-    public PokerUserInfoCQ xdfgetConditionQueryPokerUserInfo() {
-        String prop = "pokerUserInfo";
-        if (!xhasQueRlMap(prop)) { xregQueRl(prop, xcreateQueryPokerUserInfo()); xsetupOuterJoinPokerUserInfo(); }
-        return xgetQueRlMap(prop);
-    }
-    protected PokerUserInfoCQ xcreateQueryPokerUserInfo() {
-        String nrp = xresolveNRP("POSSESSION_MONEY", "pokerUserInfo"); String jan = xresolveJAN(nrp, xgetNNLvl());
-        return xinitRelCQ(new PokerUserInfoCQ(this, xgetSqlClause(), jan, xgetNNLvl()), _baseCB, "pokerUserInfo", nrp);
-    }
-    protected void xsetupOuterJoinPokerUserInfo() { xregOutJo("pokerUserInfo"); }
-    public boolean hasConditionQueryPokerUserInfo() { return xhasQueRlMap("pokerUserInfo"); }
-
     protected Map<String, Object> xfindFixedConditionDynamicParameterMap(String property) {
         return null;
     }

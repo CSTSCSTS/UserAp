@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
+import java.time.LocalDateTime;
 import java.util.Locale;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -36,7 +38,8 @@ public class UserService {
 		}
 
 		// ユーザー情報をDBに保存する
-		User user = new User(userName, password);
+		User user = User.builder().userName(userName)
+						.password(Optional.of(password)).build();
 		userRepository.insert(user);
 
 		PokerUserInfo entity = userRepository.getPokerUserByUsername(userName).get();
@@ -47,5 +50,28 @@ public class UserService {
 		return user;
 
 	}
+
+ //OAuthユーザー登録を実施する。
+ public User oauthResister(String userName) throws UserNameDuplicateException {
+
+   // ユーザー情報をDBに保存する
+   User user = User.builder().userName(userName).build();
+   userRepository.oauthInsert(user);
+
+   User entity = userRepository.getOAuthPokerUserByUsername(userName).get();
+   // 所持金情報をDBに保存する
+   moneyService.register(entity.getUserId());
+   user.setUserId(entity.getUserId());
+   user.setPassword(Optional.empty());
+   user.setLoginDate(entity.getLoginDate());
+   return user;
+
+ }
+
+	 public void update(int userId, String userName, String password) {
+	 		User user = userRepository.getUserByUserId(userId).get();
+			 userRepository.update(new User(userId, userName, Optional.ofNullable(password), LocalDateTime.now(), user.isOAuthUser));
+	 }
+
 
 }
